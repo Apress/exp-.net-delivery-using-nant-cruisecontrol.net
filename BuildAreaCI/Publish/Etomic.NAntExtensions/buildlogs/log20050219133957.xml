@@ -1,0 +1,11 @@
+<cruisecontrol project="Etomic.NAntExtensions">
+  <modifications />
+  <build date="19/02/2005 13:39:57" buildtime="00:00:00" buildcondition="IfModificationExists" />
+  <exception><![CDATA[ThoughtWorks.CruiseControl.Core.CruiseControlException: Source control operation failed: Unable to open user login file D:\dotNetDelivery\VSS\data\loggedin\marc.log.
+. Process command: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd19/02/2005;13:39:57~19/02/2005;13:37:52 -Y,builder -I-Y
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 53
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163]]></exception>
+</cruisecontrol>

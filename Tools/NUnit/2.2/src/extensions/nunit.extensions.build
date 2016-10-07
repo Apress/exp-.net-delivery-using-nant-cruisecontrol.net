@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="NUnit.Extensions" default="build">
+
+    <!--
+        Required properties:
+            * bin.dir               - bin directory
+            * src.dir               - source location(build) or target(copy)
+            * build.debug           - (true|false) debug build?
+            * build.defines.csc     - build defines for build config
+    -->
+
+    <target name="build" depends="copy">
+        <csc target="library" output="${bin.dir}/nunit.extensions.dll"
+                debug="${build.debug}" define="${build.defines.csc}">
+            <sources basedir="${src.dir}/extensions">
+                <include name="**/*.cs"/>
+            </sources>
+            <references>
+                <include name="${bin.dir}/nunit.core.dll"/>
+            </references>
+        </csc>
+    </target>
+
+    <target name="copy">
+        <copy todir="${src.dir}/extensions">
+            <fileset basedir=".">
+                <include name="nunit.extensions.dll.csproj"/>
+                <include name="nunit.extensions.build"/>
+                <include name="AssemblyInfo.cs"/>
+                <include name="RepeatedTest.cs"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

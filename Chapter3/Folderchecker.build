@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<project default="folderchecker">
+         <property name="foldername" value="D:\BookCode\Assemblies"/>
+         <target name="folderchecker">
+            <foreach item="Folder" in="${foldername}" property="foldername">
+                <echo message="${foldername}" />
+                <call target="folderchecker"/>
+            </foreach>
+         </target>
+</project>

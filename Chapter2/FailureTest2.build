@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="FailureTest2" default="go">
+	
+	<property name="nant.onfailure" value="fail"/>
+	<property name="failed.message" value="Something went wrong."/>
+
+	<target name="go" depends="normal, important"/>
+	
+	<target name="normal">
+		<echo message="Normal step OK"/>
+	</target>
+
+	<target name="important">
+		<property name="failed.message" value="IMPORTANT! World Ending!"/>
+		<fail/>
+		<echo message="Important step OK"/>
+	</target>
+	
+	<target name="fail">
+		<echo message="${failed.message}"/>
+	</target>
+</project>

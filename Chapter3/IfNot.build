@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Loadtasks">
+<ifnot test="${property::exists('project.name')}">
+     <fail message="Please enter a project.name to run this file." />
+</ifnot>
+
+</project>

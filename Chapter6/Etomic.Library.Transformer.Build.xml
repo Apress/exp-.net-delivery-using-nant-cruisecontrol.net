@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.Library.Transformer.Engine" default="help">
+	<description>Build file for the Etomic.Library.Transformer.Engine application.</description>
+
+	<property name="project.name.1" value="${solution.name}.Engine" />
+	<property name="solution.isweb" value="false"/>
+
+	<target name="go" description="The main target for full build process execution." depends="build, test, document, publish, notify"/>
+
+	<target name="build" description="Compile the application.">
+		<solution solutionfile="${core.source}\${solution.name}.sln" configuration="Debug" outputdir="${core.output}\"/>
+	</target>
+
+	<target name="test" description="Apply the unit tests.">
+		<property name="nant.onfailure" value="fail.test"/>
+	
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${core.reports}\" />
+			<test>
+				<assemblies basedir="${core.output}\">
+					<include name="*Tests.dll"/>
+				</assemblies>
+			</test>
+		</nunit2>
+
+		<nunit2report out="${core.reports}\NUnit.html">
+			<fileset>
+				<include name="${core.reports}\*.Tests.dll-results.xml" />
+			</fileset>
+		</nunit2report>
+
+		<exec program="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" commandline="/f:${core.output}\${project.name.1}.dll /o:${core.reports}\fxcop.xml /r:D:\dotNetDelivery\Tools\FxCop\1.30\Rules\" failonerror="false"/>
+
+		<style style="D:\dotNetDelivery\Tools\FxCop\1.30\Xml\FxCopReport.xsl" in="${core.reports}\fxcop.xml" out="${core.reports}\fxcop.html"/>
+		
+		<property name="nant.onfailure" value="fail"/>
+	
+	</target>
+
+	<target name="document" description="Generate documentation and reports.">
+		<ndoc>
+			<assemblies basedir="${core.output}\">
+                <include name="${project.name.1}.dll" />
+            </assemblies>
+            <summaries basedir="${core.output}\">
+                <include name="${project.name.1}.xml" />
+            </summaries>
+            <documenters>
+                <documenter name="MSDN">
+                    <property name="OutputDirectory" value="${core.docs}\" />
+                    <property name="HtmlHelpName" value="${solution.name}" />
+                    <property name="HtmlHelpCompilerFilename" value="hhc.exe" />
+                    <property name="IncludeFavorites" value="False" />
+                    <property name="Title" value="${solution.name} (NDoc)" />
+                    <property name="SplitTOCs" value="False" />
+                    <property name="DefaulTOC" value="" />
+                    <property name="ShowVisualBasic" value="False" />
+                    <property name="ShowMissingSummaries" value="True" />
+                    <property name="ShowMissingRemarks" value="False" />
+                    <property name="ShowMissingParams" value="True" />
+                    <property name="ShowMissingReturns" value="True" />
+                    <property name="ShowMissingValues" value="True" />
+                    <property name="DocumentInternals" value="True" />
+                    <property name="DocumentProtected" value="True" />
+                    <property name="DocumentPrivates" value="False" />
+                    <property name="DocumentEmptyNamespaces" value="False" />
+                    <property name="IncludeAssemblyVersion" value="True" />
+                    <property name="CopyrightText" value="${company.name} Ltd., 2005" />
+                    <property name="CopyrightHref" value="" />
+                </documenter>
+            </documenters>
+        </ndoc>
+	</target>
+
+	<target name="publish" description="Place the compiled assets, reports etc. in agreed location.">
+		<nant buildfile="Build.Common.xml" target="publish" inheritall="true"/>
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the build process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the build process."/>
+	</target>
+
+	<target name="fail.test">
+		<nunit2report out="${core.reports}\NUnit.html">
+			<fileset>
+				<include name="${core.reports}\Etomic.*.Tests.dll-results.xml" />
+			</fileset>
+		</nunit2report>
+	</target>
+
+	<target name="help">
+		<echo message="This file should not be executed. Use Build.Core.xml"/>
+	</target>
+
+</project>

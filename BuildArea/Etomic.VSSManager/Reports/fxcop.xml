@@ -1,0 +1,1057 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="d:\tools\fxcop\1.30\Xml\FxCopReport.Xsl"?>
+<FxCopReport Version="1.3" LastAnalysis="2005-02-06 20:16:26Z">
+ <Namespaces>
+  <Namespace Name="Etomic.VSSManager.Remote">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesHaveOnlyShortAcronymsAllCaps" />
+     <Issues>
+      <Issue Certainty="75" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>Correct the capitalization of namespace name 'Etomic.VSSManager.Remote'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message ID="Etomic" Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+     <Issues>
+      <Issue Certainty="50" Level="CriticalWarning">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+          <Item>Etomic</Item>
+         </Items>
+        </Data>
+        <Text>Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.VSSManager.Remote'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AvoidNamespacesWithFewMembers" />
+     <Issues>
+      <Issue Certainty="50" Level="Warning">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>Consider merging the types defined in  'Etomic.VSSManager.Remote' with another namespace.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Etomic.VSSManager.Service">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesHaveOnlyShortAcronymsAllCaps" />
+     <Issues>
+      <Issue Certainty="75" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>Correct the capitalization of namespace name 'Etomic.VSSManager.Service'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message ID="Etomic" Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+     <Issues>
+      <Issue Certainty="50" Level="CriticalWarning">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+          <Item>Etomic</Item>
+         </Items>
+        </Data>
+        <Text>Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.VSSManager.Service'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+  </Namespace>
+  <Namespace Name="Etomic.VSSManager.Server">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesHaveOnlyShortAcronymsAllCaps" />
+     <Issues>
+      <Issue Certainty="75" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>Correct the capitalization of namespace name 'Etomic.VSSManager.Server'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message ID="Etomic" Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+     <Issues>
+      <Issue Certainty="50" Level="CriticalWarning">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+          <Item>Etomic</Item>
+         </Items>
+        </Data>
+        <Text>Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.VSSManager.Server'.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+  </Namespace>
+ </Namespaces>
+ <Targets>
+  <Target Name="D:\BookCode\BuildArea\Etomic.VSSManager\Output\Etomic.VSSManager.Service.exe">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesAreMarkedClsCompliant" />
+     <Issues>
+      <Issue Certainty="99" Level="Error">
+       <Resolution>
+        <Data>
+         <Id>NoAttr</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>'Etomic.VSSManager.Service' should have the CLSCompliantAttribute, and its value should be true.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesShouldBeComVisibleAttributed" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Id>NoAttribute</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>Explicitly mark 'Etomic.VSSManager.Service' with the ComVisible attribute.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveVersionNumbers" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>Add an AssemblyVersion attribute to the 'Etomic.VSSManager.Service' assembly.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveStrongNames" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>Sign 'Etomic.VSSManager.Service' with a strong name key.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHavePermissionRequests" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Service</Item>
+         </Items>
+        </Data>
+        <Text>No valid permission requests were found for assembly 'Etomic.VSSManager.Service'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+   <Modules>
+    <Module Name="etomic.vssmanager.service.exe">
+     <Namespaces>
+      <Namespace Name="Etomic.VSSManager.Service">
+       <Classes>
+        <Class Name="VssManagerService">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssManagerService</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'VssManagerService'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+         <Fields>
+          <Field Name="SERVICE_NAME">
+           <Messages>
+            <Message Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="MemberNamesHaveOnlyShortAcronymsAllCaps" />
+             <Issues>
+              <Issue Certainty="75" Level="Error">
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>SERVICE_NAME</Item>
+                 </Items>
+                </Data>
+                <Text>Correct the capitalization of member name 'SERVICE_NAME'.</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+            <Message Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="MemberNamesDoNotHaveUnderscores" />
+             <Issues>
+              <Issue Certainty="99" Level="Error">
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>SERVICE_NAME</Item>
+                 </Items>
+                </Data>
+                <Text>Remove the underscore from 'SERVICE_NAME'.</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Field>
+         </Fields>
+         <Methods>
+          <Method Name="OnStart(System.String[]):System.Void">
+           <Messages>
+            <Message ID="System.Int32.Parse(System.String)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Service" File="VssManagerService.cs" Line="73" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>Int32.Parse(String s)</Item>
+                  <Item>Int32.Parse(String s, IFormatProvider provider)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'Int32.Parse(String s)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: Int32.Parse(String s, IFormatProvider provider)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+         </Methods>
+        </Class>
+        <Class Name="VssManagerInstaller">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssManagerInstaller</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'VssManagerInstaller'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+        </Class>
+       </Classes>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="D:\BookCode\BuildArea\Etomic.VSSManager\Output\Etomic.VSSManager.Server.dll">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesAreMarkedClsCompliant" />
+     <Issues>
+      <Issue Certainty="99" Level="Error">
+       <Resolution>
+        <Data>
+         <Id>NoAttr</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>'Etomic.VSSManager.Server' should have the CLSCompliantAttribute, and its value should be true.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesShouldBeComVisibleAttributed" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Id>NoAttribute</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>Explicitly mark 'Etomic.VSSManager.Server' with the ComVisible attribute.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveVersionNumbers" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>Add an AssemblyVersion attribute to the 'Etomic.VSSManager.Server' assembly.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveStrongNames" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>Sign 'Etomic.VSSManager.Server' with a strong name key.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHavePermissionRequests" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Server</Item>
+         </Items>
+        </Data>
+        <Text>No valid permission requests were found for assembly 'Etomic.VSSManager.Server'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+   <Modules>
+    <Module Name="etomic.vssmanager.server.dll">
+     <Namespaces>
+      <Namespace Name="Etomic.VSSManager.Server">
+       <Classes>
+        <Class Name="VssManager">
+         <Messages>
+          <Message Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesDoNotMatchNamespaceNames" />
+           <Issues>
+            <Issue Certainty="95" Level="Error">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssManager</Item>
+                <Item>VSSManager</Item>
+               </Items>
+              </Data>
+              <Text>The type name 'VssManager' conflicts in whole or in part with the namespace name 'VSSManager'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssManager</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'VssManager'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+         <Methods>
+          <Method Name="GetDatabase(System.String):Etomic.VSSManager.Remote.IVssDatabase">
+           <Messages>
+            <Message ID="System.String.Format(System.String,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssManager.cs" Line="38" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+         </Methods>
+        </Class>
+        <Class Name="VssDatabaseConfigHandler">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssDatabaseConfigHandler</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'VssDatabaseConfigHandler'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+        </Class>
+        <Class Name="VssDatabase">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>VssDatabase</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'VssDatabase'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+         <Constructors>
+          <Constructor Name=".ctor(System.String)">
+           <Messages>
+            <Message ID="System.String.Format(System.String,System.Object,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="38" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0, Object arg1)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0, Object arg1)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+            <Message ID="System.String.Format(System.String,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="33" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Constructor>
+         </Constructors>
+         <Methods>
+          <Method Name="UpdateReadOnly(System.String):System.Void">
+           <Messages>
+            <Message ID="System.String.Format(System.String,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="101" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+          <Method Name="UpdateReadOnlyAll():System.Void">
+           <Messages>
+            <Message ID="System.String.Format(System.String,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="80" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+            <Message ID="System.String.ToUpper" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="CultureInfoShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="78" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.ToUpper()</Item>
+                  <Item>String.ToUpper(CultureInfo culture)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.ToUpper()' does not explicitly provide CultureInfo. This should be replaced with a call to an overload that does: String.ToUpper(CultureInfo culture)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+          <Method Name="SetStandardUsers():System.Void">
+           <Messages>
+            <Message ID="System.String.Format(System.String,System.Object)" Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="IFormatProviderShouldBePassed" />
+             <Issues>
+              <Issue Certainty="95" Level="Error">
+               <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="VssDatabase.cs" Line="125" />
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>String.Format(String format, Object arg0)</Item>
+                  <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                 </Items>
+                </Data>
+                <Text>The call to 'String.Format(String format, Object arg0)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+         </Methods>
+        </Class>
+        <Class Name="Log">
+         <Messages>
+          <Message Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypesHavingOnlyStaticMembersShouldNotHaveConstructors" />
+           <Issues>
+            <Issue Certainty="90" Level="Error">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>Log</Item>
+               </Items>
+              </Data>
+              <Text>Remove the public constructors from 'Log'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+        </Class>
+        <Class Name="User">
+         <Constructors>
+          <Constructor Name=".ctor(SourceSafeTypeLib.IVSSUser)">
+           <Parameters>
+            <Parameter Name="0">
+             <Messages>
+              <Message ID="vss" Status="Active" Created="2005-02-06 20:16:26Z">
+               <Rule TypeName="ParameterNamesShouldBeSpelledCorrectly" />
+               <Issues>
+                <Issue Certainty="25" Level="CriticalWarning">
+                 <SourceCode Path="d:\BookCode\BuildArea\Etomic.VSSManager\Source\Server" File="User.cs" Line="21" />
+                 <Resolution>
+                  <Data>
+                   <Items>
+                    <Item>vssUser</Item>
+                    <Item>vss</Item>
+                   </Items>
+                  </Data>
+                  <Text>Correct the spelling of the unrecognized word 'vss' in the parameter name 'vssUser'.</Text>
+                 </Resolution>
+                </Issue>
+               </Issues>
+              </Message>
+             </Messages>
+            </Parameter>
+           </Parameters>
+          </Constructor>
+         </Constructors>
+        </Class>
+       </Classes>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+  <Target Name="D:\BookCode\BuildArea\Etomic.VSSManager\Output\Etomic.VSSManager.Remote.dll">
+   <Messages>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesAreMarkedClsCompliant" />
+     <Issues>
+      <Issue Certainty="99" Level="Error">
+       <Resolution>
+        <Data>
+         <Id>NoAttr</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>'Etomic.VSSManager.Remote' should have the CLSCompliantAttribute, and its value should be true.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesShouldBeComVisibleAttributed" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Id>NoAttribute</Id>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>Explicitly mark 'Etomic.VSSManager.Remote' with the ComVisible attribute.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveVersionNumbers" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>Add an AssemblyVersion attribute to the 'Etomic.VSSManager.Remote' assembly.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHaveStrongNames" />
+     <Issues>
+      <Issue Certainty="95" Level="Error">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>Sign 'Etomic.VSSManager.Remote' with a strong name key.</Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+    <Message Status="Active" Created="2005-02-06 20:16:26Z">
+     <Rule TypeName="AssembliesHavePermissionRequests" />
+     <Issues>
+      <Issue Certainty="99" Level="CriticalError">
+       <Resolution>
+        <Data>
+         <Items>
+          <Item>Etomic.VSSManager.Remote</Item>
+         </Items>
+        </Data>
+        <Text>No valid permission requests were found for assembly 'Etomic.VSSManager.Remote'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </Text>
+       </Resolution>
+      </Issue>
+     </Issues>
+    </Message>
+   </Messages>
+   <Modules>
+    <Module Name="etomic.vssmanager.remote.dll">
+     <Namespaces>
+      <Namespace Name="Etomic.VSSManager.Remote">
+       <Interfaces>
+        <Interface Name="IVssManager">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>IVssManager</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'IVssManager'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+         <Methods>
+          <Method Name="GetDatabaseNames():System.Collections.IList">
+           <Messages>
+            <Message Status="Active" Created="2005-02-06 20:16:26Z">
+             <Rule TypeName="ConsiderReplacingMethodsWithProperties" />
+             <Issues>
+              <Issue Certainty="50" Level="Warning">
+               <Resolution>
+                <Data>
+                 <Items>
+                  <Item>GetDatabaseNames</Item>
+                 </Items>
+                </Data>
+                <Text>Change 'GetDatabaseNames' to a property if appropriate.</Text>
+               </Resolution>
+              </Issue>
+             </Issues>
+            </Message>
+           </Messages>
+          </Method>
+         </Methods>
+        </Interface>
+        <Interface Name="IVssDatabase">
+         <Messages>
+          <Message ID="Vss" Status="Active" Created="2005-02-06 20:16:26Z">
+           <Rule TypeName="TypeNamesShouldBeSpelledCorrectly" />
+           <Issues>
+            <Issue Certainty="75" Level="CriticalWarning">
+             <Resolution>
+              <Data>
+               <Items>
+                <Item>IVssDatabase</Item>
+                <Item>Vss</Item>
+               </Items>
+              </Data>
+              <Text>Correct the spelling of the unrecognized word 'Vss' in the type name 'IVssDatabase'.</Text>
+             </Resolution>
+            </Issue>
+           </Issues>
+          </Message>
+         </Messages>
+         <Methods>
+          <Method Name="AddUser(System.String,System.Boolean):System.Void">
+           <Parameters>
+            <Parameter Name="1">
+             <Messages>
+              <Message Status="Active" Created="2005-02-06 20:16:26Z">
+               <Rule TypeName="ParameterNamesDoNotMatchKeywords" />
+               <Issues>
+                <Issue Certainty="95" Level="Error">
+                 <Resolution>
+                  <Data>
+                   <Items>
+                    <Item>readOnly</Item>
+                    <Item>ReadOnly</Item>
+                   </Items>
+                  </Data>
+                  <Text>Change parameter name 'readOnly' so that it does not match a reserved keyword. The current name matches reserved keyword:  'ReadOnly'.</Text>
+                 </Resolution>
+                </Issue>
+               </Issues>
+              </Message>
+             </Messages>
+            </Parameter>
+           </Parameters>
+          </Method>
+         </Methods>
+        </Interface>
+       </Interfaces>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="AssembliesAreMarkedClsCompliant">
+   <Name>Assemblies are marked CLSCompliant</Name>
+   <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant.</Description>
+   <LongDescription>Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssemblyClsCompliant.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="99">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesHavePermissionRequests">
+   <Name>Assemblies specify permission requests</Name>
+   <Description>Permission requests prevent security exceptions from being thrown after code in an assembly has already begun executing. With permission requests, the assembly does not load if it has insufficient permissions. This rule will fire if you have specified a permission request incorrectly, or incompletely. If you have specified requests but FxCop reports a violation for this rule, use the PermView.exe tool to view the security permissions in the assembly. An unenforceable permission appears as an empty permission set.</Description>
+   <LongDescription>You should add attributes specifying what permissions your assembly will demand, might demand, and what permissions it does not want granted.  For example, the following attribute indicates that an assembly will, at minimum, require read access to the USERNAME environment variable: [assembly:EnvironmentPermissionAttribute(SecurityAction.RequestMinimum,
+Read="USERNAME")]. To specify permissions that the assembly might demand, use SecurityAction.RequestOptional. To specify permissions that the assembly must not be granted, use SecurityAction.RequestRefuse.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/AssembliesPermissionRequests.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="99">CriticalError</MessageLevel>
+   <File Name="UsageRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesHaveStrongNames">
+   <Name>Assemblies have strong names</Name>
+   <Description>Assemblies with strong names can be placed in the global assembly cache and can be checked for tampering at run time.</Description>
+   <LongDescription>The common language runtime compares the key in the assembly's manifest to the key used to generate the strong name, to ensure that the assembly's bits have not been tampered with.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesHaveStrongNames.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesHaveVersionNumbers">
+   <Name>Assemblies have version numbers</Name>
+   <Description>Assemblies should use version numbers. The version number is considered part of an assembly's identity.</Description>
+   <LongDescription>Versioning is applied by means of the AssemblyVersion attribute.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesHaveVersionNumbers.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="AssembliesShouldBeComVisibleAttributed">
+   <Name>Assemblies should have the ComVisible attribute</Name>
+   <Description>The ComVisible attribute indicates whether COM clients can use the library. Good design dictates that developers explicitly indicate COM visibility.</Description>
+   <LongDescription>The default value for this attribute is 'true'. However, the best design is to mark the assembly ComVisible false, and then marking types, interfaces, and individual members as ComVisible true, as appropriate. For more information, see the Design Guidelines section titled Exposing Functionality to COM. </LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesShouldHaveComVisibleAttribute.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="75-99">CriticalError, Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="AvoidNamespacesWithFewMembers">
+   <Name>Avoid having a namespace with a small number of types</Name>
+   <Description>A namespace should generally have more than five types.</Description>
+   <LongDescription />
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AvoidSmallNamespaces.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="50">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="ConsiderReplacingMethodsWithProperties">
+   <Name>Consider replacing methods with properties</Name>
+   <Description>Properties should be used instead of Get/Set methods in most situations.</Description>
+   <LongDescription>Methods are preferable to properties in the following situations: the operation is a conversion, is expensive or has an observable side-effect; the order of execution is important; calling the member twice in succession creates different results; a member is static but returns a mutable value; or the member returns an array.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/ReplaceMethodsWithProps.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="50-75">Warning</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="CultureInfoShouldBePassed">
+   <Name>CultureInfo should be passed</Name>
+   <Description>If an overload exists that takes a System.Globalization.CultureInfo argument, it should always be called in favor of an overload that does not.</Description>
+   <LongDescription>The CultureInfo type contains culture-specific information required for performing numeric and string operations, such as casing, formatting, and string comparisons. In scenarios where conversion and parsing behavior should never change between cultures, specify CultureInfo.InvariantCulture.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/Globalization/CultureInfoPassed.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="IFormatProviderShouldBePassed">
+   <Name>IFormatProvider should be passed</Name>
+   <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not.</Description>
+   <LongDescription>Some methods in the common language runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/Globalization/IFormatProviderPassed.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="GlobalizationRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="MemberNamesDoNotHaveUnderscores">
+   <Name>Member names do not contain underscores</Name>
+   <Description>Do not use underscores when specifying member names.</Description>
+   <LongDescription>Some generated Visual Studio identifiers for applications contain underscore characters. Underscore characters should generally be avoided in public identifiers.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/NamingRules/MemberNamesDoNotHaveUnderscores.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="99">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="MemberNamesHaveOnlyShortAcronymsAllCaps">
+   <Name>Member name acronyms of three or more characters are Pascal-cased</Name>
+   <Description>Acronyms of three or more letters should be Pascal-cased. For example, use XmlSpace rather than XMLSpace.</Description>
+   <LongDescription>A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/NamingRules/MemberNamesAcronymsArePascalCased.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="NamespaceNamesHaveOnlyShortAcronymsAllCaps">
+   <Name>Namespace acronyms of three or more characters are Pascal-cased</Name>
+   <Description>Acronyms of three or more letters should be Pascal-cased. For example, use System.Xml rather than System.XML.</Description>
+   <LongDescription>A violation of this rule might be required for compatibility with existing, non-managed symbol schemes. In general, however, these symbols should not be visible outside the assembly that uses them.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/NamingRules/NamespaceAcronymsNamesArePascalCased.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="75">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly">
+   <Name>Namespace names should consist of correctly spelled words</Name>
+   <Description>The individual words that make up a namespace should not be abbreviated and should be spelled correctly.</Description>
+   <LongDescription>If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/NamespaceSpelling.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="50">CriticalWarning</MessageLevel>
+   <File Name="UsageRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesDoNotMatchKeywords">
+   <Name>Parameter names do not match reserved keywords</Name>
+   <Description>Identifiers which match reserved keywords should be avoided. Matching is performed case-insensitively.</Description>
+   <LongDescription>Names that describe the purpose or contents of a parameter are preferable to names that describe the data type or format. If a parameter has no descriptive information other than its type, use a generic name such as 'value'.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/NamingRules/ParameterNamesDoNotMatchKeywords.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="ParameterNamesShouldBeSpelledCorrectly">
+   <Name>Parameter names should consist of correctly spelled words</Name>
+   <Description>The individual words that make up a parameter name should not be abbreviated and should be spelled correctly.</Description>
+   <LongDescription>If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/ParameterSpelling.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="25">CriticalWarning</MessageLevel>
+   <File Name="UsageRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="TypeNamesDoNotMatchNamespaceNames">
+   <Name>Avoid using type names that match namespace names</Name>
+   <Description>Identifiers which conflict in whole or in part with namespace names should be avoided.</Description>
+   <LongDescription>Names that describe the purpose or contents of a type are preferred.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/NamingRules/TypeNamesDoNotMatchNamespaceNames.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="95">Error</MessageLevel>
+   <File Name="NamingRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="TypeNamesShouldBeSpelledCorrectly">
+   <Name>Type names should consist of correctly spelled words</Name>
+   <Description>The individual words that make up a type name should not be abbreviated and should be spelled correctly.</Description>
+   <LongDescription>If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/TypeSpelling.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="75">CriticalWarning</MessageLevel>
+   <File Name="UsageRules.dll" Version="1.30.0.0" />
+  </Rule>
+  <Rule TypeName="TypesHavingOnlyStaticMembersShouldNotHaveConstructors">
+   <Name>Types with only static members should not have public or protected constructors</Name>
+   <Description>Instances of types that define only static members do not need to be created.</Description>
+   <LongDescription>Many compilers will automatically add a public default constructor if no constructor is specified.  To prevent this, adding an empty private constructor may be required.</LongDescription>
+   <GroupOwner>MS FxCopDev</GroupOwner>
+   <DevOwner />
+   <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/StaticTypesNoCtors.html</Url>
+   <Email>askfxcop@microsoft.com</Email>
+   <MessageLevel Certainty="90">Error</MessageLevel>
+   <File Name="DesignRules.dll" Version="1.30.0.0" />
+  </Rule>
+ </Rules>
+</FxCopReport>

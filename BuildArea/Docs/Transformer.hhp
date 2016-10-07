@@ -1,0 +1,30 @@
+[FILES]
+TransformerEngine.html
+TransformerEngineHierarchy.html
+TransformerEngine.ApplicationEngine.html
+TransformerEngine.ApplicationEngineMembers.html
+TransformerEngine.ApplicationEngineConstructor.html
+TransformerEngine.ApplicationEngineMethods.html
+TransformerEngine.ApplicationEngine.GetFileContents.html
+TransformerEngine.ApplicationEngine.SaveFileContents.html
+TransformerEngine.ApplicationEngine.TransformXml.html
+
+[OPTIONS]
+Title=Transformer
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=Transformer.chm
+Default Window=MsdnHelp
+Default topic=TransformerEngine.html
+Display compile progress=No
+Error log file=Transformer.log
+Full-text search=Yes
+Index file=Transformer.hhk
+Language=0x409 English (United States)
+Contents file=Transformer.hhc
+
+[WINDOWS]
+MsdnHelp="Transformer Help","Transformer.hhc","Transformer.hhk","TransformerEngine.html","TransformerEngine.html",,,,,0x62520,220,0x387e,[86,51,872,558],,,,,,,0
+
+[INFOTYPES]

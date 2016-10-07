@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Circular Chaos" default="foo">
+	<description>Circular Chaos</description>
+
+	<target name="foo" depends="bar">
+		<echo message="Chicken..."/>
+	</target>
+
+	<target name="bar" depends="foo">
+		<echo message="Egg..."/>
+	</target>
+</project>

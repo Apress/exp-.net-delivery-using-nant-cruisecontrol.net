@@ -1,0 +1,14 @@
+Label = "NAnt - 1.0.4.0"
+
+
+[$/Solutions/Etomic.Transformer.Web]
+Time = 1101138041
+
+[$/Solutions/Etomic.Library.Transformer]
+Time = 1101760127
+
+[$/Solutions/Etomic.Transformer.Win]
+Time = 1103475358
+
+[$/Solutions/Etomic.ShareTransformer]
+Time = 1106171340

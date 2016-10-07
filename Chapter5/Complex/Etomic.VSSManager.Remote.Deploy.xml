@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.VSSManager.Remote" default="help">
+	<description>Deploy file for the Etomic.VSSManager.Remote assembly</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="Etomic"/>
+	<property name="solution.name" value="${company.name}.VSSManager"/>
+	<property name="project.name.1" value="${solution.name}.Remote"/>
+
+	<property name="core.directory" value="D:\dotNetDelivery\BuildArea"/>
+	<property name="core.projectarea" value="${core.directory}\${solution.name}"/>
+	<property name="core.publish" value="${core.projectarea}\Publish"/>
+
+	<property name="core.deploy" value="D:\dotNetDelivery\TempDeploy"/>
+	<property name="core.environment" value="D:\dotNetDelivery\Assemblies"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, selectenvironments, createenvironments, position, configure, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<if test="${debug}">
+			<property name="sys.version" value="0.0.0.0"/>
+		</if>
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+			<delete dir="${core.deploy}\" failonerror="false"/>
+			<mkdir dir="${core.deploy}\${sys.version}\"/>
+			<copy file="${core.publish}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\"/>
+			<unzip zipfile="${core.deploy}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\"/>
+	</target>
+
+	<target name="selectenvironments" description="Select environments">
+		<!--Enter tasks for selectenvironments target-->
+	</target>
+
+	<target name="createenvironments" description="Create the environments required">
+		<mkdir dir="${core.environment}\${solution.name}\Latest\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Specific\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Deprecated\" failonerror="false"/>
+	</target>
+
+	<target name="position" description="Place required assets">
+		<copy file="${core.deploy}\${project.name.1}.dll" todir="${core.environment}\${solution.name}\Latest\" overwrite="true"/>
+		<copy file="${core.deploy}\${project.name.1}.dll" tofile="${core.environment}\${solution.name}\Specific\${project.name.1}_${sys.version}.dll"  overwrite="true"/>
+	</target>
+
+	<target name="configure" description="Amend configuration settings as necessary">
+		<!--Enter tasks for configure target-->
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the deploy process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the deploy process."/>
+	</target>
+
+	<target name="help">
+		<!--Enter tasks for help target-->
+		<echo message="The skeleton file for the deploy process is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- selectenvironments"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- configure"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

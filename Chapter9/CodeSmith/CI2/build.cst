@@ -1,0 +1,351 @@
+<%-- 
+Name: 			build.xml.cst
+Author: 		Marc Holmes
+Description: 	Providing the project build file using an XML file.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="Providing the project file using an XML file." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation.2" %>
+<%@ Import Namespace="Etomic.CodeSmithExtensions.BuildAutomation" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+<%@ Property Name="ProjectNumber" Type="System.Int32" Description="The project element to use."%>
+
+<%
+Project p = ProjectSet.Projects[ProjectNumber];
+SettingCollection s = ProjectSet.Settings;
+%>
+
+<project name="<%=s["CompanyName"]%>.<%=p.Name%>" default="help">
+	<description>Build file for the <%=s["CompanyName"]%>.<%=p.Name%> system.</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="<%=s["CompanyName"]%>"/>
+	<property name="solution.name" value="${company.name}.<%=p.Name%>"/>
+
+	<property name="core.directory" value="<%=s["EnvironmentMain"]%>"/>
+	<property name="core.source" value="${core.directory}\Source\${solution.name}"/>
+	<property name="core.output" value="${core.directory}\Output\${solution.name}"/>
+	<property name="core.docs" value="${core.directory}\Docs\${solution.name}"/>
+	<property name="core.reports" value="${core.directory}\Reports\${solution.name}"/>
+	<property name="core.distribution" value="${core.directory}\Distribution\${solution.name}"/>
+	<property name="core.publish" value="${core.directory}\Publish\${solution.name}"/>
+
+	<property name="vss.dbpath" value="<%=s["VssFolder"]%>\srcsafe.ini"/>
+	<property name="vss.path" value="$/Solutions/${solution.name}/"/>
+
+	<sysinfo/>
+	
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NAntContrib\0.85rc2\bin\NAnt.Contrib.Tasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NUnit2Report\1.2.2\bin\NAnt.NUnit2ReportTasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Tools\Etomic.NAntExtensions\Etomic.NAntExtensions.GeneralTasks.dll"/>
+	
+	<target name="go" description="The main target for full build process execution." depends="clean, get, version1, version2, build, test, document, publish, notify"/>
+    <target name="ci" description="The main target for continuous integration." depends="clean, version1, version2, build, test, document, publish, notify"/>
+
+	<target name="clean" description="Clean up the build environment.">
+
+		<delete dir="${core.output}\" failonerror="false"/>
+		<delete dir="${core.docs}\" failonerror="false"/>
+		<delete dir="${core.reports}\" failonerror="false"/>
+		<delete dir="${core.distribution}\" failonerror="false"/>
+
+		<mkdir dir="${core.source}\" failonerror="false"/>
+		<mkdir dir="${core.output}\" failonerror="false"/>
+		<mkdir dir="${core.docs}\" failonerror="false"/>
+		<mkdir dir="${core.reports}\" failonerror="false"/>
+		<mkdir dir="${core.distribution}\" failonerror="false"/>
+		<mkdir dir="${core.publish}\" failonerror="false"/>
+
+	</target>
+
+	<target name="get" description="Grab the source code.">
+		<vssget
+			user="<%=s["VssUsername"]%>"
+			password="<%=s["VssPassword"]%>"
+			localpath="${core.source}\"
+			recursive="true"
+			replace="true"
+			dbpath="${vss.dbpath}"
+			path="${vss.path}"
+		/>
+	</target>
+
+	<target name="version1" description="Apply versioning to the source code files.">
+
+     	<property name="sys.version" value="0.0.0.0"/>
+
+		<ifnot test="${debug}">
+			<property name="sys.version" value="${ccnet.label}.0"/>
+		</ifnot>
+
+		<attrib file="${core.source}\CommonAssemblyInfo.cs" readonly="false" />
+
+		<asminfo output="${core.source}\CommonAssemblyInfo.cs" language="CSharp">
+			<imports>
+				<import name="System" />
+				<import name="System.Reflection"/>
+			</imports>
+			<attributes>
+				<attribute type="AssemblyVersionAttribute" value="${sys.version}" />
+				<attribute type="AssemblyProductAttribute" value="${solution.name}" />
+				<attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2005, ${company.name} Ltd."/>
+			</attributes>
+		</asminfo>
+
+		<attrib file="${core.source}\CommonAssemblyInfo.cs" readonly="true" />
+	</target>
+
+	<target name="version2">
+		<ifnot test="${debug}">
+			<vsslabel
+				user="builder"
+				password="builder"
+				dbpath="${vss.dbpath}"
+				path="${vss.path}"
+				comment="Automated Label"
+				label="NAnt - ${sys.version}"
+			/>
+		</ifnot>
+	</target>
+
+	<target name="build" description="Compile the application.">
+		<solution solutionfile="${core.source}\${solution.name}.sln" configuration="Debug" outputdir="${core.output}\"/>
+	</target>
+
+	<target name="test" description="Apply the unit tests.">
+		<%
+		bool NeedUnitTesting = false;
+		foreach(OutputAssembly a in p.OutputAssemblies)
+		{
+		if (a.ShouldTest)
+		{
+			NeedUnitTesting = true;
+			break;
+		}
+		}
+		
+		if (NeedUnitTesting)
+		{
+		%>
+		<property name="nant.onfailure" value="fail.test"/>
+	
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="${core.reports}\" />
+			<test>
+				<assemblies basedir="${core.output}\">
+				<%foreach(OutputAssembly a in p.OutputAssemblies)
+				{
+					if (a.ShouldTest)
+					{
+					%>
+                	<include name="<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>" />
+					<%
+					}
+				}
+				%>
+				</assemblies>
+			</test>
+		</nunit2>
+
+		<nunit2report out="${core.reports}\NUnit.html">
+			<fileset>
+				<%foreach(OutputAssembly a in p.OutputAssemblies)
+				{
+					if (a.ShouldTest)
+					{
+					%>
+                	<include name="${core.reports}\<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>-results.xml" />
+					<%
+					}
+				}
+				%>
+			</fileset>
+		</nunit2report>
+		<%
+		}
+		%>
+
+		<fxcop executable="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" report="${core.reports}\fxcop.xml" failonerror="false">
+          <targets basedir="${core.output}">
+               <include name="${solution.name}*.dll" />
+               <include name="${solution.name}*.exe" />
+               <exclude name="*Tests*" />
+          </targets>
+          <ruleset basedir=" D:\dotNetDelivery\Tools\FxCop\1.30\Rules">
+               <include name="*.dll" />
+          </ruleset>
+    	</fxcop>
+
+		<style style="D:\dotNetDelivery\Tools\FxCop\1.30\Xml\FxCopReport.xsl" in="${core.reports}\fxcop.xml" out="${core.reports}\fxcop.html"/>
+		
+		<property name="nant.onfailure" value="fail"/>
+	
+	</target>
+
+	<target name="document" description="Generate documentation and reports.">
+		<%
+		bool NeedDocumentTarget = false;
+		foreach(OutputAssembly a in p.OutputAssemblies)
+		{
+		if (a.ShouldDocument)
+		{
+			NeedDocumentTarget = true;
+			break;
+		}
+		}
+		
+		if (NeedDocumentTarget)
+		{
+		%>
+		<ndoc>
+			<assemblies basedir="${core.output}\">
+				<%foreach(OutputAssembly a in p.OutputAssemblies)
+				{
+					if (a.ShouldDocument)
+					{
+					%>
+                	<include name="<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>" />
+					<%
+					}
+				}
+				%>
+            </assemblies>
+            <summaries basedir="${core.output}\">
+				<%foreach(OutputAssembly a in p.OutputAssemblies)
+				{
+					if (a.ShouldDocument)
+					{
+					%>
+                	<include name="<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.xml" />
+					<%
+					}
+				}
+				%>
+            </summaries>
+            <documenters>
+                <documenter name="MSDN">
+                    <property name="OutputDirectory" value="${core.docs}\" />
+                    <property name="HtmlHelpName" value="${solution.name}" />
+                    <property name="HtmlHelpCompilerFilename" value="hhc.exe" />
+                    <property name="IncludeFavorites" value="False" />
+                    <property name="Title" value="${solution.name} (NDoc)" />
+                    <property name="SplitTOCs" value="False" />
+                    <property name="DefaulTOC" value="" />
+                    <property name="ShowVisualBasic" value="False" />
+                    <property name="ShowMissingSummaries" value="True" />
+                    <property name="ShowMissingRemarks" value="False" />
+                    <property name="ShowMissingParams" value="True" />
+                    <property name="ShowMissingReturns" value="True" />
+                    <property name="ShowMissingValues" value="True" />
+                    <property name="DocumentInternals" value="True" />
+                    <property name="DocumentProtected" value="True" />
+                    <property name="DocumentPrivates" value="False" />
+                    <property name="DocumentEmptyNamespaces" value="False" />
+                    <property name="IncludeAssemblyVersion" value="True" />
+                    <property name="CopyrightText" value="${company.name} Ltd., 2005" />
+                    <property name="CopyrightHref" value="" />
+                </documenter>
+            </documenters>
+        </ndoc>
+		<%
+		}
+		%>
+	</target>
+
+	<%
+	if(p.ProjectType == "WebForm")
+	{
+	%>
+	<target name="publish" description="Place the compiled assets, reports etc. in agreed location.">
+		<copy todir="${core.distribution}\">
+			<fileset basedir="${core.source}\UI">
+				<include name="**"/>
+				<exclude name="obj/**"/>
+				<exclude name="**/*.cs"/>
+				<exclude name="**/*.resx"/>
+				<exclude name="**/*.csproj"/>
+				<exclude name="**/*.vspscc"/>
+				<exclude name="**/*.scc"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${core.distribution}\bin\">
+			<fileset basedir="${core.output}\">
+				<include name="*.dll"/>
+				<exclude name="*Tests*"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="${core.publish}\${solution.name}-Build-${sys.version}.zip">
+			<fileset basedir="${core.distribution}">
+				<include name="**"/>
+			</fileset>
+		</zip>
+	</target>
+	<%
+	}
+	else
+	{
+	%>
+	<target name="publish" description="Place the compiled assets, reports etc. in agreed location.">
+		<copy todir="${core.distribution}\">
+			<fileset basedir="${core.output}\">
+				<include name="*.dll"/>
+				<include name="*.exe"/>
+				<exclude name="*Tests*"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="${core.publish}\${solution.name}-Build-${sys.version}.zip">
+			<fileset basedir="${core.distribution}\">
+				<include name="**" />
+			</fileset>
+		</zip>
+	</target>
+	<%
+	}
+	%>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the build process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the build process."/>
+	</target>
+
+	<target name="fail.test">
+		<nunit2report out="${core.reports}\NUnit.html">
+			<fileset>
+			<%foreach(OutputAssembly a in p.OutputAssemblies)
+				{
+					if (a.ShouldTest)
+					{
+					%>
+                	<include name="<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>-results.xml" />
+					<%
+					}
+				}
+			%>
+			</fileset>
+		</nunit2report>
+	</target>
+
+	<target name="help">
+		<echo message="The skeleton file for the build process is designed to execute the following targets in turn:"/>
+		<echo message="-- clean"/>
+		<echo message="-- get"/>
+		<echo message="-- version"/>
+		<echo message="-- build"/>
+		<echo message="-- test"/>
+		<echo message="-- document"/>
+		<echo message="-- publish"/>
+		<echo message="-- notify"/>
+		<echo message="This file should be run with a Boolean value for 'debug'."/>
+		<echo message="-- True indicates that no versioning be set (0.0.0.0)."/>
+		<echo message="-- False indicates that a regular version be set(1.0.x.0)."/>
+		<echo message="Example: -D:debug=true"/>
+	</target>
+
+</project>

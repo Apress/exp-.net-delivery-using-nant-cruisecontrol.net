@@ -1,0 +1,2 @@
+<%@ Control Language="c#" AutoEventWireup="false" Codebehind="NavigationBar.ascx.cs" Inherits="Etomic.ShareTransformer.UI.WebControls.NavigationBar" TargetSchema="http://schemas.microsoft.com/intellisense/ie5" %>
+<a href="Default.aspx">Create Transformation</a> | <a href="Transformations.aspx">List Saved Transformations</a>

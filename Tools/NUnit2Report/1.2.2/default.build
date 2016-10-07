@@ -1,0 +1,83 @@
+<?xml version="1.0" ?>
+<project name="NAnt.NUnit2ReportTasks" default="build" basedir=".">
+   <property name="output.dir" value="${nant.project.basedir}\bin" />
+   <property name="build.dir" value="${output.dir}" />
+   <property name="debug" value="false" />
+   <sysinfo/>
+
+   <property name="nantcorelib" value="bin\NAnt.Core.dll" />
+
+   <echo message="Base build directory = ${build.dir}"/>
+
+   <target name="clean">
+      <delete file="${output.dir}\NAnt.NUnit2ReportTasks.*" failonerror="false"/>
+      <delete file="${output.dir}\*.pdb" failonerror="false"/>
+      <delete file="${output.dir}\*.xsl" failonerror="false"/>
+	  <delete file="${output.dir}\*.chm" failonerror="false"/>
+   </target>
+
+   <target name="prepare" depends="clean">
+      <mkdir dir="${build.dir}"/>
+      <copy file="src\xsl\NUnit-NoFrame.xsl" todir="${output.dir}" />
+      <copy file="src\xsl\NUnit-Frame.xsl" todir="${output.dir}" />
+      <copy file="src\xsl\toolkit.xsl" todir="${output.dir}" />
+      <copy file="src\xsl\Traductions.xml" todir="${output.dir}" />
+      <copy file="src\xsl\i18n.xsl" todir="${output.dir}" />
+   </target>
+
+   <target name="build" depends="prepare">
+      <csc target="library" 
+           output="${output.dir}\NAnt.NUnit2ReportTasks.dll" 
+           debug="${debug}" 
+           doc="${output.dir}\NAnt.NUnit2ReportTasks.xml">
+         <sources>
+            <includes name="src\AssemblyInfo.cs" />
+            <includes name="src\NUnit2ReportTask.cs" />
+         </sources>
+         <references>
+            <includes name="System.dll" />
+            <includes name="${nantcorelib}" />
+         </references>
+      </csc>
+   </target>
+
+   <target name="test" depends="build" description="run unit tests">
+   </target>
+
+    <target name="doc" depends="build" description="build documentation">
+        <echo message="Requires HtmlHelp compiler (hhc.exe) to be in the system path"/>
+        <ndoc failonerror="false">
+            <assemblies basedir="${output.dir}">
+                <includes name="NAnt.NUnit2ReportTasks.dll"/>
+            </assemblies>
+            <documenters>
+                <documenter name="MSDN">
+                    <property name="output.directory" value="docs" />
+                    <property name="HtmlHelpName" value="NUnit2Report" />
+                    <property name="HtmlHelpCompilerFilename" value="hhc.exe" />
+                    <property name="IncludeFavorites" value="False" />
+                    <property name="Title" value="An NDoc Documented Class Library" />
+                    <property name="SplitTOCs" value="False" />
+                    <property name="DefaulTOC" value="" />
+                    <property name="ShowVisualBasic" value="True" />
+                    <property name="ShowMissingSummaries" value="false" />
+                    <property name="ShowMissingRemarks" value="false" />
+                    <property name="ShowMissingParams" value="false" />
+                    <property name="ShowMissingReturns" value="false" />
+                    <property name="ShowMissingValues" value="false" />
+                    <property name="DocumentInternals" value="False" />
+                    <property name="DocumentProtected" value="True" />
+                    <property name="DocumentPrivates" value="False" />
+                    <property name="DocumentEmptyNamespaces" value="False" />
+                    <property name="IncludeAssemblyVersion" value="False" />
+                    <property name="CopyrightText" value="Copyright(C) 2003, Gilles Bayon" />
+                    <property name="CopyrightHref" value="http://www.pot-au-feu.org/" />
+                 </documenter>             
+            </documenters> 
+        </ndoc>
+        <copy file="${nant.project.basedir}\docs\MsDn\NUnit2Report.chm" todir="docs"/>
+        <delete dir="${nant.project.basedir}\docs\MsDn"/>
+    </target>
+
+
+</project>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<codeSmith>
+	<propertySet>
+		<property name="OutputDirectory">D:\dotNetDelivery\Chapter9</property>
+		<property name="ProjectSet">
+			<ProjectSet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.etomic.co.uk">
+				<Settings 
+                    	CompanyName="Etomic"
+               		CcnetUrl="http://localhost/ccnet"
+		               VssFolder="D:\dotNetDelivery\VSS"
+		               VssUsername="builder"
+		               VssPassword="builder"
+		               EnvironmentMain="D:\dotNetDelivery\BuildAreaCI"
+		               EnvironmentTempDeploy="D:\dotNetDelivery\TempDeploy"
+                     />
+				<Projects>
+					<Project Name="Library.Transformer" HasDatabase="false" ProjectType="Library">
+						<OutputAssemblies>
+							<OutputAssembly AssemblyType="dll" Name="Engine" ShouldDocument="true" ShouldTest="false" />
+							<OutputAssembly AssemblyType="dll" Name="Tests" ShouldDocument="false" ShouldTest="true" />
+						</OutputAssemblies>
+					</Project>
+                         <Project Name="NAntExtensions" HasDatabase="false" ProjectType="Library">
+						<OutputAssemblies>
+							<OutputAssembly AssemblyType="dll" Name="GeneralTasks" ShouldDocument="false" ShouldTest="false" />
+						</OutputAssemblies>
+					</Project>
+				</Projects>
+			</ProjectSet>
+		</property>
+	</propertySet>
+</codeSmith>

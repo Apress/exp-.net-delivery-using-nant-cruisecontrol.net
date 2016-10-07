@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.Library.Transformer" default="help">
+	<description>Deploy file for the Etomic.Library.Transformer application</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="Etomic"/>
+	<property name="solution.name" value="${company.name}.Library.Transformer"/>
+	
+	<property name="core.publish" value="http://localhost/ccnet/files/${solution.name}"/>
+
+	<property name="core.deploy" value="D:\dotNetDelivery\TempDeploy"/>
+	<property name="core.environment" value="D:\dotNetDelivery\Assemblies"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, createenvironments, position, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<if test="${debug}">
+			<property name="sys.version" value="0.0.0.0"/>
+		</if>
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+			<delete dir="${core.deploy}\" failonerror="false"/>
+			<mkdir dir="${core.deploy}\${sys.version}\"/>
+               <get 
+                     src="${core.publish}/${solution.name}-Build-${sys.version}.zip"
+                     dest="${core.deploy}\${solution.name}-Build-${sys.version}.zip" 
+                   />
+			<unzip zipfile="${core.deploy}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\${sys.version}\"/>
+	</target>
+
+	<target name="createenvironments" description="Create the environments required">
+		<mkdir dir="${core.environment}\${solution.name}\Latest\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Specific\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Deprecated\" failonerror="false"/>
+	</target>
+
+	<target name="position" description="Place required assets">
+		<copy file="${core.deploy}\${sys.version}\Etomic.Library.Transformer.Engine.dll" todir="${core.environment}\${solution.name}\Latest\" overwrite="true"/>
+		<copy file="${core.deploy}\${sys.version}\Etomic.Library.Transformer.Engine.dll" tofile="${core.environment}\${solution.name}\Specific\Etomic.Library.Transformer.Engine_${sys.version}.dll"  overwrite="true"/>
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the deploy process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the deploy process."/>
+	</target>
+
+	<target name="help">
+		<echo message="The deploy file is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

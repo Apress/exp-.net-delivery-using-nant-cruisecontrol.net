@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{66BF30CD-0579-44BB-8DD9-E0DA3873883C}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {69091CC1-8C0D-4E17-9533-A64F93677DBA}
+		SccProjectUniqueName1 = UI\\UI.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = UI\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{66BF30CD-0579-44BB-8DD9-E0DA3873883C}.Debug.ActiveCfg = Debug|.NET
+		{66BF30CD-0579-44BB-8DD9-E0DA3873883C}.Debug.Build.0 = Debug|.NET
+		{66BF30CD-0579-44BB-8DD9-E0DA3873883C}.Release.ActiveCfg = Release|.NET
+		{66BF30CD-0579-44BB-8DD9-E0DA3873883C}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

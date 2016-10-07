@@ -1,0 +1,109 @@
+[FILES]
+Etomic.VSSManager.Remote.html
+Etomic.VSSManager.RemoteHierarchy.html
+Etomic.VSSManager.Remote.IUser.html
+Etomic.VSSManager.Remote.IUserMembers.html
+Etomic.VSSManager.Remote.IUserProperties.html
+Etomic.VSSManager.Remote.IUser.HasReadOnly.html
+Etomic.VSSManager.Remote.IUser.Name.html
+Etomic.VSSManager.Remote.IVssDatabase.html
+Etomic.VSSManager.Remote.IVssDatabaseMembers.html
+Etomic.VSSManager.Remote.IVssDatabaseProperties.html
+Etomic.VSSManager.Remote.IVssDatabase.Name.html
+Etomic.VSSManager.Remote.IVssDatabase.Users.html
+Etomic.VSSManager.Remote.IVssDatabaseMethods.html
+Etomic.VSSManager.Remote.IVssDatabase.AddUser.html
+Etomic.VSSManager.Remote.IVssDatabase.SetStandardUsers.html
+Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnly_overloads.html
+Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnly_overload_2.html
+Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnly_overload_1.html
+Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnlyAll.html
+Etomic.VSSManager.Remote.IVssManager.html
+Etomic.VSSManager.Remote.IVssManagerMembers.html
+Etomic.VSSManager.Remote.IVssManagerMethods.html
+Etomic.VSSManager.Remote.IVssManager.GetDatabase.html
+Etomic.VSSManager.Remote.IVssManager.GetDatabaseNames.html
+Etomic.VSSManager.Server.html
+Etomic.VSSManager.ServerHierarchy.html
+Etomic.VSSManager.Server.Log.html
+Etomic.VSSManager.Server.LogMembers.html
+Etomic.VSSManager.Server.LogConstructor.html
+Etomic.VSSManager.Server.LogMethods.html
+Etomic.VSSManager.Server.Log.Debug.html
+Etomic.VSSManager.Server.Log.Error.html
+Etomic.VSSManager.Server.Log.Fatal.html
+Etomic.VSSManager.Server.Log.Info.html
+Etomic.VSSManager.Server.Log.Warn.html
+Etomic.VSSManager.Server.User.html
+Etomic.VSSManager.Server.UserMembers.html
+Etomic.VSSManager.Server.UserConstructor.html
+Etomic.VSSManager.Server.UserProperties.html
+Etomic.VSSManager.Server.User.HasReadOnly.html
+Etomic.VSSManager.Server.User.Name.html
+Etomic.VSSManager.Server.UserConfigHandler.html
+Etomic.VSSManager.Server.UserConfigHandlerMembers.html
+Etomic.VSSManager.Server.UserConfigHandlerConstructor.html
+Etomic.VSSManager.Server.UserConfigHandlerMethods.html
+Etomic.VSSManager.Server.UserConfigHandler.Create.html
+Etomic.VSSManager.Server.VssDatabase.html
+Etomic.VSSManager.Server.VssDatabaseMembers.html
+Etomic.VSSManager.Server.VssDatabaseConstructor.html
+Etomic.VSSManager.Server.VssDatabaseProperties.html
+Etomic.VSSManager.Server.VssDatabase.Name.html
+Etomic.VSSManager.Server.VssDatabase.Users.html
+Etomic.VSSManager.Server.VssDatabaseMethods.html
+Etomic.VSSManager.Server.VssDatabase.AddUser.html
+Etomic.VSSManager.Server.VssDatabase.SetStandardUsers.html
+Etomic.VSSManager.Server.VssDatabase.UpdateReadOnly_overloads.html
+Etomic.VSSManager.Server.VssDatabase.UpdateReadOnly_overload_2.html
+Etomic.VSSManager.Server.VssDatabase.UpdateReadOnly_overload_1.html
+Etomic.VSSManager.Server.VssDatabase.UpdateReadOnlyAll.html
+Etomic.VSSManager.Server.VssDatabaseConfigHandler.html
+Etomic.VSSManager.Server.VssDatabaseConfigHandlerMembers.html
+Etomic.VSSManager.Server.VssDatabaseConfigHandlerConstructor.html
+Etomic.VSSManager.Server.VssDatabaseConfigHandlerMethods.html
+Etomic.VSSManager.Server.VssDatabaseConfigHandler.Create.html
+Etomic.VSSManager.Server.VssManager.html
+Etomic.VSSManager.Server.VssManagerMembers.html
+Etomic.VSSManager.Server.VssManagerConstructor.html
+Etomic.VSSManager.Server.VssManagerMethods.html
+Etomic.VSSManager.Server.VssManager.GetDatabase.html
+Etomic.VSSManager.Server.VssManager.GetDatabaseNames.html
+Etomic.VSSManager.Service.html
+Etomic.VSSManager.ServiceHierarchy.html
+Etomic.VSSManager.Service.VssManagerInstaller.html
+Etomic.VSSManager.Service.VssManagerInstallerMembers.html
+Etomic.VSSManager.Service.VssManagerInstallerConstructor.html
+Etomic.VSSManager.Service.VssManagerInstallerMethods.html
+Etomic.VSSManager.Service.VssManagerInstaller.Dispose_overloads.html
+Etomic.VSSManager.Service.VssManagerInstaller.Dispose_overload_2.html
+Etomic.VSSManager.Service.VssManagerService.html
+Etomic.VSSManager.Service.VssManagerServiceMembers.html
+Etomic.VSSManager.Service.VssManagerServiceConstructor.html
+Etomic.VSSManager.Service.VssManagerServiceFields.html
+Etomic.VSSManager.Service.VssManagerService.SERVICE_NAME.html
+Etomic.VSSManager.Service.VssManagerServiceMethods.html
+Etomic.VSSManager.Service.VssManagerService.Dispose_overloads.html
+Etomic.VSSManager.Service.VssManagerService.Dispose_overload_2.html
+Etomic.VSSManager.Service.VssManagerService.OnStart.html
+Etomic.VSSManager.Service.VssManagerService.OnStop.html
+
+[OPTIONS]
+Title=Etomic.VSSManager
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=Etomic.VSSManager.chm
+Default Window=MsdnHelp
+Default topic=Etomic.VSSManager.Remote.html
+Display compile progress=No
+Error log file=Etomic.VSSManager.log
+Full-text search=Yes
+Index file=Etomic.VSSManager.hhk
+Language=0x409 English (United States)
+Contents file=Etomic.VSSManager.hhc
+
+[WINDOWS]
+MsdnHelp="Etomic.VSSManager Help","Etomic.VSSManager.hhc","Etomic.VSSManager.hhk","Etomic.VSSManager.Remote.html","Etomic.VSSManager.Remote.html",,,,,0x62520,220,0x387e,[86,51,872,558],,,,,,,0
+
+[INFOTYPES]

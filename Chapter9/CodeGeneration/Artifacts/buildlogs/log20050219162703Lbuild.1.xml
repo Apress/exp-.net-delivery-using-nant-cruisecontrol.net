@@ -1,0 +1,37 @@
+<cruisecontrol project="CodeGeneration">
+  <modifications>
+    <modification type="unknown">
+      <filename>ProjectSet.CodeSmith.xml</filename>
+      <project>D:\dotNetDelivery\Chapter9\Data</project>
+      <date>19 Feb 2005 13:28:06</date>
+      <user />
+      <comment />
+      <changeNumber>0</changeNumber>
+    </modification>
+    <modification type="unknown">
+      <filename>ProjectSet.xslt.xml</filename>
+      <project>D:\dotNetDelivery\Chapter9\Data</project>
+      <date>19 Feb 2005 13:28:19</date>
+      <user />
+      <comment />
+      <changeNumber>0</changeNumber>
+    </modification>
+  </modifications>
+  <build date="19/02/2005 16:27:03" buildtime="00:00:04" buildcondition="ForceBuild"><buildresults project="">
+  <message level="Info"><![CDATA[Buildfile: file:///D:/dotNetDelivery/Chapter9/Builder.CodeSmith.xml]]></message>
+  <message level="Info"><![CDATA[Target framework: Microsoft .NET Framework 1.1]]></message>
+  <task name="exec">
+    <message level="Info"><![CDATA[CodeSmith Console version 2.6.0.117]]></message>
+    <message level="Info"><![CDATA[Copyright (c) 2002-2004 Eric J. Smith.  All rights reserved.]]></message>
+    <message level="Info"><![CDATA[Beginning generation...]]></message>
+    <message level="Info"><![CDATA[Preparing Build for Library.Transformer]]></message>
+    <message level="Info"><![CDATA[Preparing Deploy for Library.Transformer]]></message>
+    <message level="Info"><![CDATA[Preparing Build for NAntExtensions]]></message>
+    <message level="Info"><![CDATA[Preparing Deploy for NAntExtensions]]></message>
+    <message level="Info"><![CDATA[Preparing CCNet...]]></message>
+    <message level="Info"><![CDATA[Generation complete. Execution time: 00:00:00.9375000]]></message>
+    <message level="Info"><![CDATA[To view the output go here: D:\dotNetDelivery\Chapter9]]></message>
+  </task>
+</buildresults>
+</build>
+</cruisecontrol>

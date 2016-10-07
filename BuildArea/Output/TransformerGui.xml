@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TransformerGui</name>
+    </assembly>
+    <members>
+        <member name="T:TransformerGui.MainForm">
+            <summary>
+            The main application form for the Transformer GUI.
+            </summary>
+        </member>
+        <member name="F:TransformerGui.MainForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:TransformerGui.MainForm.#ctor">
+            <summary>
+            Default constructor
+            </summary>
+        </member>
+        <member name="M:TransformerGui.MainForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:TransformerGui.MainForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

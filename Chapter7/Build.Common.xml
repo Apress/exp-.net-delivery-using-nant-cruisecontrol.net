@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Build.Common" default="help">
+	<description>Build file to perform core common functionality.</description>
+	
+	<!-- PUBLISH TARGETS -->
+	<target name="publish">
+		<if test="${solution.isweb}">
+			<call target="publish.web"/>
+		</if>
+		<ifnot test="${solution.isweb}">
+			<call target="publish.win"/>
+		</ifnot>
+	</target>
+
+
+	<target name="publish.web">
+		<copy todir="${core.distribution}\">
+			<fileset basedir="${core.source}\UI">
+				<include name="**"/>
+				<exclude name="obj/**"/>
+				<exclude name="**/*.cs"/>
+				<exclude name="**/*.resx"/>
+				<exclude name="**/*.csproj"/>
+				<exclude name="**/*.vspscc"/>
+				<exclude name="**/*.scc"/>
+			</fileset>
+		</copy>
+
+		<copy todir="${core.distribution}\bin\">
+			<fileset basedir="${core.output}\">
+				<include name="*.dll"/>
+				<exclude name="*Tests*"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="${core.publish}\${solution.name}-Build-${sys.version}.zip">
+			<fileset basedir="${core.distribution}">
+				<include name="**"/>
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="publish.win">
+		<copy todir="${core.distribution}\">
+			<fileset basedir="${core.output}\">
+				<include name="*.dll"/>
+				<include name="*.exe"/>
+				<exclude name="*Tests*"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="${core.publish}\${solution.name}-Build-${sys.version}.zip">
+			<fileset basedir="${core.distribution}\">
+				<include name="**" />
+			</fileset>
+		</zip>
+	</target>
+
+     <target name="report.fxcop">
+     <fxcop executable="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" report="${core.reports}\fxcop.xml" failonerror="false">
+          <targets basedir="${core.output}">
+               <include name="${solution.name}*.dll" />
+               <include name="${solution.name}*.exe" />
+               <exclude name="*Tests*" />
+          </targets>
+          <ruleset basedir=" D:\dotNetDelivery\Tools\FxCop\1.30\Rules">
+               <include name="*.dll" />
+          </ruleset>
+     </fxcop>
+     </target>
+
+	
+	<target name="help">
+		<echo message="The Build.Common file contains common functionality for builds."/>
+		<echo message="This file should not be executed. Use Build.Core.xml instead"/>
+	</target>
+
+</project>

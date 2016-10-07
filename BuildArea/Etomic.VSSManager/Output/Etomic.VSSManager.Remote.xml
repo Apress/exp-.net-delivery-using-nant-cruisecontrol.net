@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Etomic.VSSManager.Remote</name>
+    </assembly>
+    <members>
+        <member name="T:Etomic.VSSManager.Remote.IVssDatabase">
+            <summary>
+            A wrapper around the regular COM VSS Database class.
+            Allows the manipulation of user access.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnly(Etomic.VSSManager.Remote.IUser)">
+            <summary>
+            Updates a user to readonly or readwrite depending on the current setting.
+            </summary>
+            <param name="user">An IUser object.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnly(System.String)">
+            <summary>
+            Updates a user to readonly or readwrite depending on the current setting.
+            </summary>
+            <param name="userName">The username as a string.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssDatabase.UpdateReadOnlyAll">
+            <summary>
+            Updates all users to 'readonly'. Cannot be used to update all to write access.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssDatabase.SetStandardUsers">
+            <summary>
+            Replaces existing database users with a standard setting.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssDatabase.AddUser(System.String,System.Boolean)">
+            <summary>
+            Adds a user to the current sourcesafe database with the default password.
+            </summary>
+            <param name="username">The username for the user</param>
+            <param name="readOnly">Whether the user should have readonly priviliges</param>
+        </member>
+        <member name="P:Etomic.VSSManager.Remote.IVssDatabase.Name">
+            <summary>
+            The friendly name of the DB.
+            </summary>
+        </member>
+        <member name="P:Etomic.VSSManager.Remote.IVssDatabase.Users">
+            <summary>
+            An IList of string objects representing the user names in the database.
+            </summary>
+        </member>
+        <member name="T:Etomic.VSSManager.Remote.IUser">
+            <summary>
+            A representation of a VSS user.
+            </summary>
+        </member>
+        <member name="P:Etomic.VSSManager.Remote.IUser.Name">
+            <summary>
+            The login name for the user.
+            </summary>
+        </member>
+        <member name="P:Etomic.VSSManager.Remote.IUser.HasReadOnly">
+            <summary>
+            True if the user has readonly access to a VSS Database, false if the user has readwrite access.
+            </summary>
+        </member>
+        <member name="T:Etomic.VSSManager.Remote.IVssManager">
+            <summary>
+            The IVssManager object provides methods to obtain database information and an IVssDatabase object itself.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssManager.GetDatabase(System.String)">
+            <summary>
+            Returns a connected instance of a VSS Database using the friendly name.
+            </summary>
+            <param name="name">The friendly (folder) name of the VSS Database required.</param>
+            <returns>An connected instance of an IVssDatabase</returns>
+        </member>
+        <member name="M:Etomic.VSSManager.Remote.IVssManager.GetDatabaseNames">
+            <summary>
+            Returns and IList of string objects representing the friendly names of available VSS Databases.
+            </summary>
+            <returns>An IList of string objects.</returns>
+        </member>
+    </members>
+</doc>

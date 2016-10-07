@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.NAntExtenstions.FxCop.Debug" default="go">
+
+<target name="go">
+
+<loadtasks assembly="D:\dotNetDelivery\Chapter6\Etomic.NAntExtensions\GeneralTasks\Bin\Debug\Etomic.NAntExtensions.GeneralTasks.dll"/>
+
+<fxcop executable="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" report="D:\Temp\fxcop.xml" failonerror="false">
+     <targets basedir="D:\dotNetDelivery\BuildArea\Output">
+          <include name="Transformer*.dll" />
+          <include name="Transformer*.exe" />
+          <exclude name="*Tests*" />
+     </targets>
+     <ruleset basedir=" D:\dotNetDelivery\Tools\FxCop\1.30\Rules">
+          <include name="*.dll" />
+     </ruleset>
+</fxcop>
+
+</target>
+</project>

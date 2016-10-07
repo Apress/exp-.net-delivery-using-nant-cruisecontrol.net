@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Etomic.VSSManager.Service</name>
+    </assembly>
+    <members>
+        <member name="M:Etomic.VSSManager.Service.VssManagerInstaller.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Service.VssManagerInstaller.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:Etomic.VSSManager.Service.VssManagerService.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Service.VssManagerService.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Service.VssManagerService.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Service.VssManagerService.OnStart(System.String[])">
+            <summary>
+            Set things in motion so your service can do its work.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Service.VssManagerService.OnStop">
+            <summary>
+            Stop this service.
+            </summary>
+        </member>
+    </members>
+</doc>

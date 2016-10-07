@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<project>
+     <target name="HelloWorld">
+          <script language="C#">
+          <code><![CDATA[
+          public static void ScriptMain(Project project)
+          {
+               project.Log(Level.Info, "Hello World!"); 
+          }
+          ]]></code>
+          </script>
+     </target>
+      
+     <call target="HelloWorld"/>
+</project>

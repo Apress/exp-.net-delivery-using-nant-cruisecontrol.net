@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.ShareTransformer" default="help">
+	<description>Deploy file for the Etomic.Transformer.Web application</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="Etomic"/>
+	<property name="solution.name" value="${company.name}.ShareTransformer"/>
+
+	<property name="core.publish" value="http://localhost/ccnet/files/${solution.name}"/>
+
+	<property name="core.deploy" value="D:\dotNetDelivery\TempDeploy"/>
+	<property name="core.environment" value="D:\dotNetDelivery\Webs\${solution.name}"/>
+
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NAntContrib\nantcontrib-0.85-rc1\bin\NAnt.Contrib.Tasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Chapter8\Etomic.NAntExtensions\ManualDBTasks\bin\Debug\Etomic.NAntExtensions.ManualDBTasks.dll"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, createenvironments, position, database, configure, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<if test="${debug}">
+			<property name="sys.version" value="0.0.0.0"/>
+		</if>
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+			<delete dir="${core.deploy}\" failonerror="false"/>
+			<mkdir dir="${core.deploy}\${sys.version}\"/>
+               <get 
+                     src="${core.publish}/${solution.name}-Build-${sys.version}.zip"
+                     dest="${core.deploy}\${solution.name}-Build-${sys.version}.zip" 
+                   />
+			<unzip zipfile="${core.deploy}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\${sys.version}\"/>
+	</target>
+
+	<target name="createenvironments" description="Create the environments required">
+		<mkdir dir="${core.environment}\${sys.version}\" failonerror="false"/>
+		<mkiisdir dirpath="${core.environment}\${sys.version}\" vdirname="${solution.name}-${sys.version}"/>
+	</target>
+
+	<target name="position" description="Place required assets">
+		<copy todir="${core.environment}\${sys.version}\">
+			<fileset basedir="${core.deploy}\${sys.version}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>
+
+     <target name="database" description="Deploy the database changes">
+         <get 
+             src="${core.publish}/${solution.name}-DB-${sys.version}.zip"
+             dest="${core.deploy}\${solution.name}-DB-${sys.version}.zip" 
+          />
+		<unzip zipfile="${core.deploy}\${solution.name}-DB-${sys.version}.zip" todir="${core.deploy}\DB-${sys.version}\"/>
+
+          <delete>
+              <fileset basedir="${core.deploy}\DB-${sys.version}\schema">
+                    <include name="ALTER*" />
+               </fileset>
+          </delete>
+
+	     <dbIntegrate 
+               folder="${core.deploy}\DB-${sys.version}\schema" 
+               compare="CreationTime"
+               server="localhost"
+               database="${solution.name}-Test"
+               uid="sa"
+               pwd="w1bbl3"
+          />
+
+	     <dbIntegrate 
+               folder="${core.deploy}\DB-${sys.version}\reference" 
+               compare="CreationTime"
+               server="localhost"
+               database="${solution.name}-Test"
+               uid="sa"
+               pwd="w1bbl3"
+          />
+     </target>
+
+	<target name="configure" description="Amend configuration settings as necessary">
+         <attrib file="${core.environment}\${sys.version}\web.config" readonly="false" />
+          <xmlpoke
+               file="${core.environment}\${sys.version}\web.config"
+               xpath="/configuration/appSettings/add[@key = 'DbConnectionString']/@value"
+               value="server=localhost;database=etomic.sharetransformer-test;uid=transformer;pwd=transform3r" />
+          <attrib file="${core.environment}\${sys.version}\web.config" readonly="true" />
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the deploy process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the deploy process."/>
+	</target>
+
+	<target name="help">
+		<!--Enter tasks for help target-->
+		<echo message="The skeleton file for the deploy process is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- selectenvironments"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- configure"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

@@ -1,0 +1,11 @@
+<%-- 
+Name: 			ccnet.xml.cst
+Author: 		Marc Holmes
+Description: 	Providing the ccnet.config file using an XML file.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="Providing the ccnet.config file using an XML file." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+
+This is the CCNET File.

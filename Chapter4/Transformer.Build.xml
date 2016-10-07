@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Transformer" default="help">
+	<description>Build file for the Transformer application.</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NAntContrib\0.85rc2\bin\NAnt.Contrib.Tasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NUnit2Report\1.2.2\bin\NAnt.NUnit2ReportTasks.dll"/>
+	<sysinfo/>
+	
+	<target name="go" description="The main target for full build process execution." depends="clean, get, version1, version2, build, test, document, publish, notify"/>
+
+	<target name="clean" description="Clean up the build environment.">
+		<delete dir="D:\dotNetDelivery\BuildArea\Source\" failonerror="false"/>
+		<delete dir="D:\dotNetDelivery\BuildArea\Output\" failonerror="false"/>
+		<delete dir="D:\dotNetDelivery\BuildArea\Docs\" failonerror="false"/>
+		<delete dir="D:\dotNetDelivery\BuildArea\Reports\" failonerror="false"/>
+		<delete dir="D:\dotNetDelivery\BuildArea\Distribution\" failonerror="false"/>
+
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Source\"/>
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Output\"/>
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Docs\"/>
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Reports\"/>
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Distribution\"/>
+		<mkdir dir="D:\dotNetDelivery\BuildArea\Publish\" failonerror="false"/>
+
+	</target>
+
+	<target name="get" description="Grab the source code.">
+		<vssget
+			user="builder"
+			password="builder"
+			localpath="D:\dotNetDelivery\BuildArea\Source\"
+			recursive="true"
+			replace="true"
+			dbpath="D:\dotNetDelivery\VSS\srcsafe.ini"
+			path="$/Solutions/Transformer/"
+		/>
+	</target>
+
+	<target name="version1" description="Apply versioning to the source code files.">
+
+		<property name="sys.version" value="0.0.0.0"/>
+
+		<ifnot test="${debug}">
+			<version buildtype="increment" revisiontype="increment" path="Transformer.Build.Number"/>
+		</ifnot>
+
+		<attrib file="D:\dotNetDelivery\BuildArea\Source\CommonAssemblyInfo.cs" readonly="false" />
+
+		<asminfo output="D:\dotNetDelivery\BuildArea\Source\CommonAssemblyInfo.cs" language="CSharp">
+			<imports>
+				<import name="System" />
+				<import name="System.Reflection"/>
+			</imports>
+			<attributes>
+				<attribute type="AssemblyVersionAttribute" value="${sys.version}" />
+				<attribute type="AssemblyProductAttribute" value="Transformer" />
+				<attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2005, Etomic Ltd."/>
+			</attributes>
+		</asminfo>
+
+		<attrib file="D:\dotNetDelivery\BuildArea\Source\CommonAssemblyInfo.cs" readonly="true" />
+	</target>
+
+	<target name="version2">
+		<ifnot test="${debug}">
+			<vsslabel
+				user="builder"
+				password="builder"
+				dbpath="D:\dotNetDelivery\VSS\srcsafe.ini"
+				path="$/Solutions/Transformer/"
+				comment="Automated Label"
+				label="NAnt - ${sys.version}"
+				/>
+		</ifnot>
+	</target>
+
+	<target name="build" description="Compile the application.">
+		<solution solutionfile="D:\dotNetDelivery\BuildArea\Source\Transformer.sln" configuration="Debug" outputdir="D:\dotNetDelivery\BuildArea\Output\"/>
+	</target>
+
+	<target name="test" description="Apply the unit tests.">
+		<property name="nant.onfailure" value="fail.test"/>
+	
+		<nunit2>
+			<formatter type="Xml" usefile="true" extension=".xml" outputdir="D:\dotNetDelivery\BuildArea\Reports\" />
+			<test assemblyname="D:\dotNetDelivery\BuildArea\Output\TransformerTests.dll" />
+		</nunit2>
+
+		<nunit2report out="D:\dotNetDelivery\BuildArea\Reports\NUnit.html">
+			<fileset>
+				<include name="D:\dotNetDelivery\BuildArea\Reports\TransformerTests.dll-results.xml" />
+			</fileset>
+		</nunit2report>
+
+		<exec program="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" commandline="/f:D:\dotNetDelivery\BuildArea\Output\TransformerEngine.dll /f:D:\dotNetDelivery\BuildArea\Output\TransformerGui.exe /o:D:\dotNetDelivery\BuildArea\Reports\fxcop.xml /r:D:\dotNetDelivery\Tools\FxCop\1.30\Rules\" failonerror="false"/>
+
+		<style style="D:\dotNetDelivery\Tools\FxCop\1.30\Xml\FxCopReport.xsl" in="D:\dotNetDelivery\BuildArea\Reports\fxcop.xml" out="D:\dotNetDelivery\BuildArea\Reports\fxcop.html"/>
+		
+		<property name="nant.onfailure" value="fail"/>
+	
+	</target>
+
+	<target name="document" description="Generate documentation and reports.">
+		<ndoc>
+			<assemblies basedir="D:\dotNetDelivery\BuildArea\Output\">
+                <include name="TransformerEngine.dll" />
+                <include name="TransformerGui.dll" />
+            </assemblies>
+            <summaries basedir="D:\dotNetDelivery\BuildArea\Output\">
+                <include name="TransformerEngine.xml" />
+                <include name="TransformerGui.xml" />
+            </summaries>
+            <documenters>
+                <documenter name="MSDN">
+                    <property name="OutputDirectory" value="D:\dotNetDelivery\BuildArea\Docs\" />
+                    <property name="HtmlHelpName" value="Transformer" />
+                    <property name="HtmlHelpCompilerFilename" value="hhc.exe" />
+                    <property name="IncludeFavorites" value="False" />
+                    <property name="Title" value="Transformer (NDoc)" />
+                    <property name="SplitTOCs" value="False" />
+                    <property name="DefaulTOC" value="" />
+                    <property name="ShowVisualBasic" value="False" />
+                    <property name="ShowMissingSummaries" value="True" />
+                    <property name="ShowMissingRemarks" value="False" />
+                    <property name="ShowMissingParams" value="True" />
+                    <property name="ShowMissingReturns" value="True" />
+                    <property name="ShowMissingValues" value="True" />
+                    <property name="DocumentInternals" value="True" />
+                    <property name="DocumentProtected" value="True" />
+                    <property name="DocumentPrivates" value="False" />
+                    <property name="DocumentEmptyNamespaces" value="False" />
+                    <property name="IncludeAssemblyVersion" value="True" />
+                    <property name="CopyrightText" value="Etomic Ltd., 2005" />
+                    <property name="CopyrightHref" value="" />
+                </documenter>
+            </documenters>
+        </ndoc>
+	</target>
+
+	<target name="publish" description="Place the compiled assets in agreed location.">
+		<copy todir="D:\dotNetDelivery\BuildArea\Distribution\">
+			<fileset basedir="D:\dotNetDelivery\BuildArea\Output\">
+				<include name="TransformerEngine.dll"/>
+				<include name="TransformerGui.exe"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="D:\dotNetDelivery\BuildArea\Publish\Transformer-Build-${sys.version}.zip">
+			<fileset basedir="D:\dotNetDelivery\BuildArea\Distribution\">
+				<include name="**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the build process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the build process."/>
+	</target>
+
+	<target name="fail.test">
+		<nunit2report out="D:\dotNetDelivery\BuildArea\Reports\NUnit.html">
+			<fileset>
+				<include name="D:\dotNetDelivery\BuildArea\Reports\TransformerTests.dll-results.xml" />
+			</fileset>
+		</nunit2report>
+	</target>
+
+	<target name="help">
+		<echo message="The skeleton file for the build process is designed to execute the following targets in turn:"/>
+		<echo message="-- clean"/>
+		<echo message="-- get"/>
+		<echo message="-- version"/>
+		<echo message="-- build"/>
+		<echo message="-- test"/>
+		<echo message="-- document"/>
+		<echo message="-- publish"/>
+		<echo message="-- notify"/>
+		<echo message="This file should be run with a Boolean value for 'debug'."/>
+		<echo message="-- True indicates that no versioning be set (0.0.0.0)."/>
+		<echo message="-- False indicates that a regular version be set(1.0.x.0)."/>
+		<echo message="Example: -D:debug=true"/>
+	</target>
+
+</project>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="D:\BookCode\BuildArea\Etomic.Library.Transformer\Output\Etomic.Library.Transformer.Tests.dll" total="3" failures="0" not-run="0" date="26/01/2005" time="17:41">
+  <test-suite name="D:\BookCode\BuildArea\Etomic.Library.Transformer\Output\Etomic.Library.Transformer.Tests.dll" success="True" time="0.375" asserts="0">
+    <results>
+      <test-suite name="Etomic" success="True" time="0.375" asserts="0">
+        <results>
+          <test-suite name="Library" success="True" time="0.375" asserts="0">
+            <results>
+              <test-suite name="Transformer" success="True" time="0.375" asserts="0">
+                <results>
+                  <test-suite name="Tests" success="True" time="0.375" asserts="0">
+                    <results>
+                      <test-suite name="EngineTests" success="True" time="0.375" asserts="0">
+                        <results>
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestReadWriteContents" executed="True" success="True" time="0.016" asserts="2" />
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestTransformXml" executed="True" success="True" time="0.328" asserts="1" />
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestEmptySaveContent" executed="True" success="True" time="0.016" asserts="0" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

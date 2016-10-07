@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<ProjectSet xmlns="http://www.etomic.co.uk">
+	<Projects>
+		<Project Name="Etomic.Test.1"/>
+		<Project Name="Etomic.Test.2"/>
+	</Projects>
+</ProjectSet>

@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+     <ProjectSet>
+	     <Settings 
+               CompanyName="Etomic"
+               CcnetUrl="http://localhost/ccnet"
+		     VssFolder="D:\dotNetDelivery\VSS"
+		     VssUsername="builder"
+		     VssPassword="builder"
+		     EnvironmentMain="D:\dotNetDelivery\BuildAreaCI"
+		     EnvironmentTempDeploy="D:\dotNetDelivery\TempDeploy"
+             />
+		<Projects>
+		     <Project Name="Library.Transformer" HasDatabase="false" ProjectType="Library">
+			     <OutputAssemblies>
+				     <OutputAssembly AssemblyType="dll" Name="Engine" ShouldDocument="true" ShouldTest="false" />
+				     <OutputAssembly AssemblyType="dll" Name="Tests" ShouldDocument="false" ShouldTest="true" />
+				</OutputAssemblies>
+			</Project>
+               <Project Name="NAntExtensions" HasDatabase="false" ProjectType="Library">
+			     <OutputAssemblies>
+					<OutputAssembly AssemblyType="dll" Name="GeneralTasks" ShouldDocument="false" ShouldTest="false" />
+				</OutputAssemblies>
+			</Project>
+		</Projects>
+</ProjectSet>

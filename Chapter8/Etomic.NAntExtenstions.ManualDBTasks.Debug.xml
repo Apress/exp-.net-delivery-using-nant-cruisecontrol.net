@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project>
+	<loadtasks assembly="D:\dotNetDelivery\Chapter8\Etomic.NAntExtensions\ManualDBTasks\bin\Debug\Etomic.NAntExtensions.ManualDBTasks.dll"/>
+	<dbIntegrate 
+          folder="D:\dotNetDelivery\Chapter8\DBTest1\" 
+          compare="CreationTime"
+          server="localhost"
+          database="TestDB-Integration"
+          uid="sa"
+          pwd="w1bbl3"
+          />
+</project>

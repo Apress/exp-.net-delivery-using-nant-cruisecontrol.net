@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="DeploySkeleton" default="help">
+	<description>The skeleton file for the deploy process</description>
+
+	<property name="nant.onfailure" value="fail"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, selectenvironments, createenvironments, position, configure, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<!--Enter tasks for selectversion target-->
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+		<!--Enter tasks for get target-->
+	</target>
+
+	<target name="selectenvironments" description="Apply versioning to the source code files.">
+		<!--Enter tasks for selectenvironments target-->
+	</target>
+
+	<target name="createenvironments" description="Compile the application.">
+		<!--Enter tasks for createenvironments target-->
+	</target>
+
+	<target name="position" description="Apply the unit tests.">
+		<!--Enter tasks for position target-->
+	</target>
+
+	<target name="configure" description="Generate documentation and reports.">
+		<!--Enter tasks for configure target-->
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<!--Enter tasks for notify target-->
+	</target>
+
+	<target name="fail">
+		<!--Enter tasks for fail target-->
+	</target>
+
+	<target name="help">
+		<!--Enter tasks for help target-->
+		<echo message="The skeleton file for the deploy process is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- selectenvironments"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- configure"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

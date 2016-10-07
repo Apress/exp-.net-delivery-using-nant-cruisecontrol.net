@@ -1,0 +1,1152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NDoc.Core</name>
+    </assembly>
+    <members>
+        <member name="T:NDoc.Core.AssemblyResolver">
+            <summary> 
+            Resolves assemblies located in a specified directory and its sub-directories.
+            </summary>
+            <remarks>
+            <para>Class AssemblyResolver resolves assemblies not found by the system.
+            An instance of this class is configured with a base directory and hooks
+            up to the AppDomain.AssemblyResolve event. Whenever called, the instance
+            checks the associated directory with all subdirectories for the assembly
+            requested.</para>
+            <para>The class implements two features to speed up the search:</para>
+            <list type="bullet">
+            <item><description>
+            AssemblyList: Before searching the file system, the assembly list is searched.
+            Once an assembly has been found, it is added to the AssemblyList. 
+            </description></item>
+            <item><description>
+            SubDirectoryCache: The class caches the subdirectories of each directory once
+            they have been determined. This avoids repeated filesystem queries for subdirectories.
+            </description></item>
+            </list>
+            </remarks>
+        </member>
+        <member name="M:NDoc.Core.AssemblyResolver.#ctor(System.Collections.ArrayList)">
+            <summary> 
+            Constructs an instance of this type.
+            </summary>
+            <param name="directories">A list of directories to search for assemblies in.</param>
+        </member>
+        <member name="M:NDoc.Core.AssemblyResolver.Install">
+            <summary> 
+            Installs the assembly resolver by hooking up to the AppDomain's AssemblyResolve event.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AssemblyResolver.Deinstall">
+            <summary> 
+            Deinstalls the assembly resolver.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AssemblyResolver.ResolveAssembly(System.Object,System.ResolveEventArgs)">
+            <summary> 
+            Resolves the location and loads an assembly not found by the system.
+            </summary>
+            <param name="sender">the sender of the event</param>
+            <param name="args">event arguments</param>
+            <returns>the loaded assembly, null, if not found</returns>
+        </member>
+        <member name="M:NDoc.Core.AssemblyResolver.LoadAssemblyFrom(System.Collections.ArrayList,System.String,System.String,System.Boolean)">
+            <summary> 
+            Search for and load the specified assembly in a set of directories.
+            This will optionally search recursively.
+            </summary>
+            <param name="dirs">The list of directories to look in.</param>
+            <param name="fullName">
+            Fully qualified assembly name. If not empty, the full name of each assembly found is
+            compared to this name and the assembly is accepted only, if the names match.
+            </param>
+            <param name="fileName">The name of the assembly.</param>
+            <param name="includeSubDirs">true, to include subdirectories.</param>
+            <returns>The assembly, or null if not found.</returns>
+        </member>
+        <member name="F:NDoc.Core.AssemblyResolver.directories">
+            <summary>The base directory used to search for assemblies.</summary>
+        </member>
+        <member name="F:NDoc.Core.AssemblyResolver.directoryLists">
+            <summary>List of subdirectory lists already scanned.</summary>
+        </member>
+        <member name="F:NDoc.Core.AssemblyResolver.includeSubdirs">
+            <summary>Whether or not to include subdirectories in searches.</summary>
+        </member>
+        <member name="P:NDoc.Core.AssemblyResolver.IncludeSubdirs">
+            <summary>
+            Whether or not to include sub-directories in the searches which
+            are in response to the AssemblyResolve event.
+            </summary>
+        </member>
+        <member name="T:NDoc.Core.AssemblySlashDoc">
+            <summary>Represents an assembly and /doc pair.</summary>
+        </member>
+        <member name="M:NDoc.Core.AssemblySlashDoc.#ctor">
+            <summary>Initializes a new instance of the AssemblySlashDoc class.</summary>
+        </member>
+        <member name="M:NDoc.Core.AssemblySlashDoc.#ctor(System.String,System.String)">
+            <summary>Initializes a new instance of the AssemblySlashDoc class
+            to the values indicated.</summary>
+            <param name="assemblyFilename">An assembly filename.</param>
+            <param name="slashDocFilename">A /doc filename.</param>
+        </member>
+        <member name="P:NDoc.Core.AssemblySlashDoc.AssemblyFilename">
+            <summary>Gets or sets the assembly filename in this pair.</summary>
+        </member>
+        <member name="P:NDoc.Core.AssemblySlashDoc.SlashDocFilename">
+            <summary>Gets or sets the /doc filename in this pair.</summary>
+        </member>
+        <member name="T:NDoc.Core.AttributesEditor">
+            <summary>
+            Class which implements a custom UITypeEditor for attributes.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Handler called when editing a value.
+            </summary>
+            <param name="context">Context</param>
+            <param name="provider">Provider</param>
+            <param name="value">Current Value</param>
+            <returns>New value</returns>
+        </member>
+        <member name="M:NDoc.Core.AttributesEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Returns the edit style for the type.
+            </summary>
+            <param name="context">Context</param>
+            <returns>Edit Style</returns>
+        </member>
+        <member name="T:NDoc.Core.AttributeToShow">
+            <summary>
+            Class which holds information about an attribute.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributeToShow.#ctor">
+            <summary>
+            Creates an empty AttributeToShow object
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.AttributeToShow.PropertiesToShow">
+            <summary>
+            List of properties
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.AttributeToShow.Name">
+            <summary>
+            Name attribute
+            </summary>
+        </member>
+        <member name="T:NDoc.Core.AttributesForm">
+            <summary>
+            A form to build attributes filter criteria.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.AttributesForm.Value">
+            <summary>
+            Contains the updated value, if the user clicked OK.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.AttributesForm.AttributesToShow">
+            <summary>
+            Structure which holds all the attributes
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.AttributesForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.#ctor(System.Object)">
+            <summary>
+            Creates and initialize a new AttributesForm object.
+            </summary>
+            <param name="val"></param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.UpdateAttributes">
+            <summary>
+            Helper function which updates the attributes list
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.UpdateProperties">
+            <summary>
+            Helper function which udpates the properties list
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.listAttributes_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when a new attribute gets selected.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.Add_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the ADD button is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.Delete_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the DELETE button is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.Edit_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the EDIT button is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.AddProp_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the ADD (of the property list) is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.EditProp_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the EDIT (of the property list) is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.DeleteProp_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the DELETE (of the property list) is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.listProperties_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when a new item in the property list gets selected.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="M:NDoc.Core.AttributesForm.buttonOK_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the OK button is clicked.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event argument</param>
+        </member>
+        <member name="T:NDoc.Core.BaseDocumenter">
+            <summary>Provides the base class for documenters.</summary>
+        </member>
+        <member name="T:NDoc.Core.IDocumenter">
+            <summary>Represents a class capable of generating documentation from a given assembly and /doc file.</summary>
+        </member>
+        <member name="M:NDoc.Core.IDocumenter.Clear">
+            <summary>Resets the documenter to a clean state.</summary>
+        </member>
+        <member name="M:NDoc.Core.IDocumenter.CanBuild(NDoc.Core.Project,System.Boolean)">
+            <summary>Checks to make sure the documenter can perform a
+            build.</summary>
+            <param name="project">The project that would be built.</param>
+            <param name="checkInputOnly">When true, don't check for output 
+            file locking.</param>
+            <remarks>This is for people who like to leave their CHMs open.</remarks>
+            <returns>null if the documenter can build; otherwise a message
+            describing why it can't build</returns>
+        </member>
+        <member name="M:NDoc.Core.IDocumenter.CanBuild(NDoc.Core.Project)">
+            <summary>
+            Checks if the documentation output file(s) exist.
+            </summary>
+            <param name="project">The project that generated the documentation.</param>
+            <returns>True if the documentation can be viewed.</returns>
+        </member>
+        <member name="M:NDoc.Core.IDocumenter.Build(NDoc.Core.Project)">
+            <summary>Builds the documentation.</summary>
+            <remarks>The compiler does not currently allow namespaces to documented.</remarks>
+        </member>
+        <member name="M:NDoc.Core.IDocumenter.View">
+            <summary>Spawns a new process to view the generated documentation.</summary>
+            <exception cref="T:System.IO.FileNotFoundException">
+            Thrown if the main output file does not exist.</exception>
+        </member>
+        <member name="P:NDoc.Core.IDocumenter.Name">
+            <summary>Gets the display name for the documenter.</summary>
+        </member>
+        <member name="P:NDoc.Core.IDocumenter.DevelopmentStatus">
+            <summary>
+            The development status (alpha, beta, stable) of this documenter.
+            </summary>
+        </member>
+        <member name="E:NDoc.Core.IDocumenter.DocBuildingStep">
+            <summary>
+            Raised to update the overall percent complete value and the current step name.
+            </summary>
+        </member>
+        <member name="E:NDoc.Core.IDocumenter.DocBuildingProgress">
+            <summary>
+            Raised to update the current step's percent complete value.
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.IDocumenter.MainOutputFile">
+            <summary>
+            Returns the documenter's main output file path.
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.IDocumenter.Config">
+            <summary>Gets or sets the documenter's config object.</summary>
+            <remarks>This can be put inside a PropertyGrid for editing by the user.</remarks>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.#ctor(System.String)">
+            <summary>Initialized a new BaseDocumenter instance.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.CompareTo(System.Object)">
+            <summary>Compares the currrent document to another documenter.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetXPathDocument">
+            <summary>
+            Returns the XPathDocument to access the combined relected metadata and /doc comments.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.View">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.OnDocBuildingStep(System.Int32,System.String)">
+            <summary>Raises the DocBuildingStep event.</summary>
+            <param name="step">The overall percent complete value.</param>
+            <param name="label">A description of the work currently beeing done.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.OnDocBuildingProgress(System.Int32)">
+            <summary>Raises the DocBuildingProgress event.</summary>
+            <param name="progress">Percentage progress value</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.Clear">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.CanBuild(NDoc.Core.Project)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.CanBuild(NDoc.Core.Project,System.Boolean)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.Build(NDoc.Core.Project)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.SetupAssemblyResolver(NDoc.Core.Project)">
+            <summary>
+            Setup AssemblyResolver for case where system doesn't resolve
+            an assembly automatically.
+            This puts in the directories in ReferencesPath, and the directories
+            to each assembly referenced in the project.
+            </summary>
+            <remarks>
+            <para>The case which forced this to be so thorough is when an assembly 
+            references an unmanaged (native) dll.  When the assembly is loaded,
+            the system must also find the unmanaged dll.  The rules for
+            finding the unmanaged dll are apparently just like any other application:
+            current working directory, the path environment variable, etc. </para>
+            <para>So in order to handle that case, we have to install an
+            AssemblyResolver that catches the resolution failure, and uses
+            an assembly load function that cd's to the directory which hopefully
+            contains the unmanaged dll (see LoadAssembly()).  So in this
+            case I'm assuming that the directory containing the referencing
+            assembly also contains the unmanaged dll.</para>
+            </remarks>
+            <param name="project"></param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.MakeXml(NDoc.Core.Project)">
+            <summary>Builds an XmlDocument combining the reflected metadata with the /doc comments.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteModule(System.Xml.XmlWriter,System.Reflection.Module)">
+            <summary>Writes documentation about a module out as XML.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="module">Module to document.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteClass(System.Xml.XmlWriter,System.Type,System.Boolean)">
+            <summary>Writes XML documenting a class.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="type">Class to document.</param>
+            <param name="hiding">true if hiding base members</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteInterface(System.Xml.XmlWriter,System.Type)">
+            <summary>Writes XML documenting an interface.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="type">Interface to document.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteDelegate(System.Xml.XmlWriter,System.Type)">
+            <summary>Writes XML documenting a delegate.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="type">Delegate to document.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteEnumeration(System.Xml.XmlWriter,System.Type)">
+            <summary>Writes XML documenting an enumeration.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="type">Enumeration to document.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteField(System.Xml.XmlWriter,System.Reflection.FieldInfo,System.Type,System.Boolean)">
+            <summary>Writes XML documenting a field.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="field">Field to document.</param>
+            <param name="type">Type containing the field.</param>
+            <param name="hiding">true if hiding base members</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteEvent(System.Xml.XmlWriter,System.Reflection.EventInfo)">
+            <summary>Writes XML documenting an event.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="eventInfo">Event to document.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteConstructor(System.Xml.XmlWriter,System.Reflection.ConstructorInfo,System.Int32)">
+            <summary>Writes XML documenting a constructor.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="constructor">Constructor to document.</param>
+            <param name="overload">If &gt; 0, indicates this is the nth overloaded constructor.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteProperty(System.Xml.XmlWriter,System.Reflection.PropertyInfo,System.Boolean,System.Int32,System.Boolean)">
+            <summary>Writes XML documenting a property.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="property">Property to document.</param>
+            <param name="inherited">true if a declaringType attribute should be included.</param>
+            <param name="overload">If &gt; 0, indicates this it the nth overloaded method with the same name.</param>
+            <param name="hiding">true if this property is hiding base class members with the same name.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WriteMethod(System.Xml.XmlWriter,System.Reflection.MethodInfo,System.Boolean,System.Int32,System.Boolean)">
+            <summary>Writes XML documenting a method.</summary>
+            <param name="writer">XmlWriter to write on.</param>
+            <param name="method">Method to document.</param>
+            <param name="inherited">true if a declaringType attribute should be included.</param>
+            <param name="overload">If &gt; 0, indicates this it the nth overloaded method with the same name.</param>
+            <param name="hiding">true if this method hides methods of the base class with the same signature.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetTypeNamespaceName(System.Type)">
+            <summary>Used by GetMemberName(Type type) and by
+            GetFullNamespaceName(MemberInfo member) functions to build
+            up most of the /doc member name.</summary>
+            <param name="type"></param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetFullNamespaceName(System.Reflection.MemberInfo)">
+            <summary>Used by all the GetMemberName() functions except the
+            Type one. It returns most of the /doc member name.</summary>
+            <param name="member"></param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetTypeName(System.Type)">
+            <summary>Derives the ID for a type. Used to match nodes in the /doc XML.</summary>
+            <param name="type">The type to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetMemberName(System.Type)">
+            <summary>Derives the member name ID for a type. Used to match nodes in the /doc XML.</summary>
+            <param name="type">The type to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetMemberName(System.Reflection.FieldInfo)">
+            <summary>Derives the member name ID for a field. Used to match nodes in the /doc XML.</summary>
+            <param name="field">The field to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetMemberName(System.Reflection.EventInfo)">
+            <summary>Derives the member name ID for an event. Used to match nodes in the /doc XML.</summary>
+            <param name="eventInfo">The event to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetMemberName(System.Reflection.PropertyInfo)">
+            <summary>Derives the member name ID for a property.  Used to match nodes in the /doc XML.</summary>
+            <param name="property">The property to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.GetMemberName(System.Reflection.MethodBase)">
+            <summary>Derives the member name ID for a member function. Used to match nodes in the /doc XML.</summary>
+            <param name="method">The method to derive the member name ID from.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.CheckForPropertyBacker(System.Xml.XmlWriter,System.String,System.Type)">
+            <summary>
+            This checks whether a field is a property backer, meaning
+            it stores the information for the property.
+            </summary>
+            <remarks>
+            <para>This takes advantage of the fact that most people
+            have a simple convention for the names of the fields
+            and the properties that they back.
+            If the field doesn't have a summary already, and it
+            looks like it backs a property, and the BaseDocumenterConfig
+            property is set appropriately, then this adds a
+            summary indicating that.</para>
+            <para>Note that this design will call multiple fields the 
+            backer for a single property.</para>
+            <para/>This also will call a public field a backer for a
+            property, when typically that wouldn't be the case.
+            </remarks>
+            <param name="writer">The XmlWriter to write to.</param>
+            <param name="memberName">The full name of the field.</param>
+            <param name="type">The Type which contains the field
+            and potentially the property.</param>
+            <returns>True only if a property backer is auto-documented.</returns>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.FindProperty(System.String,System.Type)">
+            <summary>
+            Find a particular property of the specified type, by name.
+            Return the PropertyInfo for it.
+            </summary>
+            <param name="expectedPropertyName">The name of the property to
+            find.</param>
+            <param name="type">The type in which to search for 
+            the property.</param>
+            <returns>PropertyInfo - The property info, or null for 
+            not found.</returns>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.WritePropertyBackerDocumentation(System.Xml.XmlWriter,System.String,System.Reflection.PropertyInfo)">
+            <summary>
+            Write xml info for a property's backer field to the specified writer.
+            This writes a string with a link to the property.
+            </summary>
+            <param name="writer">The XmlWriter to write to.</param>
+            <param name="element">The field which backs the property.</param>
+            <param name="property">The property backed by the field.</param>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenter.LoadAssembly(System.String)">
+            <summary>Loads an assembly.</summary>
+            <param name="fileName">The assembly filename.</param>
+            <returns>The assembly object.</returns>
+            <remarks>This method loads an assembly into memory. If you
+            use Assembly.Load or Assembly.LoadFrom the assembly file locks.
+            This method doesn't lock the assembly file.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.DevelopmentStatus">
+            <summary>
+            The development status (alpha, beta, stable) of this documenter.
+            Documenters should override this if they aren't stable.
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.Config">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.Document">
+            <summary>Gets the XmlDocument containing the combined relected metadata and /doc comments.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.XmlBuffer">
+            <summary>
+            The XML string containing the combined relected metadata and /doc comments.
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.Name">
+            <summary>Gets the display name for the documenter.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenter.MainOutputFile">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="E:NDoc.Core.BaseDocumenter.DocBuildingStep">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="E:NDoc.Core.BaseDocumenter.DocBuildingProgress">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="T:NDoc.Core.BaseDocumenterConfig">
+            <summary>The base documenter config class.</summary>
+        </member>
+        <member name="T:NDoc.Core.IDocumenterConfig">
+            <summary>Specifies the methods that are common to all documenter configs.</summary>
+        </member>
+        <member name="M:NDoc.Core.IDocumenterConfig.SetProject(NDoc.Core.Project)">
+            <summary>Associates the config with a project.</summary>
+            <remarks>Changes to the config will notify the project so that 
+            it can be marked as modified and saved.</remarks>
+        </member>
+        <member name="M:NDoc.Core.IDocumenterConfig.GetProperties">
+            <summary>Gets a list of property names.</summary>
+            <returns>An enumerable list of property names.</returns>
+        </member>
+        <member name="M:NDoc.Core.IDocumenterConfig.SetValue(System.String,System.String)">
+            <summary>Sets the value of a property.</summary>
+            <param name="name">The name of the property.</param>
+            <param name="value">The value of the property.</param>
+        </member>
+        <member name="M:NDoc.Core.IDocumenterConfig.Read(System.Xml.XmlReader)">
+            <summary>Reads the previously serialized state of the documenter into memory.</summary>
+            <param name="reader">An XmlReader positioned on a documenter element.</param>
+            <remarks>This method uses reflection to set all of the public properties in the documenter.</remarks>
+        </member>
+        <member name="M:NDoc.Core.IDocumenterConfig.Write(System.Xml.XmlWriter)">
+            <summary>Writes the current state of the documenter to the specified XmlWrtier.</summary>
+            <param name="writer">An XmlWriter.</param>
+            <remarks>This method uses reflection to serialize all of the public properties in the documenter.</remarks>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.#ctor(System.String)">
+            <summary>Initializes a new instance of the DocumenterConfig class.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.SetProject(NDoc.Core.Project)">
+            <summary>Associates this documenter with a project;</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.SetDirty">
+            <summary>Sets the IsDirty property on the project if any is set.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.GetProperties">
+            <summary>Gets a list of property names.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.SetValue(System.String,System.String)">
+            <summary>Sets the value of a property.</summary>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.Write(System.Xml.XmlWriter)">
+            <summary>Writes the current state of the documenter to the specified XmlWrtier.</summary>
+            <param name="writer">An XmlWriter.</param>
+            <remarks>This method uses reflection to serialize all of the public properties in the documenter.</remarks>
+        </member>
+        <member name="M:NDoc.Core.BaseDocumenterConfig.Read(System.Xml.XmlReader)">
+            <summary>Reads the previously serialized state of the documenter into memory.</summary>
+            <param name="reader">An XmlReader positioned on a documenter element.</param>
+            <remarks>This method uses reflection to set all of the public properties in the documenter.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowMissingSummaries">
+            <summary>Gets or sets the ShowMissingSummaries property.</summary>
+            <remarks>If this is true, all members without /doc summary
+            comments will contain the phrase "Missing Documentation" in the
+            generated documentation.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowMissingRemarks">
+            <summary>Gets or sets the ShowMissingRemarks property.</summary>
+            <remarks>If this is true, all members without /doc summary
+            comments will contain the phrase "Missing Documentation" in the
+            generated documentation.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowMissingParams">
+            <summary>Gets or sets the ShowMissingParams property.</summary>
+            <remarks>If this is true, all members without /doc summary
+            comments will contain the phrase "Missing Documentation" in the
+            generated documentation.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowMissingReturns">
+            <summary>Gets or sets the ShowMissingReturns property.</summary>
+            <remarks>If this is true, all members without /doc summary
+            comments will contain the phrase "Missing Documentation" in the
+            generated documentation.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowMissingValues">
+            <summary>Gets or sets the ShowMissingValues property.</summary>
+            <remarks>If this is true, all members without /doc summary
+            comments will contain the phrase "Missing Documentation" in the
+            generated documentation.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentInternals">
+            <summary>Gets or sets the DocumentInternals property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentProtected">
+            <summary>Gets or sets the DocumentProtected property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentPrivates">
+            <summary>Gets or sets the DocumentPrivates property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentProtectedInternalAsProtected">
+            <summary>Gets or sets the DocumentProtectedInternalAsProtected property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentEmptyNamespaces">
+            <summary>Gets or sets the DocumentPrivates property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.IncludeAssemblyVersion">
+            <summary>Gets or sets the IncludeAssemblyVersion property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.CopyrightText">
+            <summary>Gets or sets the CopyrightText property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.CopyrightHref">
+            <summary>Gets or sets the CopyrightHref property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ReferencesPath">
+            <summary>Gets or sets the base directory used to resolve directory and assembly references.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.SkipNamespacesWithoutSummaries">
+            <summary>Gets or sets the SkipNamespacesWithoutSummaries property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.UseNamespaceDocSummaries">
+            <summary>Gets or sets the UseNamespaceDocSummaries property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.AutoPropertyBackerSummaries">
+            <summary>Gets or sets the AutoPropertyBackerSummaries property.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.AutoDocumentConstructors">
+            <summary>Gets or sets the AutoDocumentConstructors property.</summary>
+            <remarks>If this is true, default constructors without /doc summary
+            comments will be automatically documented.</remarks>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentAttributes">
+            <summary>Gets or sets whether or not to document the attributes.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.ShowTypeIdInAttributes">
+            <summary>Gets or sets whether or not to show the TypeId property in attributes.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.DocumentedAttributes">
+            <summary>Gets or sets which attributes should be documented.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.GetExternalSummaries">
+            <summary>Load external xml files?</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.EditorBrowsableFilter">
+            <summary>Specifies the level of filtering on the EditorBrowsable attribute.</summary>
+        </member>
+        <member name="P:NDoc.Core.BaseDocumenterConfig.UseNDocXmlFile">
+            <summary>Gets or sets the UseNDocXmlFile property.</summary>
+        </member>
+        <member name="T:NDoc.Core.EditorBrowsableFilterLevel">
+            <summary>
+            Define the levels of filtering on the EditorBrowsable attribute.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.EditorBrowsableFilterLevel.Off">
+            <summary>No filtering.</summary>
+        </member>
+        <member name="F:NDoc.Core.EditorBrowsableFilterLevel.HideNever">
+            <summary>Hide members flagged with EditorBrowsableState.Never.</summary>
+        </member>
+        <member name="F:NDoc.Core.EditorBrowsableFilterLevel.HideAdvanced">
+            <summary>Hide members flagged with EditorBrowsableState.Never or EditorBrowsableState.Advanced.</summary>
+        </member>
+        <member name="T:NDoc.Core.DocumenterException">
+            <summary>Represents the exceptions that are thrown when attempting to build documentation.</summary>
+        </member>
+        <member name="M:NDoc.Core.DocumenterException.#ctor(System.String)">
+            <summary>Initializes a new instance of the DocumenterException class with the specified message.</summary>
+            <param name="message">The message to display when the exception is thrown.</param>
+        </member>
+        <member name="M:NDoc.Core.DocumenterException.#ctor(System.String,System.Exception)">
+            <summary>Initializes a new instance of the Exception class 
+            with a specified error message and a reference to the 
+            inner exception that is the root cause of this exception.</summary>
+            <param name="message">The error message that explains the reason for the exception.</param>
+            <param name="inner">An instance of Exception that is the cause of the current Exception. 
+            If inner is non-null, then the current Exception is raised in a catch block handling inner.</param>
+        </member>
+        <member name="T:NDoc.Core.EmbeddedResources">
+            <summary>Utilties to help reading and writing embedded resources.</summary>
+            <remarks>This is used to access the stylesheets.</remarks>
+        </member>
+        <member name="M:NDoc.Core.EmbeddedResources.WriteEmbeddedResources(System.Reflection.Assembly,System.String,System.String)">
+            <summary>Writes all the embedded resources with the specified prefix to disk.</summary>
+            <param name="assembly">The assembly containing the embedded resources.</param>
+            <param name="prefix">The prefix to search for.</param>
+            <param name="directory">The directory to write the resources to.</param>
+        </member>
+        <member name="M:NDoc.Core.EmbeddedResources.WriteEmbeddedResource(System.Reflection.Assembly,System.String,System.String,System.String)">
+            <summary>Writes an embedded resource to disk.</summary>
+            <param name="assembly">The assembly containing the embedded resource.</param>
+            <param name="name">The name of the embedded resource.</param>
+            <param name="directory">The directory to write the resource to.</param>
+            <param name="filename">The filename of the resource on disk.</param>
+        </member>
+        <member name="T:NDoc.Core.HtmlHelp">
+            <summary>HTML Help file utilities.</summary>
+            <remarks>This class is used by the MsdnHelp documenter
+            to create the files needed by the HTML Help compiler.</remarks>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.#ctor(System.String,System.String,System.String,System.String,System.Boolean)">
+            <summary>Initializes a new instance of the HtmlHelp class.</summary>
+            <param name="directoryName">The directory to write the HTML Help files to.</param>
+            <param name="projectName">The name of the HTML Help project.</param>
+            <param name="defaultTopic">The default topic for the compiled HTML Help file.</param>
+            <param name="htmlHelpCompiler">The path to the HTML Help compiler.</param>
+            <param name="generateTocOnly">When true, HtmlHelp only outputs the HHC file and does not compile the CHM.</param>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.GetPathToProjectFile">
+            <summary>Gets the path the the HHP file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.GetPathToContentsFile">
+            <summary>Gets the path the the HHC file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.GetPathToIndexFile">
+            <summary>Gets the path the the HHK file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.GetPathToLogFile">
+            <summary>Gets the path the the LOG file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.GetPathToCompiledHtmlFile">
+            <summary>Gets the path the the CHM file.</summary>
+            <returns>The path to the CHM file.</returns>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.OpenProjectFile">
+            <summary>Opens an HTML Help project file for writing.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.AddFileToProject(System.String)">
+            <summary>Adds a file to the HTML Help project file.</summary>
+            <param name="filename">The filename to add.</param>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.CloseProjectFile">
+            <summary>Closes the HTML Help project file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.OpenContentsFile(System.String,System.Boolean)">
+            <summary>Opens a HTML Help contents file for writing.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.OpenBookInContents">
+            <summary>Creates a new "book" in the HTML Help contents file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.AddFileToContents(System.String,System.String)">
+            <summary>Adds a file to the contents file.</summary>
+            <param name="headingName">The name as it should appear in the contents.</param>
+            <param name="htmlFilename">The filename for this entry.</param>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.CloseBookInContents">
+            <summary>Closes the last opened "book" in the contents file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.CloseContentsFile">
+            <summary>Closes the contents file.</summary>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.WriteEmptyIndexFile">
+            <summary>Writes an empty index file.</summary>
+            <remarks>The HTML Help Compiler will complain if this file doesn't exist.</remarks>
+        </member>
+        <member name="M:NDoc.Core.HtmlHelp.CompileProject">
+            <summary>Compiles the HTML Help project.</summary>
+        </member>
+        <member name="P:NDoc.Core.HtmlHelp.DirectoryName">
+            <summary>Gets the directory name containing the HTML Help files.</summary>
+        </member>
+        <member name="P:NDoc.Core.HtmlHelp.ProjectName">
+            <summary>Gets the HTML Help project name.</summary>
+        </member>
+        <member name="P:NDoc.Core.HtmlHelp.HtmlHelpCompiler">
+            <summary>Gets or sets the path to the HTML Help Compiler.</summary>
+        </member>
+        <member name="P:NDoc.Core.HtmlHelp.IncludeFavorites">
+            <summary>Gets or sets the IncludeFavorites property.</summary>
+            <remarks>Setting this to true will include the "favorites" tab 
+            in the compiled HTML Help file.</remarks>
+        </member>
+        <member name="P:NDoc.Core.HtmlHelp.DefaultTopic">
+            <summary>Gets or sets the DefaultTopic property.</summary>
+        </member>
+        <member name="T:NDoc.Core.ProgressArgs">
+            <summary>
+            Custom event arguments' class used by DocBuildingEventHandler.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.ProgressArgs.#ctor(System.Int32,System.String)">
+            <summary>
+            ProgressArgs default constructor.
+            </summary>
+            <param name="progress">Percentage value for a progress bar.</param>
+            <param name="status">The label describing the current work beeing done.</param>
+        </member>
+        <member name="P:NDoc.Core.ProgressArgs.Progress">
+            <summary>
+            Gets the percentage value.
+            </summary>
+            <value>A number between 0 and 100 corresponding to the percentage of work completed.</value>
+        </member>
+        <member name="P:NDoc.Core.ProgressArgs.Status">
+            <summary>
+            Gets the current work label.
+            </summary>
+            <value>A short description of the current work beeing done.</value>
+        </member>
+        <member name="T:NDoc.Core.DocumenterDevelopmentStatus">
+            <summary>
+            This is used to indicate the development status of each documenter.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.DocumenterDevelopmentStatus.Alpha">
+            <summary>Still in development, not really ready for anyone 
+            else to use except to provide feedback.</summary>
+        </member>
+        <member name="F:NDoc.Core.DocumenterDevelopmentStatus.Beta">
+            <summary>Ready for users to try out, with the understanding that
+            bugs are likely.</summary>
+        </member>
+        <member name="F:NDoc.Core.DocumenterDevelopmentStatus.Stable">
+            <summary>Ready for use, or at least as stable as free 
+            software gets!</summary>
+        </member>
+        <member name="T:NDoc.Core.DocBuildingEventHandler">
+            <summary>
+            Used by IDocumenter's events to notify doc building progress.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">An <c>ProgressArgs</c> that contains the event data.</param>
+        </member>
+        <member name="T:NDoc.Core.Project">
+            <summary>Represents an NDoc project.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.#ctor">
+            <summary>Initializes a new instance of the Project class.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.AddAssemblySlashDoc(NDoc.Core.AssemblySlashDoc)">
+            <summary>Adds an assembly/doc pair to the project.</summary>
+            <returns>bool - true for doc added, false or exception otherwise</returns>
+        </member>
+        <member name="M:NDoc.Core.Project.FindAssemblySlashDocByName(System.String)">
+            <summary>Returns the index of the assembly/doc based on an
+            assembly name.</summary>
+            <param name="assemblyName">The assembly to search for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NDoc.Core.Project.GetAssemblySlashDoc(System.Int32)">
+            <summary>Gets an assembly/doc pair.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.GetAssemblySlashDocs">
+            <summary>Gets an enumerable list of assembly/doc pairs.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.RemoveAssemblySlashDoc(System.Int32)">
+            <summary>Removes an assembly/doc pair from the project.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.SetNamespaceSummary(System.String,System.String)">
+            <summary>Sets a namespace summary.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.GetNamespaceSummary(System.String)">
+            <summary>Gets the summary for a namespace.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.GetNamespaces">
+            <summary>Gets an enumerable list of namespace names.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.FindDocumenters">
+            <summary>Searches the module directory for assemblies containing classes the implement IDocumenter.</summary>
+            <returns>An ArrayList containing new instances of all the found documenters.</returns>
+        </member>
+        <member name="M:NDoc.Core.Project.Read(System.String)">
+            <summary>Reads an NDoc project file.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.ReadNamespaceSummaries(System.Xml.XmlReader)">
+            <summary>
+            Loads namespace summaries from an XML document.
+            </summary>
+            <param name="reader">
+            An open XmlReader positioned before the namespace elements.</param>
+        </member>
+        <member name="M:NDoc.Core.Project.GetDocumenter(System.String)">
+            <summary>Retrieves a documenter by name.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.Write(System.String)">
+            <summary>Writes an NDoc project file.</summary>
+        </member>
+        <member name="M:NDoc.Core.Project.Clear">
+            <summary>Clears the project.</summary>
+        </member>
+        <member name="P:NDoc.Core.Project.IsDirty">
+            <summary>Gets the IsDirty property.</summary>
+        </member>
+        <member name="P:NDoc.Core.Project.AssemblySlashDocCount">
+            <summary>Gets the number of assembly/doc pairs in the project.</summary>
+        </member>
+        <member name="P:NDoc.Core.Project.NamespaceCount">
+            <summary>The number of namespaces in the project.</summary>
+        </member>
+        <member name="P:NDoc.Core.Project.Documenters">
+            <summary>Gets or sets the Documenters property.</summary>
+        </member>
+        <member name="E:NDoc.Core.Project.Modified">
+            <summary>Raised by projects when they're dirty state changes from false to true.</summary>
+        </member>
+        <member name="T:NDoc.Core.Project.AssemblyAlreadyExistsException">
+            <summary>
+            A custom exception to detect if a duplicate assembly is beeing added.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.Project.AssemblyAlreadyExistsException.#ctor(System.String)">
+            <summary>Initializes a new instance of the AssemblyAlreadyExistsException 
+            class with a specified error message.</summary>
+        </member>
+        <member name="T:NDoc.Core.ProjectModifiedEventHandler">
+            <summary>Handles ProjectModified events.</summary>
+        </member>
+        <member name="T:NDoc.Core.CouldNotLoadAllAssembliesException">
+            <summary>
+            This exception is thrown when one or more assemblies can not be loaded.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.CouldNotLoadAllAssembliesException.#ctor">
+            <summary/>
+        </member>
+        <member name="M:NDoc.Core.CouldNotLoadAllAssembliesException.#ctor(System.String)">
+            <summary/>
+        </member>
+        <member name="M:NDoc.Core.CouldNotLoadAllAssembliesException.#ctor(System.String,System.Exception)">
+            <summary/>
+        </member>
+        <member name="M:NDoc.Core.CouldNotLoadAllAssembliesException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary/>
+        </member>
+        <member name="T:NDoc.Core.SimpleEdit">
+            <summary>
+            This is a dialog box to prompt for a name.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.SimpleEdit.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.SimpleEdit.#ctor">
+            <summary>
+            Creates a SimpleEdit form.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.SimpleEdit.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.SimpleEdit.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.SimpleEdit.Value">
+            <summary>
+            Contains the value of the text box.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.SimpleEdit.SimpleEdit_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the form is initialy loaded.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:NDoc.Core.SimpleEdit.buttonOK_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event handler called when the user clicks the OK button.
+            </summary>
+            <param name="sender">Sender</param>
+            <param name="e">Event arguments</param>
+        </member>
+        <member name="T:NDoc.Core.TemplateWriter">
+            <summary>
+            Stream writer that parses a template file to write a new file.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.#ctor(System.String,System.IO.TextReader)">
+            <summary>
+            Initializes a new instance of the TemplateWriter class for the specified 
+            file on the specified path, using the specified template stream and using 
+            the default encoding and buffer size.
+            </summary>
+            <param name="outPath">The complete file path to write to.</param>
+            <param name="template">The template's stream reader.</param>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.#ctor(System.IO.Stream,System.IO.TextReader)">
+            <summary>
+            Initializes a new instance of the TemplateWriter class for the specified 
+            stream, using the specified template stream and using the default encoding 
+            and buffer size.
+            </summary>
+            <param name="stream">The stream to write to.</param>
+            <param name="template">The template's stream reader.</param>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.CopyToLine(System.String)">
+            <summary>
+            Copies the text lines form the template to the output stream 
+            until a specific line is found.
+            </summary>
+            <param name="toLine">The line text to search for.  
+            Must match exactly.</param>
+            <returns><b>true</b> if the line was found, <b>false</b> if the 
+            end of the template stream was reached.</returns>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.CopyToEnd">
+            <summary>
+            Copies the text lines form the template to the output stream 
+            until the end of the template stream.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.Close">
+            <summary>
+            Closes the current StreamWriter and StreamReader.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TemplateWriter.Dispose(System.Boolean)">
+            <summary>
+            Releases the unmanaged resources used by the TemplateWriter 
+            and optionally releases the managed resources.
+            </summary>
+            <param name="disposing"><b>true</b> to release both managed 
+            and unmanaged resources; <b>false</b> to release only 
+            unmanaged resources.</param>
+        </member>
+        <member name="T:NDoc.Core.TextEditor">
+            <summary>
+            Provides editing facilities for large blocks of text in the <see cref="T:System.Windows.Forms.PropertyGrid"/>.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TextEditor.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:NDoc.Core.TextEditor"/> class.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TextEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)">
+            <summary>
+            Edits the specified object's value using the editor style indicated by <see cref="M:NDoc.Core.TextEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)"/>.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that can be used to gain additional context information.</param>
+            <param name="provider">An <see cref="T:System.IServiceProvider"/> that this editor can use to obtain services.</param>
+            <param name="value">The object to edit.</param>
+            <returns>The new value of the object.</returns>
+        </member>
+        <member name="M:NDoc.Core.TextEditor.GetEditStyle(System.ComponentModel.ITypeDescriptorContext)">
+            <summary>
+            Gets the editor style used by the <see cref="M:NDoc.Core.TextEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)"/> method.
+            </summary>
+            <param name="context">An <see cref="T:System.ComponentModel.ITypeDescriptorContext"/> that can be used to gain additional context information.</param>
+            <returns>A <see cref="T:System.Drawing.Design.UITypeEditorEditStyle"/> value that indicates the style of editor used by <see cref="M:NDoc.Core.TextEditor.EditValue(System.ComponentModel.ITypeDescriptorContext,System.IServiceProvider,System.Object)"/>.</returns>
+        </member>
+        <member name="T:NDoc.Core.TextEditorForm">
+            <summary>
+            Used in the conjunction with the <see cref="T:NDoc.Core.TextEditor"/>, this form
+            provides the user a larger interface with which to edit text.
+            </summary>
+        </member>
+        <member name="F:NDoc.Core.TextEditorForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TextEditorForm.#ctor">
+            <summary>
+            Creates a new instance of the <see cref="T:NDoc.Core.TextEditorForm"/> class.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TextEditorForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.TextEditorForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:NDoc.Core.TextEditorForm.Value">
+            <summary>
+            Gets or sets the text to edit.
+            </summary>
+            <value>The text to edit.</value>
+        </member>
+        <member name="T:NDoc.Core.XmlDocumentationCache">
+            <summary>
+            Caches XML Documentation files and summaries.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.XmlDocumentationCache.#ctor">
+            <summary>
+            Initializes a new instance of the XmlDocumentationCache class.
+            </summary>
+        </member>
+        <member name="M:NDoc.Core.XmlDocumentationCache.GetXmlFor(System.Type)">
+            <summary>
+            Gets the xml documentation for the assembly of the specified type.
+            </summary>
+            <returns>The xml document.  If the xml file was not found, returns an empty document.</returns>
+        </member>
+        <member name="M:NDoc.Core.XmlDocumentationCache.GetSummary(System.String,System.Type)">
+            <summary>
+            Returns the original summary for a member inherited from a specified type. 
+            </summary>
+            <param name="memberID">The member ID to lookup.</param>
+            <param name="declaringType">The type that declares that member.</param>
+            <returns>The summary xml node.  If not found, returns an empty node.</returns>
+        </member>
+    </members>
+</doc>

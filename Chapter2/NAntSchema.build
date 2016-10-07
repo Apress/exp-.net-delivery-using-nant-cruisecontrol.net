@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="NAntSchema" default="help">
+	<description>Output a copy of the NAnt Schema</description>
+
+	<property name="file" value="NAnt.xsd"/>
+
+	<target name="help" description="About this build file">
+		<echo message="This build file outputs the NAnt XSD to the chosen location."/>
+		<echo message="Override the 'file' property to change the location."/>
+	</target>
+
+	<target name="go" description="Create the NAnt Schema XSD file">
+		<nantschema output="${file}"/>
+	</target>
+</project>

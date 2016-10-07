@@ -1,0 +1,269 @@
+﻿Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Uninstalling assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Removing EventLog source Vss Manager Service.
+Attempt to stop service Vss Manager Service.
+Service Vss Manager Service is being removed from the system...
+Service Vss Manager Service was successfully removed from the system.
+Installing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog
+Installing service Vss Manager Service...
+Service Vss Manager Service has been successfully installed.
+Creating EventLog source Vss Manager Service in log Application...
+Committing assembly 'd:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe'.
+Affected parameters are:
+   assemblypath = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.exe
+   logfile = d:\dotnetdelivery\program files\etomic.vssmanager\0.0.0.0\etomic.vssmanager.service.InstallLog

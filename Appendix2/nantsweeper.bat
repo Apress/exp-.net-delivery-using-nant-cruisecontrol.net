@@ -1,0 +1,1 @@
+nant -q -f:nantsweeper.build

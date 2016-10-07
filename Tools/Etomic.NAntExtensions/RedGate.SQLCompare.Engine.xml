@@ -1,0 +1,4436 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RedGate.SQLCompare.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:antlr.ASTFactory">
+            <summary>
+            AST Support code shared by TreeParser and Parser.
+            </summary>
+            <remarks>
+            <para>
+            We use delegation to share code (and have only one 
+            bit of code to maintain) rather than subclassing
+            or superclassing (forces AST support code to be
+            loaded even when you don't want to do AST stuff).
+            </para>
+            <para>
+            Typically, <see cref="M:antlr.ASTFactory.setASTNodeType(System.String,System.Type)"/>  is used to specify the
+            homogeneous type of node to create, but you can override
+            <see cref="M:antlr.ASTFactory.create"/>  to make heterogeneous nodes etc...
+            </para>
+            </remarks>
+        </member>
+        <member name="M:antlr.ASTFactory.#ctor">
+            <summary>
+            Constructs an <c>ASTFactory</c> with the default AST node type of
+            <see cref="T:antlr.CommonAST"/>.
+            </summary>
+        </member>
+        <member name="M:antlr.ASTFactory.#ctor(System.String,System.Type)">
+            <summary>
+            Constructs an <c>ASTFactory</c> and use the specified AST node type
+            as the default.
+            </summary>
+            <param name="nodeTypeName">
+            	Name of default AST node type for this factory.
+            </param>
+        </member>
+        <member name="F:antlr.ASTFactory.defaultASTNodeTypeObject_">
+            <summary>
+            Stores the Type of the default AST node class to be used during tree construction.
+            </summary>
+        </member>
+        <member name="F:antlr.ASTFactory.nodeTypeObjectList_">
+            <summary>
+            Stores the mapping between custom AST NodeTypes and their NodeTypeName/NodeTypeClass.
+            </summary>
+        </member>
+        <member name="M:antlr.ASTFactory.setTokenTypeASTNodeType(System.Int32,System.String,System.Type)">
+            <summary>
+            Specify an "override" for the <see cref="T:antlr.collections.AST"/> type created for
+            the specified Token type.
+            </summary>
+            <remarks>
+            This method is useful for situations that ANTLR cannot oridinarily deal 
+            with (i.e., when you  create a token based upon a nonliteral token symbol 
+            like #[LT(1)].  This is a runtime value and ANTLR cannot determine the token 
+            type (and hence the AST) statically.
+            </remarks>
+            <param name="tokenType">Token type to override.</param>
+            <param name="NodeTypeName">
+            	Fully qualified AST typename (or null to specify 
+            	the factory's default AST type).
+            </param>
+        </member>
+        <member name="M:antlr.ASTFactory.registerFactory(System.Int32,System.String,System.Type)">
+            <summary>
+            Register an AST Node Type for a given Token type ID.
+            </summary>
+            <param name="NodeType">The Token type ID.</param>
+            <param name="NodeTypeName">The AST Node Type to register.</param>
+        </member>
+        <member name="M:antlr.ASTFactory.setMaxNodeType(System.Int32)">
+            <summary>
+            Pre-expands the internal list of TokenTypeID-to-ASTNodeType mappings
+            to the specified size.
+            This is primarily a convenience method that can be used to prevent 
+            unnecessary and costly re-org of the mappings list.
+            </summary>
+            <param name="NodeType">Maximum Token Type ID.</param>
+        </member>
+        <member name="M:antlr.ASTFactory.addASTChild(antlr.ASTPair,antlr.collections.AST)">
+            <summary>
+            Add a child to the current AST
+            </summary>
+            <param name="currentAST">The AST to add a child to</param>
+            <param name="child">The child AST to be added</param>
+        </member>
+        <member name="M:antlr.ASTFactory.create">
+            <summary>
+            Creates a new uninitialized AST node. Since a specific AST Node Type
+            wasn't indicated, the new AST node is created using the current default
+            AST Node type - <see cref="F:antlr.ASTFactory.defaultASTNodeTypeObject_"/>
+            </summary>
+            <returns>An uninitialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.create(System.Int32)">
+            <summary>
+            Creates and initializes a new AST node using the specified Token Type ID.
+            The <see cref="T:System.Type"/> used for creating this new AST node is 
+            determined by the following:
+            <list type="bullet">
+            	<item>the current TokenTypeID-to-ASTNodeType mapping (if any) or,</item>
+            	<item>the <see cref="F:antlr.ASTFactory.defaultASTNodeTypeObject_"/> otherwise</item>
+            </list>
+            </summary>
+            <param name="type">Token type ID to be used to create new AST Node.</param>
+            <returns>An initialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.create(System.Int32,System.String)">
+            <summary>
+            Creates and initializes a new AST node using the specified Token Type ID.
+            The <see cref="T:System.Type"/> used for creating this new AST node is 
+            determined by the following:
+            <list type="bullet">
+            	<item>the current TokenTypeID-to-ASTNodeType mapping (if any) or,</item>
+            	<item>the <see cref="F:antlr.ASTFactory.defaultASTNodeTypeObject_"/> otherwise</item>
+            </list>
+            </summary>
+            <param name="type">Token type ID to be used to create new AST Node.</param>
+            <param name="txt">Text for initializing the new AST Node.</param>
+            <returns>An initialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.create(System.Int32,System.String,System.String,System.Type)">
+            <summary>
+            Creates a new AST node using the specified AST Node Type name. Once created,
+            the new AST node is initialized with the specified Token type ID and string.
+            The <see cref="T:System.Type"/> used for creating this new AST node is 
+            determined solely by <c>ASTNodeTypeName</c>.
+            The AST Node type must have a default/parameterless constructor.
+            </summary>
+            <param name="type">Token type ID to be used to create new AST Node.</param>
+            <param name="txt">Text for initializing the new AST Node.</param>
+            <param name="ASTNodeTypeName">Fully qualified name of the Type to be used for creating the new AST Node.</param>
+            <returns>An initialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.create(antlr.Token,System.String,System.Type)">
+            <summary>
+            Creates a new AST node using the specified AST Node Type name.
+            </summary>
+            <param name="Token">Token instance to be used to initialize the new AST Node.</param>
+            <param name="ASTNodeTypeName">
+            	Fully qualified name of the Type to be used for creating the new AST Node.
+            </param>
+            <returns>A newly created and initialized AST node object.</returns>
+            <remarks>
+            Once created, the new AST node is initialized with the specified Token 
+            instance. The <see cref="T:System.Type"/> used for creating this new AST 
+            node is  determined solely by <c>ASTNodeTypeName</c>.
+            <para>The AST Node type must have a default/parameterless constructor.</para>
+            </remarks>
+        </member>
+        <member name="M:antlr.ASTFactory.create(antlr.collections.AST)">
+            <summary>
+            Creates and initializes a new AST node using the specified AST Node instance.
+            the new AST node is initialized with the specified Token type ID and string.
+            The <see cref="T:System.Type"/> used for creating this new AST node is 
+            determined solely by <c>aNode</c>.
+            The AST Node type must have a default/parameterless constructor.
+            </summary>
+            <param name="aNode">AST Node instance to be used for creating the new AST Node.</param>
+            <returns>An initialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.create(antlr.Token)">
+            <summary>
+            Creates and initializes a new AST node using the specified Token instance.
+            The <see cref="T:System.Type"/> used for creating this new AST node is 
+            determined by the following:
+            <list type="bullet">
+            	<item>the current TokenTypeID-to-ASTNodeType mapping (if any) or,</item>
+            	<item>the <see cref="F:antlr.ASTFactory.defaultASTNodeTypeObject_"/> otherwise</item>
+            </list>
+            </summary>
+            <param name="tok">Token instance to be used to create new AST Node.</param>
+            <returns>An initialized AST node object.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.dup(antlr.collections.AST)">
+            <summary>
+            Returns a copy of the specified AST Node instance. The copy is obtained by
+            using the <see cref="T:System.ICloneable"/> method Clone().
+            </summary>
+            <param name="t">AST Node to copy.</param>
+            <returns>An AST Node (or null if <c>t</c> is null).</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.dupList(antlr.collections.AST)">
+            <summary>
+            Duplicate AST Node tree rooted at specified AST node and all of it's siblings.
+            </summary>
+            <param name="t">Root of AST Node tree.</param>
+            <returns>Root node of new AST Node tree (or null if <c>t</c> is null).</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.dupTree(antlr.collections.AST)">
+            <summary>
+            Duplicate AST Node tree rooted at specified AST node. Ignore it's siblings.
+            </summary>
+            <param name="t">Root of AST Node tree.</param>
+            <returns>Root node of new AST Node tree (or null if <c>t</c> is null).</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.make(antlr.collections.AST[])">
+            <summary>
+            Make a tree from a list of nodes.  The first element in the
+            array is the root.  If the root is null, then the tree is
+            a simple list not a tree.  Handles null children nodes correctly.
+            For example, build(a, b, null, c) yields tree (a b c).  build(null,a,b)
+            yields tree (nil a b).
+            </summary>
+            <param name="nodes">List of Nodes.</param>
+            <returns>AST Node tree.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.make(antlr.collections.impl.ASTArray)">
+            <summary>
+            Make a tree from a list of nodes, where the nodes are contained
+            in an ASTArray object.
+            </summary>
+            <param name="nodes">List of Nodes.</param>
+            <returns>AST Node tree.</returns>
+        </member>
+        <member name="M:antlr.ASTFactory.makeASTRoot(antlr.ASTPair,antlr.collections.AST)">
+            <summary>
+            Make an AST the root of current AST.
+            </summary>
+            <param name="currentAST"></param>
+            <param name="root"></param>
+        </member>
+        <member name="M:antlr.ASTFactory.setASTNodeType(System.String,System.Type)">
+            <summary>
+            Sets the global default AST Node Type for this ASTFactory instance.
+            This method also attempts to load the <see cref="T:System.Type"/> instance
+            for the specified typename.
+            </summary>
+            <param name="t">Fully qualified AST Node Type name.</param>
+        </member>
+        <member name="M:antlr.ASTFactory.error(System.String)">
+            <summary>
+            To change where error messages go, can subclass/override this method
+            and then setASTFactory in Parser and TreeParser.  This method removes
+            a prior dependency on class antlr.Tool.
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:antlr.collections.AST.getNumberOfChildren">
+            <summary>
+            Get number of children of this node; if leaf, returns 0
+            </summary>
+            <returns>Number of children</returns>
+        </member>
+        <member name="T:antlr.ASTVisitor">
+            <summary>
+            Summary description for ASTVisitor.
+            </summary>
+        </member>
+        <member name="M:antlr.BaseAST.getNumberOfChildren">
+            <summary>
+            Get number of children of this node; if leaf, returns 0
+            </summary>
+            <returns>Number of children</returns>
+        </member>
+        <member name="M:antlr.CharScanner.panic(System.String)">
+            <summary>
+            This method is executed by ANTLR internally when it detected an illegal
+            state that cannot be recovered from.
+            The previous implementation of this method called <see cref="M:System.Environment.Exit(System.Int32)"/>
+            and writes directly to <see cref="P:System.Console.Error"/>, which is usually not 
+            appropriate when a translator is embedded into a larger application.
+            </summary>
+            <param name="s">Error message.</param>
+        </member>
+        <member name="T:antlr.DumpASTVisitor">
+            <summary>
+            Summary description for DumpASTVisitor.
+            </summary>
+        </member>
+        <member name="M:antlr.Parser.panic">
+            <summary>
+            @deprecated as of 2.7.2. This method calls System.exit() and writes
+            directly to stderr, which is usually not appropriate when
+            a parser is embedded into a larger application. Since the method is
+            <code>static</code>, it cannot be overridden to avoid these problems.
+            ANTLR no longer uses this method internally or in generated code.
+            </summary>
+            
+        </member>
+        <member name="M:antlr.Parser.setASTFactory(antlr.ASTFactory)">
+            <summary>
+            Specify an object with support code (shared by Parser and TreeParser.
+            Normally, the programmer does not play with this, using 
+            <see cref="M:antlr.Parser.setASTNodeClass(System.String,System.Type)"/> instead.
+            </summary>
+            <param name="f"></param>
+        </member>
+        <member name="M:antlr.Parser.setASTNodeClass(System.String,System.Type)">
+            <summary>
+            Specify the type of node to create during tree building. 
+            </summary>
+            <param name="cl">Fully qualified AST Node type name.</param>
+        </member>
+        <member name="M:antlr.Parser.setASTNodeType(System.String,System.Type)">
+            <summary>
+            Specify the type of node to create during tree building. 
+            use <see cref="M:antlr.Parser.setASTNodeClass(System.String,System.Type)"/> now to be consistent with 
+            Token Object Type accessor.
+            </summary>
+            <param name="nodeType">Fully qualified AST Node type name.</param>
+        </member>
+        <member name="E:antlr.Parser.EnterRule">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:antlr.MismatchedCharException.appendCharName(System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Append a char to the msg buffer.  If special, then show escaped version
+            </summary>
+            <param name="sb">Message buffer</param>
+            <param name="c">Char to append</param>
+        </member>
+        <member name="M:antlr.TreeParser.panic">
+            <summary>
+            @deprecated as of 2.7.2. This method calls System.exit() and writes
+            directly to stderr, which is usually not appropriate when
+            a parser is embedded into a larger application. Since the method is
+            <code>static</code>, it cannot be overridden to avoid these problems.
+            ANTLR no longer uses this method internally or in generated code.
+            </summary>
+            
+        </member>
+        <member name="F:antlr.debug.ANTLREventArgs.type_">
+            <summary>
+            Event type.
+            </summary>
+        </member>
+        <member name="T:antlr.debug.DebuggingParser">
+            <summary> This type was created in VisualAge.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.DebuggingCharScanner.reportError(antlr.MismatchedCharException)">
+            <summary>Report exception errors caught in nextToken() 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.DebuggingCharScanner.reportError(System.String)">
+            <summary>Parser error-reporting function can be overridden in subclass 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.DebuggingCharScanner.reportWarning(System.String)">
+            <summary>Parser warning-reporting function can be overridden in subclass 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.GuessingEventArgs.setValues(System.Int32,System.Int32)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.InputBufferEventArgs.setValues(System.Int32,System.Char,System.Int32)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.InputBufferListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.InputBufferListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.InputBufferListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.InputBufferListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.InputBufferListenerBase.inputBufferConsume(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary>
+            Handle the "CharConsumed" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.InputBufferListenerBase.inputBufferLA(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary>
+            Handle the "CharLA" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.InputBufferListenerBase.inputBufferMark(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary>
+            Handle the "Mark" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.InputBufferListenerBase.inputBufferRewind(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary>
+            Handle the "Rewind" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.InputBufferReporter.inputBufferConsume(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary> charBufferConsume method comment.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.InputBufferReporter.inputBufferLA(System.Object,antlr.debug.InputBufferEventArgs)">
+            <summary> charBufferLA method comment.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.consume">
+            <summary>Get another token object from the token stream 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.LA(System.Int32)">
+            <summary>Return the token type of the ith token of lookahead where i=1
+            is the current token being examined by the parser (i.e., it
+            has not been matched yet).
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.match(System.Int32)">
+            <summary>Make sure current lookahead symbol matches token type <tt>t</tt>.
+            Throw an exception upon mismatch, which is catch by either the
+            error handler or by the syntactic predicate.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.match(antlr.collections.impl.BitSet)">
+            <summary>Make sure current lookahead symbol matches the given set
+            Throw an exception upon mismatch, which is catch by either the
+            error handler or by the syntactic predicate.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.reportError(antlr.RecognitionException)">
+            <summary>Parser error-reporting function can be overridden in subclass 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.reportError(System.String)">
+            <summary>Parser error-reporting function can be overridden in subclass 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.reportWarning(System.String)">
+            <summary>Parser warning-reporting function can be overridden in subclass 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.LLkDebuggingParser.setupDebugging(antlr.TokenStream,antlr.TokenBuffer)">
+            <summary>User can override to do their own debugging 
+            </summary>
+        </member>
+        <member name="M:antlr.debug.MessageEventArgs.setValues(System.Int32,System.String)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.MessageListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.MessageListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.MessageListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.MessageListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.MessageListenerBase.reportError(System.Object,antlr.debug.MessageEventArgs)">
+            <summary>
+            Handle the "ReportError" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.MessageListenerBase.reportWarning(System.Object,antlr.debug.MessageEventArgs)">
+            <summary>
+            Handle the "ReportWarning" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.NewLineEventArgs.ToString">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.ParserEventSupport">
+            <summary>A class to assist in firing parser events
+            NOTE: I intentionally _did_not_ synchronize the event firing and
+            add/remove listener methods.  This is because the add/remove should
+            _only_ be called by the parser at its start/end, and the _same_thread_
+            should be performing the parsing.  This should help performance a tad...
+            </summary>
+        </member>
+        <member name="T:antlr.debug.ParserListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.ParserListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.ParserListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.enterRule(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "EnterRule" event
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.exitRule(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "ExitRule" event
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserConsume(System.Object,antlr.debug.TokenEventArgs)">
+            <summary>
+            Handle the "Consume" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserLA(System.Object,antlr.debug.TokenEventArgs)">
+            <summary>
+            Handle the "ParserLA" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserMatch(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "Match" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserMatchNot(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MatchNot" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserMismatch(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MisMatch" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.parserMismatchNot(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MisMatchNot" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.reportError(System.Object,antlr.debug.MessageEventArgs)">
+            <summary>
+            Handle the "ReportError" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.reportWarning(System.Object,antlr.debug.MessageEventArgs)">
+            <summary>
+            Handle the "ReportWarning" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.semanticPredicateEvaluated(System.Object,antlr.debug.SemanticPredicateEventArgs)">
+            <summary>
+            Handle the "SemPreEvaluated" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.syntacticPredicateFailed(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredFailed" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.syntacticPredicateStarted(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredStarted" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserListenerBase.syntacticPredicateSucceeded(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredSucceeded" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.MatchEventArgs.setValues(System.Int32,System.Int32,System.Object,System.String,System.Int32,System.Boolean,System.Boolean)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.ParserMatchListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.ParserMatchListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.ParserMatchListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.ParserMatchListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserMatchListenerBase.parserMatch(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "Match" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserMatchListenerBase.parserMatchNot(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MatchNot" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserMatchListenerBase.parserMismatch(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MisMatch" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserMatchListenerBase.parserMismatchNot(System.Object,antlr.debug.MatchEventArgs)">
+            <summary>
+            Handle the "MisMatchNot" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="T:antlr.debug.TraceListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.TraceListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.TraceListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.TraceListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.TraceListenerBase.enterRule(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "EnterRule" event
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.TraceListenerBase.exitRule(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "ExitRule" event
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.TokenEventArgs.setValues(System.Int32,System.Int32,System.Int32)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.ParserTokenListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.ParserTokenListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.ParserTokenListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.ParserTokenListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserTokenListenerBase.parserConsume(System.Object,antlr.debug.TokenEventArgs)">
+            <summary>
+            Handle the "Consume" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.ParserTokenListenerBase.parserLA(System.Object,antlr.debug.TokenEventArgs)">
+            <summary>
+            Handle the "ParserLA" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="T:antlr.debug.ScannerEventSupport">
+            <summary>A class to assist in firing parser events
+            NOTE: I intentionally _did_not_ synchronize the event firing and
+            add/remove listener methods.  This is because the add/remove should
+            _only_ be called by the parser at its start/end, and the _same_thread_
+            should be performing the parsing.  This should help performance a tad...
+            </summary>
+        </member>
+        <member name="M:antlr.debug.SemanticPredicateEventArgs.setValues(System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.SemanticPredicateListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.SemanticPredicateListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.SemanticPredicateListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.SemanticPredicateListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.SemanticPredicateListenerBase.semanticPredicateEvaluated(System.Object,antlr.debug.SemanticPredicateEventArgs)">
+            <summary>
+            Handle the "SemPreEvaluated" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="T:antlr.debug.SyntacticPredicateListenerBase">
+            <summary>
+            Provides an abstract base for implementing <see cref="T:antlr.debug.SyntacticPredicateListener"/> subclasses.
+            </summary>
+            <remarks>
+            	<param>
+            	This abstract class is provided to make it easier to create <see cref="T:antlr.debug.SyntacticPredicateListener"/>s. 
+            	You should extend this base class rather than creating your own.
+            	</param>
+            </remarks>
+        </member>
+        <member name="M:antlr.debug.SyntacticPredicateListenerBase.doneParsing(System.Object,antlr.debug.TraceEventArgs)">
+            <summary>
+            Handle the "Done" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.SyntacticPredicateListenerBase.syntacticPredicateFailed(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredFailed" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.SyntacticPredicateListenerBase.syntacticPredicateStarted(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredStarted" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.SyntacticPredicateListenerBase.syntacticPredicateSucceeded(System.Object,antlr.debug.SyntacticPredicateEventArgs)">
+            <summary>
+            Handle the "SynPredSucceeded" event.
+            </summary>
+            <param name="source">Event source object</param>
+            <param name="e">Event data object</param>
+        </member>
+        <member name="M:antlr.debug.TraceEventArgs.setValues(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>This should NOT be called from anyone other than ParserEventSupport! 
+            </summary>
+        </member>
+        <member name="T:antlr.debug.misc.ASTFrame">
+            <summary>
+            Summary description for myASTFrame.
+            </summary>
+        </member>
+        <member name="F:antlr.debug.misc.ASTFrame.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.misc.ASTFrame.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.misc.ASTFrame.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:antlr.debug.misc.JTreeASTPanel">
+            <summary>
+            Summary description for myJTreeASTPanel.
+            </summary>
+        </member>
+        <member name="F:antlr.debug.misc.JTreeASTPanel.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.misc.JTreeASTPanel.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:antlr.debug.misc.JTreeASTPanel.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.BlobStore">
+            <summary>
+            Summary description for BlobStore.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.CheckConstraint">
+            <summary>
+            A check constraint
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.CheckConstraint.Equals(RedGate.SQLCompare.Engine.CheckConstraint,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if identical
+            </summary>
+            <param name="value">The constraint to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>True if identical</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.Fields">
+            <summary>
+            The fields in the check constraint
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.NoCheck">
+            <summary>
+            True if the constraint is marked as WITH NOCHECK (i.e. it is not trusted)
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.Name">
+            <summary>
+            The constraint name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.NotForReplication">
+            <summary>
+            Not for replication
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.Disabled">
+            <summary>
+            Disabled
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraint.Text">
+            <summary>
+            The constraint text
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.CheckConstraints">
+            <summary>
+            A collection of check constraints
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.SerializableCollection">
+            <summary>
+            A collection that can be serialized to disk
+            </summary>
+            <remarks>
+            For internal use by SQL Compare
+            </remarks>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SerializableCollection.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SerializableCollection.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SerializableCollection.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SerializableCollection.GetEnumerator">
+            <summary>
+            Returns an enumerator
+            </summary>
+            <returns>An enumerator</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.SerializableCollection.Count">
+            <summary>
+            The number of items in the collection
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.CheckConstraints.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.CheckConstraints.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.CheckConstraints.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraints.Item(System.Int32)">
+            <summary>
+            Returns a check constraint
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraints.Item(System.String)">
+            <summary>
+            Returns a check constraint given a name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.CheckConstraints.Item(RedGate.SQLCompare.Engine.Table,System.String)">
+            <summary>
+            Returns a check constraint given a table and a name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ConnectionProperties">
+            <summary>
+            The connection properties used to connect to a SQL Server database
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ConnectionProperties.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ConnectionProperties.#ctor(System.String,System.String)">
+            <summary>
+            Constructor for integrated security
+            </summary>
+            <param name="serverName">The server name</param>
+            <param name="databaseName">The database name</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ConnectionProperties.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructor for SQL security
+            </summary>
+            <param name="serverName">The server name</param>
+            <param name="databaseName">The database name</param>
+            <param name="password">The password</param>
+            <param name="userName">The user name</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ConnectionProperties.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used in serialization
+            </summary>
+            <param name="info">Used in serialization</param>
+            <param name="context">Used in serialization</param>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ConnectionProperties.ServerName">
+            <summary>
+            The name of the SQL server to connect to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ConnectionProperties.DatabaseName">
+            <summary>
+            The name of the database to connect to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ConnectionProperties.IntegratedSecurity">
+            <summary>
+            True to use integrated authentication, false for SQL Server authentication
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ConnectionProperties.UserName">
+            <summary>
+            The user name to use when connecting to the SQL Server
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ConnectionProperties.Password">
+            <summary>
+            The password to use when connecting to the SQL Server
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Database">
+            <summary>
+            A SQL Server database
+            </summary>
+            <remarks>
+            <para>Use <see cref="M:RedGate.SQLCompare.Engine.Database.Register(RedGate.SQLCompare.Engine.ConnectionProperties,RedGate.SQLCompare.Engine.Options)"/> to register the databases from a live database or <see cref="M:RedGate.SQLCompare.Engine.Database.LoadFromDisk(System.String)"/> to load a database from a snapshot.</para>
+            <para>Registering a database is a long-running operation which can be cancelled by calling CancelOperation. Status feedback is provided via the <see cref="P:RedGate.SQLCompare.Engine.Database.Status"/> event handler</para>
+            <para>It is essential to call <see cref="M:RedGate.SQLCompare.Engine.Database.Dispose"/> after finishing with a Database object</para>
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.SaveToDisk(System.String)">
+            <summary>
+            Saves the database to disk
+            </summary>
+            <param name="fileName">The name of the .snp file to save to</param>
+            <example>
+            Saving and loading a snapshot
+            <code lang="csharp">
+            <![CDATA[
+            //register a database using integrated security
+            Database db1=new Database();
+            db1.Register(new ConnectionProperties(".", "WidgetStaging"), Options.Default);
+            
+            //save the database to disk
+            db1.SaveToDisk(@"c:\WidgetStaging.snp");
+            
+            Database db2=new Database();
+            db2.LoadFromDisk(@"c:\WidgetStaging.snp");
+            
+            //dispose of the objects
+            db1.Dispose();
+            db2.Dispose();
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            'register a database using integrated security
+            Dim db1 As New Database()
+            db1.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+            
+            'save the database to disk
+            db1.SaveToDisk("c:\WidgetStaging.snp")
+            
+            Dim db2 As New Database()
+            db2.LoadFromDisk("c:\WidgetStaging.snp")
+            
+            'dispose of the objects
+            db1.Dispose()
+            db2.Dispose()
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.LoadFromDisk(System.String)">
+            <summary>
+            Loads the database from disk
+            </summary>
+            <param name="fileName">The name of a .snp file</param>
+            <remarks>
+            Progress events are fired via the Status event
+            </remarks>
+            <example>
+            See <see cref="M:RedGate.SQLCompare.Engine.Database.SaveToDisk(System.String)"/> for a code sample
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.GetConnectionPropertiesFromFile(System.String)">
+            <summary>
+            Reads connection properties from a file
+            </summary>
+            <param name="fileName">The name of a .scdb file</param>
+            <returns>Connection properties</returns>
+            <remarks>
+            Provides a way of retrieving server name, database name and other connection information from a .snp file without loading it up
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.#ctor">
+            <summary>
+            Constructor
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.Register(RedGate.SQLCompare.Engine.ConnectionProperties,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Registers a database
+            </summary>
+            <param name="connectionProperties">The connection properties to use to connect to the database</param>
+            <param name="options">The options to use</param>
+            <remarks>
+            Connects to a database and retrieves all schema information. Once this has been done then the database object
+            can be saved to disk or used in a comparison.
+            Progress feedback is provided via the Status event
+            </remarks>
+            	/// <example>
+            Registering a database from a live server, with feedback
+            <code lang="csharp">
+            <![CDATA[
+            using System;
+            using RedGate.SQL.Shared;
+            using RedGate.SQLCompare.Engine;
+            
+            namespace ConsoleApplication2
+            {
+            	/// <summary>
+            	/// Summary description for SQLDataCompareSnippets.
+            	/// </summary>
+            	public class Class1
+            	{
+            
+            		public static void Main()
+            		{
+            			Class1 c1=new Class1();
+            			c1.Run();
+            		}
+            
+            		private void StatusCallback(object sender, StatusEventArgs e)
+            		{
+            			//fired by the SqlProvider to indicate events
+            
+            			if (e.Message!=null)
+            			{
+            				Console.WriteLine(e.Message);
+            			}
+            
+            			if (e.Percentage!=-1)
+            			{
+            				Console.WriteLine("{0}%", e.Percentage);
+            			}
+            
+            		}
+            
+            		private void Run()
+            		{
+            			Database db=new Database();
+            			db.Status+=new StatusEventHandler(this.StatusCallback);
+            			db.Register(new ConnectionProperties(".", "WidgetStaging"),Options.Default);
+            			db.Dispose();
+            		}
+            	}
+            }
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            Option Explicit On 
+            
+            Imports RedGate.SQL.Shared
+            Imports RedGate.SQLCompare.Engine
+            
+            Module Module3
+            
+                Sub Main()
+            
+                    Dim c As Class1 = New Class1()
+            
+                    c.Run()
+                    Console.WriteLine("Press [Enter]")
+                    Console.ReadLine()
+            
+                End Sub
+            
+                Public Class Class1
+            
+                    Sub StatusCallback(ByVal sender As Object, ByVal e As StatusEventArgs)
+            
+                        If Not (e.Message Is Nothing) Then
+                            Console.WriteLine(e.Message)
+                        End If
+            
+                        If e.Percentage <> -1 Then
+                            Console.WriteLine("{0}%", e.Percentage)
+                        End If
+            
+            
+                    End Sub
+            
+                    Sub Run()
+            
+                        Dim db As New Database()
+                        db.Status = New StatusEventHandler(AddressOf Me.StatusCallback)
+                        db.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+                        db.Dispose()
+                    End Sub
+            
+            
+                End Class
+            End Module
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.CompareWith(RedGate.SQLCompare.Engine.Database,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Compares the database with another database
+            </summary>
+            <param name="targetDatabase">Another database</param>
+            <param name="options">Options to use for the comparison</param>
+            <returns>A <see cref="T:RedGate.SQLCompare.Engine.Differences"/> collection containing the differences between the two databases</returns>
+            <remarks>
+            <para>Once two databases have been compared they can be synchronized using the <see cref="T:RedGate.SQLCompare.Engine.Work"/> class</para>
+            <para>Progress feedback is provided via the Status event</para>
+            </remarks>
+            <example>
+            Comparing two databases and printing out a summary of the differences
+            <code lang="csharp">
+            <![CDATA[
+            Database db1=new Database();
+            Database db2=new Database();
+            
+            db1.Register(new ConnectionProperties(".", "WidgetStaging"), Options.Default);
+            db2.Register(new ConnectionProperties(".", "WidgetProduction"), Options.Default);
+            
+            Differences differences=db1.CompareWith(db2, Options.Default);
+            
+            foreach (Difference difference in differences)
+            {
+            	Console.WriteLine("{0} {1} {2}", difference.Type.ToString(), difference.DatabaseObjectType.ToString(), difference.Name);
+            }
+            
+            //dispose of the objects
+            db1.Dispose();
+            db2.Dispose();
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            Dim db1 As New Database()
+            Dim db2 As New Database()
+            
+            db1.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+            db2.Register(New ConnectionProperties(".", "WidgetProduction"), Options.Default)
+            
+            Dim differences As Differences = db1.CompareWith(db2, Options.Default)
+            
+            Dim difference As Difference
+            
+            For Each difference In differences
+                Console.WriteLine("{0} {1} {2}", difference.Type.ToString(), difference.DatabaseObjectType.ToString(), difference.Name)
+            Next
+            
+            'dispose of the objects
+            db1.Dispose()
+            db2.Dispose()
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.CancelOperation">
+            <summary>
+            Cancels the current operation
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.OnStatus(RedGate.SQL.Shared.StatusEventArgs)">
+            <summary>
+            Fire the status events
+            </summary>
+            <param name="e">Arguments</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.Dispose">
+            <summary>
+            Dispose the object
+            </summary>
+            <remarks>
+            It is important to dispose of the object so any temporary files it uses are deleted
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.GetAvailableOptions">
+            <summary>
+            Returns a list of available options in a sensible order
+            </summary>
+            <returns>A list of options</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Database.GetDependencies(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Gets the dependencies of a particular string of SQL
+            Note that this will be PRIVATE
+            </summary>
+            <param name="sql"></param>
+            
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.DateScripted">
+            <summary>
+            The date the Database object was initially created
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.ExtendedProperties">
+            <summary>
+            Database-level extended properties
+            </summary>
+            <remarks>
+            This collection contains extended properties which have been defined at the database level.
+            Individual database objects (eg tables and users) can also have extended properties defined on them.
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.ConnectionProperties">
+            <summary>
+            The connection properties for this database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.FullTextEnabled">
+            <summary>
+            True if the database has full text enabled
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Tables">
+            <summary>
+            The tables in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.StoredProcedures">
+            <summary>
+            The stored procedures in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Views">
+            <summary>
+            The views in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Defaults">
+            <summary>
+            The defaults in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.UserDefinedTypes">
+            <summary>
+            The user defined types in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Rules">
+            <summary>
+            The rules in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Functions">
+            <summary>
+            The user defined functions in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Users">
+            <summary>
+            The users in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Roles">
+            <summary>
+            The roles in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.FullTextCatalogs">
+            <summary>
+            The full text catalogs in the database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Database.Status">
+            <summary>
+            Used to provide status events
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Default">
+            <summary>
+            A database default
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.IDatabaseObject">
+            <summary>
+            An interface implemented by database objects
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.IDatabaseObject.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two database objects are identical
+            </summary>
+            <param name="target">The object to compare with</param>
+            <param name="options">The comparison option</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.IDatabaseObject.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the object
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.IDatabaseObject.Database">
+            <summary>
+            The database the object belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.IDatabaseObject.ObjectType">
+            <summary>
+            The type of the object
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Default.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Returns true if the two defaults are equal
+            </summary>
+            <param name="target">The object to compare with</param>
+            <param name="options">The comparison options</param>
+            <returns></returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.ObjectType">
+            <summary>
+            ObjectType.Default
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.ExtendedProperties">
+            <summary>
+            The extended properties associated with the default
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.Owner">
+            <summary>
+            The owner
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.Name">
+            <summary>
+            The name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.Text">
+            <summary>
+            The text
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.FullyQualifiedName">
+            <summary>
+            The fully qualified name in [owner].[name] format
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Default.Database">
+            <summary>
+            The database the default belongs to
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Defaults">
+            <summary>
+            A collection of defaults
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.IDatabaseObjects">
+            <summary>
+            A collection of database objects
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.IDatabaseObjects.get_UntypedItem(System.String)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Defaults.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Defaults.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Defaults.get_UntypedItem(System.String)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="fullyQualifiedName">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Defaults.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Defaults.Item(System.Int32)">
+            <summary>
+            Returns a default
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Defaults.Item(System.String)">
+            <summary>
+            Returns a default given its fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Defaults.Item(System.String,System.String)">
+            <summary>
+            Returns a default given its owner and name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Dependencies">
+            <summary>
+            Summary description for Dependencies.
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.InternalCollectionBase">
+            <summary>
+            A base type for collections used by SQL Compare
+            </summary>
+            <remarks>
+            Used internally by SQL Compare
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.InternalCollectionBase.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.InternalCollectionBase.GetEnumerator">
+            <summary>
+            Returns an enumerator
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.InternalCollectionBase.Count">
+            <summary>
+            The number of items in the list
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.InternalCollectionBase.InnerList">
+            <summary>
+            The underlying ArrayList
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.DifferenceType">
+            <summary>
+            Indicates what type the difference is
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.DifferenceType.OnlyIn1">
+            <summary>
+            Only in the first database
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.DifferenceType.OnlyIn2">
+            <summary>
+            Only in the second database
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.DifferenceType.Different">
+            <summary>
+            Present in both databases, but different
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.DifferenceType.Equal">
+            <summary>
+            Present in both databases, and the same
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ObjectType">
+            <summary>
+            The type of database object
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.None">
+            <summary>
+            Not used
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.Table">
+            <summary>
+            Table
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.StoredProcedure">
+            <summary>
+            Stored procedure
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.View">
+            <summary>
+            View
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.Default">
+            <summary>
+            Default
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.FullTextCatalog">
+            <summary>
+            Full text catalog
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.Function">
+            <summary>
+            User defined function
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.Role">
+            <summary>
+            Role
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.Rule">
+            <summary>
+            Rule
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.User">
+            <summary>
+            User
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.ObjectType.UserDefinedType">
+            <summary>
+            User defined type
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Difference">
+            <summary>
+            A difference between two database objects
+            </summary>
+            <remarks>
+            See <see cref="M:RedGate.SQLCompare.Engine.Database.CompareWith(RedGate.SQLCompare.Engine.Differences,RedGate.SQLCompare.Engine.IDatabaseObjects,RedGate.SQLCompare.Engine.IDatabaseObjects,RedGate.SQLCompare.Engine.Options,System.Int64,System.Int64@,System.Int32@)"/> and <see cref="T:RedGate.SQLCompare.Engine.Work"/> for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.Selected">
+            <summary>
+            True if this is difference is selected
+            </summary>
+            <remarks>
+            Set this to true to include the difference in a migration script
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.DatabaseObjectType">
+            <summary>
+            The type of database object the difference represents
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.ObjectIn1">
+            <summary>
+            The object in the first database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.Name">
+            <summary>
+            The name of the database object
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.ObjectIn2">
+            <summary>
+            The object in the second database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Difference.Type">
+            <summary>
+            The type of difference
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Differences">
+            <summary>
+            A collection of differences representing the differences in two databases
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Differences.Database1">
+            <summary>
+            The first database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Differences.Database2">
+            <summary>
+            The second database
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Differences.Item(System.Int32)">
+            <summary>
+            A difference
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ExtendedProperties">
+            <summary>
+            The extended properties associated with a database object
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ExtendedProperties.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ExtendedProperties.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ExtendedProperties.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ExtendedProperties.Equals(RedGate.SQLCompare.Engine.ExtendedProperties,RedGate.SQLCompare.Engine.ExtendedProperties,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Returns true if two extended properties are identical
+            </summary>
+            <param name="a"></param>
+            <param name="b"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperties.Item(System.Int32)">
+            <summary>
+            Returns an extended property
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperties.Item(System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Returns an extended property given information about its types and names
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperties.Item(RedGate.SQLCompare.Engine.ExtendedProperty)">
+            <summary>
+            Returns an extended property
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ExtendedProperty">
+            <summary>
+            An extended property
+            </summary>
+            <remarks>
+            See sp_addextendedproperty in the SQL Server Books online for more information
+            </remarks>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ExtendedProperty.ToString">
+            <summary>
+            A string representation of the extended property
+            </summary>
+            <returns>
+            A string
+            </returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Name">
+            <summary>
+            The name of the extended property
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Value">
+            <summary>
+            The value of the extended property
+            </summary>
+            <remarks>
+            This can be any data type
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level0Type">
+            <summary>
+            The Level0 type of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level0Name">
+            <summary>
+            The Level0 name of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level1Type">
+            <summary>
+            The Level1 type of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level1Name">
+            <summary>
+            The Level1 name of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level2Type">
+            <summary>
+            The Level2 type of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ExtendedProperty.Level2Name">
+            <summary>
+            The Level2 name of the extended property
+            </summary>
+            <remarks>
+            See the SQL Server Books online for more information
+            </remarks>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.SqlType">
+            <summary>
+            A SQL Server data type
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Empty">
+            <summary>
+            Not used
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Binary">
+            <summary>
+            binary
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Varbinary">
+            <summary>
+            varbinary
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Char">
+            <summary>
+            char
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Varchar">
+            <summary>
+            varchar
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.NChar">
+            <summary>
+            nchar
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.NVarchar">
+            <summary>
+            nvarchar
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.DateTime">
+            <summary>
+            datetime
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.SmallDatetime">
+            <summary>
+            smalldatetime
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Decimal">
+            <summary>
+            decimal
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Numeric">
+            <summary>
+            numeric
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Float">
+            <summary>
+            float
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Real">
+            <summary>
+            real
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Integer64">
+            <summary>
+            integer64
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Integer32">
+            <summary>
+            integer32
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Integer16">
+            <summary>
+            integer16
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Byte">
+            <summary>
+            byte
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Money">
+            <summary>
+            money
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.SmallMoney">
+            <summary>
+            smallmoney
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Boolean">
+            <summary>
+            boolean
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Timestamp">
+            <summary>
+            timestamp
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Guid">
+            <summary>
+            guid
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Image">
+            <summary>
+            image
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.NText">
+            <summary>
+            ntext
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Text">
+            <summary>
+            text
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Variant">
+            <summary>
+            variant
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.SqlType.Other">
+            <summary>
+            unknown
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Field">
+            <summary>
+            A SQL Server field
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Field.Equals(RedGate.SQLCompare.Engine.Field,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two fields are equal
+            </summary>
+            <param name="targetField">The field to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.FullTextIndexed">
+            <summary>
+            True if the field is contained in a full text index
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.FullTextLanguage">
+            <summary>
+            The language of any full text index the field belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Scale">
+            <summary>
+            The scale of the field
+            </summary>
+            <remarks>
+            Valid for numeric and decimal data types
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.DefaultText">
+            <summary>
+            The text of the default value of the field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Precision">
+            <summary>
+            The precision of a decimal or numeric data type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.AllowNulls">
+            <summary>
+            True if the field can contain NULL values
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.IdentitySeed">
+            <summary>
+            The identity seed
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.IdentityIncrement">
+            <summary>
+            The identity increment
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Default">
+            <summary>
+            The default bound to the field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.DRIDefault">
+            <summary>
+            The DRI default
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.ComputedText">
+            <summary>
+            The computed text of this field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.RowGUIDCol">
+            <summary>
+            True if the field is a ROWGUIDCOL
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Collation">
+            <summary>
+            The collation order of character fields
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Rule">
+            <summary>
+            The rule bound to this field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.SqlType">
+            <summary>
+            The type of the field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Identity">
+            <summary>
+            True if this is an identity field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Computed">
+            <summary>
+            True if the field is computed
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.NotForReplication">
+            <summary>
+            True if the field is marked as not for replication
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Descending">
+            <summary>
+            True if the field is part of a descending index
+            </summary>
+            <remarks>
+            Only valid if the field belongs to an Index.Fields collection
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.DefinedSize">
+            <summary>
+            The length of the field
+            </summary>
+            <remarks>
+            Only valid for character and binary data
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.Name">
+            <summary>
+            The name of the field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Field.TypeName">
+            <summary>
+            The name of the type of the field
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FieldBinding">
+            <summary>
+            Summary description for Binding.
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FieldBindings">
+            <summary>
+            Summary description for FieldBindings.
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FieldBindings.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FieldBindings.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FieldBindings.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Fields">
+            <summary>
+            A collection of fields
+            </summary>
+            <remarks>
+            A table contains a collection of fields, as does an index.
+            </remarks>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Fields.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Fields.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Fields.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Fields.Item(System.Int32)">
+            <summary>
+            Returns a field
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Fields.Item(System.String)">
+            <summary>
+            Returns a field given its name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FlatFieldList">
+            <summary>
+            Summary description for FlatFieldList.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ForeignKey">
+            <summary>
+            A foreign key
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ForeignKey.Equals(RedGate.SQLCompare.Engine.ForeignKey,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Return true if two foreign keys are identical
+            </summary>
+            <param name="value">The foreign key to compare with</param>
+            <param name="options">The comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.Name">
+            <summary>
+            The name of the foreign key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.ReferencedTable">
+            <summary>
+            The table referenced by the foreign key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.Fields">
+            <summary>
+            The fields in the foreign key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.ReferencedFields">
+            <summary>
+            The fields referenced by the foreign key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.NotForReplication">
+            <summary>
+            True if marked as not for replication
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.UpdateCascade">
+            <summary>
+            True if the key is marked as on update cascade
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.NoCheck">
+            <summary>
+            True if the foreign key is not trusted
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.DeleteCascade">
+            <summary>
+            True if the key is marked as on delete cascade
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKey.Disabled">
+            <summary>
+            True if the key is disabled
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ForeignKeys">
+            <summary>
+            A collection of foreign keys
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ForeignKeys.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ForeignKeys.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.ForeignKeys.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKeys.Item(System.Int32)">
+            <summary>
+            Returns a foreign key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.ForeignKeys.Item(System.String)">
+            <summary>
+            Returns a foreign key given its name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.frmRegistration">
+            <summary>
+            Summary description for frmRegistration.
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.frmRegistration.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.frmRegistration.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.frmRegistration.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FullTextCatalog">
+            <summary>
+            A full text catalog
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FullTextCatalog.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Return true if two full text catalogs are identical
+            </summary>
+            <param name="target">The catalog to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.FullTextCatalog.ObjectType">
+            <summary>
+            ObjectType.FullTextCatalog
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.FullTextCatalog.Database">
+            <summary>
+            The database the object is defined on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.FullTextCatalog.Tables">
+            <summary>
+            The tables belonging to the catalog
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.FullTextCatalog.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the catalog
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FullTextCatalogs">
+            <summary>
+            A collection of full text catalogs
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FullTextCatalogs.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FullTextCatalogs.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FullTextCatalogs.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.FullTextCatalogs.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.FullTextCatalogs.Item(System.String)">
+            <summary>
+            Returns a catalog given its name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.FunctionType">
+            <summary>
+            The type of function
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Function">
+            <summary>
+            A user defined function
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Function.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two functions are identical
+            </summary>
+            <param name="target">The function to compare with</param>
+            <param name="options">The comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.ObjectType">
+            <summary>
+            ObjectType.Function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.FunctionType">
+            <summary>
+            Returns the type of function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.ExtendedProperties">
+            <summary>
+            The extended properties defined on the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.Database">
+            <summary>
+            The database the function belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.Owner">
+            <summary>
+            The owner of the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.Name">
+            <summary>
+            The name of the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.Text">
+            <summary>
+            The text of the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.Permissions">
+            <summary>
+            The permissions assigned to the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.SchemaBound">
+            <summary>
+            True if the function is schema bound
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.QuotedIdentifierOn">
+            <summary>
+            True if the function was created with quoted identifiers on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Function.AnsiNullsOn">
+            <summary>
+            True if the function was created with ansi nulls on
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Functions">
+            <summary>
+            A collection of functions
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Functions.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Functions.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Functions.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Functions.get_UntypedItem(System.String)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Functions.Item(System.Int32)">
+            <summary>
+            Returns a function
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Functions.Item(System.String)">
+            <summary>
+            Returns a function given its name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Functions.Item(System.String,System.String)">
+            <summary>
+            Returns a function given its owner and name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Index">
+            <summary>
+            An index
+            </summary>
+            <remarks>
+            Primary keys, unique constraints and statistics are considered to be special types of index
+            </remarks>
+            
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.FileGroup">
+            <summary>
+            The filegroup the index is defined on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.NoRecompute">
+            <summary>
+            True if the index is defined with NORECOMPUTE
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Pad">
+            <summary>
+            The index padding
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.IgnoreDuplicateKeys">
+            <summary>
+            True if set to ignore duplicate keys
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.FullTextKey">
+            <summary>
+            True if the index is used in a full text key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Statistics">
+            <summary>
+            True if the index is really a statistic
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Name">
+            <summary>
+            The name of the index
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.FillFactor">
+            <summary>
+            The fill factor
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.PrimaryKey">
+            <summary>
+            True if the index is a primary key
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Fields">
+            <summary>
+            The fields in the index
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Clustered">
+            <summary>
+            True if the index is clustered
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.Unique">
+            <summary>
+            True if the index is unique
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Index.UniqueConstraint">
+            <summary>
+            True if the index is a unique constraint
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Indexes">
+            <summary>
+            A collection of indexes
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Indexes.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Indexes.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Indexes.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Indexes.Item(System.Int32)">
+            <summary>
+            Returns an index
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Indexes.Item(System.String)">
+            <summary>
+            Returns an index given a name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Members">
+            <summary>
+            A collection of users or roles
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Members.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Members.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Members.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Members.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Members.Item(System.Int32)">
+            <summary>
+            Returns a user or role
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Members.Item(System.String)">
+            <summary>
+            Returns a user or role given a fully qualified name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Message">
+            <summary>
+            A message
+            </summary>
+            <remarks>
+            See <see cref="T:RedGate.SQLCompare.Engine.Work"/> for more information
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Message.Text">
+            <summary>
+            Text
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Messages">
+            <summary>
+            A collection of messages
+            </summary>
+            <remarks>
+            See <see cref="T:RedGate.SQLCompare.Engine.Work"/> for more information.
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Messages.Item(System.Int32)">
+            <summary>
+            Returns a message
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.NullableBinaryReader">
+            <summary>
+            For internal use only
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.NullableBinaryReader.ReadString">
+            <summary>
+            For internal use only
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.NullableBinaryWriter">
+            <summary>
+            For internal use only
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.NullableBinaryWriter.Write(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="value">For internal use only</param>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.OptionDescriptionAttribute">
+            <summary>
+            Options used in comparison and synchronization
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.OptionDescriptionAttribute.#ctor(System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="friendlyName"></param>
+            <param name="helpText"></param>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.OptionDescriptionAttribute.FriendlyName">
+            <summary>
+            A friendly name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.OptionDescriptionAttribute.HelpText">
+            <summary>
+            Some help text
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Options">
+            <summary>
+            Options used when comparing and synchronizing databases
+            </summary>
+            
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.Default">
+            <summary>
+            The default options for a sensible comparison
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.ForceColumnOrder">
+            <summary>
+            Force table column order to be identical
+            </summary>
+            <remarks>
+            If additional columns are inserted into the middle of a table this option will force a rebuild of the table so the column order after synchronization is correct
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreFillFactor">
+            <summary>
+            Ignore fill factor
+            </summary>
+            <remarks>
+            Ignores the fill factor in indexes when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnorePermissions">
+            <summary>
+            Ignore permissions
+            </summary>
+            <remarks>
+            Ignores permissions on objects when comparing and synchronizing objects
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreWhiteSpace">
+            <summary>
+            Ignore white space
+            </summary>
+            <remarks>
+            Ignores white space (newlines, tabs, spaces etc.) when comparing objects
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreBindings">
+            <summary>
+            Ignore bindings
+            </summary>
+            <remarks>
+            Ignores bindings on columns and user defined types (eg sp_bindrule and sp_bindefault clauses won't be scripted)
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreQuotedIdentifiersAndAnsiNullSettings">
+            <summary>
+            Ignore SET QUOTED_IDENTIFIER and SET ANSI_NULLS statements
+            </summary>
+            <remarks>
+            Ignores these common SET statements when comparing views, stored procedures etc. Note that these statements will still appear in synchronization scripts.
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.CaseSensitiveObjectDefinition">
+            <summary>
+            Treat items as case sensitive
+            </summary>
+            <remarks>
+            Treats object names such as ATable and atable as different, and carries out case sensitive comparisons on stored procedures etc.
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreExtendedProperties">
+            <summary>
+            Ignore extended properties
+            </summary>
+            <remarks>
+            Ignores extended properties when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreFullTextIndexing">
+            <summary>
+            Ignore full text indexing
+            </summary>
+            <remarks>
+            Ignores full text indexes, catalogs etc. when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.NoSQLPlumbing">
+            <summary>
+            Do not include plumbing for transactional synchronization scripts
+            </summary>
+            <remarks>
+            Removes transactions from the synchronization scripts to produce more readable SQL
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreCollations">
+            <summary>
+            Ignore collation order
+            </summary>
+            <remarks>
+            Ignores collation orders on character datatype columns when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreComments">
+            <summary>
+            Ignore comments
+            </summary>
+            <remarks>
+            Ignores comments when comparing views, stored procedures etc. Note that comments will still appear in the synchronization scripts
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreIndexes">
+            <summary>
+            Ignore indexes
+            </summary>
+            <remarks>
+            Ignores indexes, unique constraints and primary keys when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreKeys">
+            <summary>
+            Ignore foreign keys
+            </summary>
+            <remarks>
+            Ignores foreign keys when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreChecks">
+            <summary>
+            Ignore check constraints
+            </summary>
+            <remarks>
+            Ignores check constraints when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreTriggers">
+            <summary>
+            Ignore triggers
+            </summary>
+            <remarks>
+            Ignores triggers when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IncludeDependencies">
+            <summary>
+            Include dependencies
+            </summary>
+            <remarks>
+            Includes dependent objects when comparing and synchronizing databases. For example, if a view depends on a table then the table will be synchronized when synchronizing the view
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreInsteadOfTriggers">
+            <summary>
+            Ignore INSTEAD OF triggers
+            </summary>
+            <remarks>
+            Ignores INSTEAD OF triggers when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreFileGroups">
+            <summary>
+            Ignore file groups
+            </summary>
+            <remarks>
+            Ignores FILEGROUP clauses when comparing and synchronizing databases
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreIdentitySeedAndIncrement">
+            <summary>
+            Ignore identity seed and increment values
+            </summary>
+            <remarks>
+            Ignores identity seed and increment values when comparing databases. Note that they will still appear in synchronization scripts
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreWithNocheck">
+            <summary>
+            Ignore WITH NOCHECK on foreign keys and check constraints
+            </summary>
+            <remarks>
+            Ignores disabled and not trusted flags on foreign keys. Ignores the 'not trusted' flag on foreign keys and check constraints. Note that if foreign keys or constraints are disabled then this will still be flagged.
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreConstraintNames">
+            <summary>
+            Ignore constraint names
+            </summary>
+            <remarks>
+            Ignores the names of foreign keys, indexes, primary keys, default, unique and check constraints when comparing. The names will still be scripted.
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.IgnoreStatistics">
+            <summary>
+            Ignore statistics
+            </summary>
+            <remarks>
+            Ignores statistics when comparing and synchronizing
+            </remarks>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.Options.DoNotOutputCommentHeader">
+            <summary>
+            Do not output comment header
+            </summary>
+            <remarks>
+            Do not include the comment in the header of the output script
+            </remarks>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ParserHelper">
+            <summary>
+            Summary description for ParserHelper.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.PermissionAction">
+            <summary>
+            The action a permission allows
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.References">
+            <summary>
+            References
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.Select">
+            <summary>
+            Select
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.Insert">
+            <summary>
+            Insert
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.Delete">
+            <summary>
+            Delete
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.Update">
+            <summary>
+            Update
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionAction.Execute">
+            <summary>
+            Execute
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.PermissionType">
+            <summary>
+            The type of permission
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionType.None">
+            <summary>
+            None
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionType.Grant">
+            <summary>
+            Grant
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionType.Deny">
+            <summary>
+            Deny
+            </summary>
+        </member>
+        <member name="F:RedGate.SQLCompare.Engine.PermissionType.Revoke">
+            <summary>
+            Revoke
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Permission">
+            <summary>
+            A permission
+            </summary>
+            
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Permission.Fields">
+            <summary>
+            The fields a permission applies to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Permission.Type">
+            <summary>
+            The type of permission
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Permission.Action">
+            <summary>
+            The action the permission applies to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Permission.UserName">
+            <summary>
+            The user or role the permission applies to
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Permissions">
+            <summary>
+            A collection of permissions
+            </summary>
+            
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Permissions.Item(System.Int32)">
+            <summary>
+            Returns a permission
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.PermissionsArray">
+            <summary>
+            Summary description for PermissionsArray.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.PermissionsCollection">
+            <summary>
+            Summary description for Permissions.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Project">
+            <summary>
+            A SQL Compare project
+            </summary>
+            <remarks>
+            Use this class to load projects generated by SQL Compare, or to save projects for SQL Compare.
+            Note that a project only contains connection information. It does not contain information about database schemas.
+            </remarks>
+            <example>
+            Saving and loading a project
+            <code lang="csharp">
+            
+            Project project1=new Project();
+            <![CDATA[
+            project1.ConnectionProperties1=new ConnectionProperties(".", "WidgetProduction");
+            project1.ConnectionProperties2=new ConnectionProperties(".", "WidgetStaging");
+            //this project can now be opened up in SQL Compare
+            project1.SaveToDisk(@"c:\A sample project.scp");
+            
+            //load the project from disk
+            Project project2=Project.LoadFromDisk(@"c:\A sample project.scp");
+            
+            Console.WriteLine(project2.FileName);
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            Dim project1 As New Project()
+            
+            project1.ConnectionProperties1 = New ConnectionProperties(".", "WidgetProduction")
+            project1.ConnectionProperties2 = New ConnectionProperties(".", "WidgetStaging")
+            
+            'this project can now be opened up in SQL Compare
+            project1.SaveToDisk("c:\A sample project.scp")
+            
+            'load the project from disk
+            Dim project2 As Project = Project.LoadFromDisk("c:\A sample project.scp")
+            
+            Console.WriteLine(project2.FileName)
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Project.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Project.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used in serialization
+            </summary>
+            <param name="info">Used in serialization</param>
+            <param name="context">Used in serialization</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Project.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Used in serialization
+            </summary>
+            <param name="info">Used in serialization</param>
+            <param name="context">Used in serialization</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Project.LoadFromDisk(System.String)">
+            <summary>
+            Load a new project from disk
+            </summary>
+            <param name="fileName">The file name</param>
+            <returns>A Project object</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Project.SaveToDisk(System.String)">
+            <summary>
+            Save the project to disk
+            </summary>
+            <param name="fileName">The file name</param>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.Name">
+            <summary>
+            The file name of a project, or "New Project"
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.FileName">
+            <summary>
+            The file name of a project
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.Database1FileName">
+            <summary>
+            The file name of a snapshot for database 1
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.Database2FileName">
+            <summary>
+            The file name of a snapshot for database 2
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.Dirty">
+            <summary>
+            True if the project has been modified
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.ConnectionProperties1">
+            <summary>
+            The connection properties for database 1
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Project.ConnectionProperties2">
+            <summary>
+            The connection properties for database 2
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Region">
+            <summary>
+            A region of text
+            </summary>
+            <remarks>
+            The script for a SQL object is returned as a collection of regions.
+            For example, the SQL script for a table might contain regions for
+            columns, constraints and indexes, foreign keys and permissions
+            <para>Use <see cref="M:RedGate.SQLCompare.Engine.Region.ToString"/> to view all the SQL</para>
+            </remarks>
+            <example>
+            Viewing the SQL script needed to create a table
+            <code lang="csharp">
+            <![CDATA[
+            Database db=new Database();
+            
+            db.Register(new ConnectionProperties(".", "WidgetStaging"), Options.Default);
+            
+            Work work=new Work();
+            
+            //get the script for an object
+            Regions regions=work.ScriptObject(db.Tables[0], Options.Default);
+            
+            Console.WriteLine("Entire SQL script:\n{0}", regions.ToString());
+            
+            Console.WriteLine("By region:\n");
+            
+            foreach (Region region in regions)
+            {
+            	Console.WriteLine("***{0}", region.Name);
+            	Console.WriteLine(region.SQL);
+            }
+            
+            db.Dispose();
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            Dim db As New Database()
+            
+            db.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+            
+            Dim work As New Work()
+            
+            'get the script for an object
+            
+            Dim regions As Regions = work.ScriptObject(db.Tables(0), Options.Default)
+            
+            Console.WriteLine("Entire SQL script:")
+            Console.WriteLine("{0}", regions.ToString())
+            
+            Dim region As Region
+            
+            For Each region In regions
+                Console.WriteLine("***{0}", region.Name)
+                Console.WriteLine(region.SQL)
+            Next
+            
+            'dispose
+            db.Dispose()
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Region.ToString">
+            <summary>
+            The SQL a region contains
+            </summary>
+            <returns>SQL</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Region.SQL">
+            <summary>
+            The SQL a region contains
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Region.Name">
+            <summary>
+            The name of the region
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Regions">
+            <summary>
+            A collection of regions
+            </summary>
+            <remarks>
+            Use the ToString() method to return the text the regions represent
+            <para>See <see cref="T:RedGate.SQLCompare.Engine.Region"/> for more information and code samples</para>
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Regions.ToString">
+            <summary>
+            The SQL a collection of regions contains
+            </summary>
+            <returns>SQL</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Regions.Item(System.Int32)">
+            <summary>
+            Returns a region
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Role">
+            <summary>
+            A role
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Role.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two roles are identical
+            </summary>
+            <param name="target">The role to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Role.ObjectType">
+            <summary>
+            ObjectType.Role
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Role.AppRole">
+            <summary>
+            True if the role is an application role
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Role.Database">
+            <summary>
+            The database the role belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Role.FullyQualifiedName">
+            <summary>
+            The name of the role
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Role.Members">
+            <summary>
+            The users in the role
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Roles">
+            <summary>
+            A collection of roles
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Roles.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Roles.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Roles.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Roles.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Roles.Item(System.Int32)">
+            <summary>
+            Returns a role
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Roles.Item(System.String)">
+            <summary>
+            Returns a role given its name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Rule">
+            <summary>
+            A rule
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Rule.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two rules are equal
+            </summary>
+            <param name="target">A rule to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.ObjectType">
+            <summary>
+            ObjectType.Rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.ExtendedProperties">
+            <summary>
+            The extended properties associated with a rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.Database">
+            <summary>
+            The database the rule belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.Owner">
+            <summary>
+            The owner of the rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.Name">
+            <summary>
+            The name of the rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.Text">
+            <summary>
+            The text of the rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rule.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the rule
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Rules">
+            <summary>
+            A collection of rules
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Rules.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Rules.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Rules.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Rules.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rules.Item(System.Int32)">
+            <summary>
+            Returns a rule
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rules.Item(System.String)">
+            <summary>
+            Returns a rule given a fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Rules.Item(System.String,System.String)">
+            <summary>
+            Returns a rule given an owner and name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.SchemaBinding">
+            <summary>
+            Summary description for SchemaBinding.
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.SchemaBindings">
+            <summary>
+            Summary description for SchemaBindings.
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SchemaBindings.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SchemaBindings.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.SchemaBindings.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.StoredProcedure">
+            <summary>
+            A stored procedure
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.StoredProcedure.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two stored procedures are identical
+            </summary>
+            <param name="target">The stored procedure to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.Database">
+            <summary>
+            The database the stored procedure belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.ExtendedProperties">
+            <summary>
+            The extended properties defined for the stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.ObjectType">
+            <summary>
+            ObjectType.StoredProcedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.Owner">
+            <summary>
+            The owner of the stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.Name">
+            <summary>
+            The name of the stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.Text">
+            <summary>
+            The text of the stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.Permissions">
+            <summary>
+            The permissions on the stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.QuotedIdentifierOn">
+            <summary>
+            True if the stored procedure was created with quoted identifiers on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.AnsiNullsOn">
+            <summary>
+            True if the stored procedure was created with ansi nulls on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedure.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the stored procedure
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.StoredProcedures">
+            <summary>
+            A collection of stored procedures
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.StoredProcedures.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.StoredProcedures.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.StoredProcedures.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.StoredProcedures.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedures.Item(System.Int32)">
+            <summary>
+            Returns a stored procedure
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedures.Item(System.String)">
+            <summary>
+            Returns a stored procedure given a fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.StoredProcedures.Item(System.String,System.String)">
+            <summary>
+            Returns a stored procedure given an owner and name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.StringWriter">
+            <summary>
+            Summary description for StringWriter.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Table">
+            <summary>
+            A table
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Table.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two tables are equal
+            </summary>
+            <param name="targetObject">The table to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.ObjectType">
+            <summary>
+            ObjectType.Table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.FileGroup">
+            <summary>
+            The file group the table is defined on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.TextFileGroup">
+            <summary>
+            The file group the text in the table is defined on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.ExtendedProperties">
+            <summary>
+            The extended properties defined on the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.FullTextIndexed">
+            <summary>
+            True if the table is full text indexed
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.FullTextCatalog">
+            <summary>
+            The full text catalog defined for this table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Database">
+            <summary>
+            The database the table belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Name">
+            <summary>
+            The name of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Owner">
+            <summary>
+            The owner of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.FullTextIndex">
+            <summary>
+            The full text index for the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Fields">
+            <summary>
+            The fields of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Indexes">
+            <summary>
+            The indexes of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.ForeignKeys">
+            <summary>
+            The foreign keys of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.CheckConstraints">
+            <summary>
+            The check constraints of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Triggers">
+            <summary>
+            The triggers of the table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Table.Permissions">
+            <summary>
+            The permissions of the table
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Tables">
+            <summary>
+            A collection of tables
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Tables.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Tables.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Tables.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Tables.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Tables.Item(System.Int32)">
+            <summary>
+            Returns a table
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Tables.Item(System.String,System.String)">
+            <summary>
+            Returns a table given an owner and name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Tables.Item(System.String)">
+            <summary>
+            Returns a table given its fully qualified name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.TableWork">
+            <summary>
+            Summary description for TableWork.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.TableWorks">
+            <summary>
+            Summary description for TableWorks.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.ToolkitLicenceProvider">
+            <summary>
+            Summary description for ToolkitLicenceProvider.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Trigger">
+            <summary>
+            A trigger
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Trigger.Equals(RedGate.SQLCompare.Engine.Trigger,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two triggers are equal
+            </summary>
+            <param name="value">The trigger to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>True or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.QuotedIdentifierOn">
+            <summary>
+            True if the trigger was created with quoted identifiers on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.AnsiNullsOn">
+            <summary>
+            True if the trigger was created with ansi nulls on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.Text">
+            <summary>
+            The text of the trigger
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.FullyQualifiedName">
+            <summary>
+            The fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.Update">
+            <summary>
+            True if the trigger is for update
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.Insert">
+            <summary>
+            True if the trigger is for insert
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.Delete">
+            <summary>
+            True if the trigger is for delete
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.After">
+            <summary>
+            True if the trigger is for after
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Trigger.InsteadOf">
+            <summary>
+            True if the trigger is an instead of trigger
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Triggers">
+            <summary>
+            A collection of triggers
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Triggers.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Triggers.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Triggers.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Triggers.Item(System.Int32)">
+            <summary>
+            Returns a trigger
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Triggers.Item(System.String)">
+            <summary>
+            Returns a trigger given its fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Triggers.Item(System.String,System.String)">
+            <summary>
+            Returns a trigger given its name and owner
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.UDTBinding">
+            <summary>
+            Summary description for Binding.
+            </summary>
+            
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.UDTBindings">
+            <summary>
+            Summary description for UDTBindings.
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UDTBindings.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UDTBindings.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UDTBindings.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.User">
+            <summary>
+            A user
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.User.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two users are identical
+            </summary>
+            <param name="target">The user to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.Database">
+            <summary>
+            The database the user belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.ObjectType">
+            <summary>
+            ObjectType.User
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.ExtendedProperties">
+            <summary>
+            The extended properties defined for the user
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.FullyQualifiedName">
+            <summary>
+            The name of the user
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.LoginName">
+            <summary>
+            The login name of the user
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.IsWindowsUser">
+            <summary>
+            True if the user is a Windows user
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.User.IsSQLUser">
+            <summary>
+            True if the user is a SQL user
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.UserDefinedType">
+            <summary>
+            A user defined type
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UserDefinedType.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two user defined types are identical
+            </summary>
+            <param name="target">The user defined type to compare to</param>
+            <param name="options">The comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.ObjectType">
+            <summary>
+            ObjectType.UserDefinedType
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Database">
+            <summary>
+            The database the user defined type belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.ExtendedProperties">
+            <summary>
+            The extended properties defined for the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Rule">
+            <summary>
+            The rule bound to the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Default">
+            <summary>
+            The default bound to the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.BaseTypeName">
+            <summary>
+            The name of the underlying type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.AllowNulls">
+            <summary>
+            True if the user defined type allows nulls
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Length">
+            <summary>
+            The length of the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Precision">
+            <summary>
+            The precision of the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Scale">
+            <summary>
+            The scale of the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.SqlType">
+            <summary>
+            The underlying type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Owner">
+            <summary>
+            The owner of the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.Name">
+            <summary>
+            The name of the user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedType.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the user defined type
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.UserDefinedTypes">
+            <summary>
+            A collection of user defined types
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UserDefinedTypes.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UserDefinedTypes.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UserDefinedTypes.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.UserDefinedTypes.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedTypes.Item(System.Int32)">
+            <summary>
+            Returns a user defined type
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedTypes.Item(System.String)">
+            <summary>
+            Returns a user defined type given a fully qualified name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.UserDefinedTypes.Item(System.String,System.String)">
+            <summary>
+            Returns a user defined type given an owner and a name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Users">
+            <summary>
+            A collection of users
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Users.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Users.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Users.get_UntypedItem(System.String)">
+            <summary>
+            For internal use only
+            </summary>
+            <param name="fullyQualifiedName">For internal use only</param>
+            <returns>For internal use only</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Users.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Users.Item(System.Int32)">
+            <summary>
+            Returns a user
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Users.Item(System.String)">
+            <summary>
+            Returns a user given a fully qualified name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Utils">
+            <summary>
+            A class providing utility functions
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.View">
+            <summary>
+            A view
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.View.Equals(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            True if two views are identical
+            </summary>
+            <param name="target">The view to compare with</param>
+            <param name="options">Comparison options</param>
+            <returns>true or false</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Database">
+            <summary>
+            The database the view belongs to
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.ObjectType">
+            <summary>
+            ObjectType.View
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.ExtendedProperties">
+            <summary>
+            The extended properties defined for the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.SchemaBound">
+            <summary>
+            True if the view is schema bound
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Triggers">
+            <summary>
+            The triggers defined on the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.QuotedIdentifierOn">
+            <summary>
+            True if the view was created with quoted identifiers on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.AnsiNullsOn">
+            <summary>
+            True if the view was created with ansi nulls on
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Indexes">
+            <summary>
+            Indexes defined on the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Name">
+            <summary>
+            The name of the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Owner">
+            <summary>
+            The owner of the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.FullyQualifiedName">
+            <summary>
+            The fully qualified name of the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Permissions">
+            <summary>
+            The permissions defined on the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Fields">
+            <summary>
+            The fields belonging to the view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.View.Text">
+            <summary>
+            The text of the view
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Views">
+            <summary>
+            A collection of views
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Views.SerializeItem(System.Object,RedGate.SQLCompare.Engine.NullableBinaryWriter)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Views.DeserializeItem(RedGate.SQLCompare.Engine.NullableBinaryReader)">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Views.get_UntypedItem(System.String)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="fullyQualifiedName">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Views.GetKey(System.Object)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="value">For internal use</param>
+            <returns>For internal use</returns>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Views.Item(System.Int32)">
+            <summary>
+            Returns a view
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Views.Item(System.String,System.String)">
+            <summary>
+            Returns a view given an owner and name
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Views.Item(System.String)">
+            <summary>
+            Returns a view given a fully qualified name
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.Work">
+            <summary>
+            Used to calculate work to be done to synchronize databases
+            </summary>
+            <remarks>
+            The Work class is used to convert a set of <see cref="T:RedGate.SQLCompare.Engine.Differences"/> into
+            an <see cref="P:RedGate.SQLCompare.Engine.Work.ExecutionBlock"/> containing SQL which can be used to synchronize two databases.
+            It also provides <see cref="P:RedGate.SQLCompare.Engine.Work.Warnings"/> and <see cref="P:RedGate.SQLCompare.Engine.Work.Messages"/> about the work to be done.
+            <para><see cref="M:RedGate.SQLCompare.Engine.Work.ScriptObject(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)"/> can also be used to generate scripts for individual database objects</para>
+            <para>Note that you should not re-use a Work object - you should re-create a new object every time</para>
+            </remarks>
+            <example>
+            Comparing and synchronizing two databases
+            <code lang="csharp">
+            <![CDATA[
+            Database db1=new Database();
+            Database db2=new Database();
+            
+            db1.Register(new ConnectionProperties(".", "WidgetStaging"), Options.Default);
+            db2.Register(new ConnectionProperties(".", "WidgetProduction"), Options.Default);
+            
+            Differences differences=db1.CompareWith(db2, Options.Default);
+            
+            foreach (Difference difference in differences)
+            {
+            	//make sure the difference is selected so it is included in the synchronization
+            	difference.Selected=true;
+            }
+            
+            Work work=new Work();
+            
+            //calculate the work to do using sensible default options
+            //the script is to be run on WidgetProduction so the runOnTwo parameter is true
+            work.BuildFromDifferences(differences, Options.Default, true);
+            
+            //we can now access the messages and warnings
+            
+            Console.WriteLine("Messages:");
+            
+            foreach (Message message in work.Messages)
+            {
+            	Console.WriteLine(message.Text);
+            }
+            
+            Console.WriteLine("Warnings:");
+            
+            foreach (Message message in work.Warnings)
+            {
+            	Console.WriteLine(message.Text);
+            }
+            
+            //print out the SQL used to synchronize
+            
+            ExecutionBlock block=work.ExecutionBlock;
+            
+            Console.WriteLine("SQL to synchronize:");
+            
+            Console.WriteLine(block.ToString());
+            
+            //and run the SQL
+            
+            RedGate.SQL.Shared.Utils utils=new RedGate.SQL.Shared.Utils();
+            utils.ExecuteBlock(block, ".", "WidgetProduction");
+            
+            //dispose of the objects
+            block.Dispose();
+            db1.Dispose();
+            db2.Dispose();
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            
+            Dim db1 As Database = New Database()
+            Dim db2 As Database = New Database()
+            
+            
+            db1.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+            db2.Register(New ConnectionProperties(".", "WidgetProduction"), Options.Default)
+            
+            Dim differences As Differences = db1.CompareWith(db2, Options.Default)
+            
+            Dim difference As Difference
+            
+            For Each difference In differences
+                'make sure the difference is selected so it is included in the synchronization
+                difference.Selected = True
+            Next
+            
+            Dim work As Work = New Work()
+            
+            'calculate the work to do using sensible default options
+            'the script is to be run on WidgetProduction so the runOnTwo parameter is true
+            
+            work.BuildFromDifferences(differences, Options.Default, True)
+            
+            'we can now access the messages and warnings
+            
+            Console.WriteLine("Messages:")
+            
+            Dim message As Message
+            
+            For Each message In work.Messages
+                Console.WriteLine(message.Text)
+            Next
+            
+            Console.WriteLine("Warnings:")
+            
+            For Each message In work.Warnings
+                Console.WriteLine(message.Text)
+            Next
+            
+            
+            'print out the SQL used to synchronize
+            
+            Dim block As ExecutionBlock = work.ExecutionBlock
+            
+            Console.WriteLine("SQL to synchronize:")
+            
+            Console.WriteLine(block.ToString())
+            
+            'and run the SQL
+            
+            Dim utils As Utils = New Utils()
+            
+            utils.ExecuteBlock(block, ".", "WidgetProduction")
+            
+            'dispose of the objects
+            block.Dispose()
+            db1.Dispose()
+            db2.Dispose()
+            ]]>
+            </code>
+            </example>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.#ctor">
+            <summary>
+            Constructor
+            </summary>
+            
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.BuildFromDifferences(RedGate.SQLCompare.Engine.Differences,RedGate.SQLCompare.Engine.Options,System.Boolean)">
+            <summary>
+            Build the work object from a set of differences
+            </summary>
+            <param name="differences">The differences to use</param>
+            <param name="options">The synchronization options</param>
+            <param name="runOnTwo">True if the SQL is to be run on the second database</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.BuildFromDifferences(RedGate.SQLCompare.Engine.Differences,RedGate.SQLCompare.Engine.Difference,RedGate.SQLCompare.Engine.Options,System.Boolean)">
+            <summary>
+            Build the work object from an individual difference
+            </summary>
+            <param name="differences">The differences to use</param>
+            <param name="onlyDifferenceToInclude">The single difference to include</param>
+            <param name="options">The synchronization options</param>
+            <param name="runOnTwo">True if the SQL is to be run on the second database</param>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.ScriptObject(RedGate.SQLCompare.Engine.IDatabaseObject,RedGate.SQLCompare.Engine.Options)">
+            <summary>
+            Returns the script necessary to create a SQL object
+            </summary>
+            <remarks>
+            This creates SQL code used to create an object such as a table, view or stored procedure
+            </remarks>
+            <example>
+            <code lang="csharp">
+            
+            Database db=new Database();
+            <![CDATA[
+            db.Register(new ConnectionProperties(".", "WidgetStaging"), Options.Default);
+            
+            Work work=new Work();
+            
+            //get the script for an object
+            Regions regions=work.ScriptObject(db.Tables[0], Options.Default);
+            
+            Console.WriteLine("SQL script:\n{0}", regions.ToString());
+            
+            db.Dispose();
+            ]]>
+            </code>
+            <code lang="vb">
+            <![CDATA[
+            Dim db As New Database()
+            
+            db.Register(New ConnectionProperties(".", "WidgetStaging"), Options.Default)
+            
+            Dim work As New Work()
+            
+            'get the script for an object
+            
+            Dim regions As Regions = work.ScriptObject(db.Tables(0), Options.Default)
+            
+            Console.WriteLine("SQL script:")
+            Console.WriteLine("{0}", regions.ToString())
+            
+            'dispose
+            db.Dispose()
+            ]]>
+            </code>
+            </example>
+            <param name="objectToScript">The object to script</param>
+            <param name="options">The options to use when scripting</param>
+            <returns>A regions collection containing batches of SQL</returns>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.CancelOperation">
+            <summary>
+            Cancels the current operation
+            </summary>
+        </member>
+        <member name="M:RedGate.SQLCompare.Engine.Work.OnStatus(RedGate.SQL.Shared.StatusEventArgs)">
+            <summary>
+            Fires the Status event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Work.ExecutionBlock">
+            <summary>
+            A block of SQL batches containing synchronization script
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Work.CanRollBackOnFailure">
+            <summary>
+            True if the transaction can be completely rolled back on failure
+            </summary>
+            <remarks>
+            Some synchronization commands cannot take part in transactions. For example, if a full text operation
+            fails then it cannot be rolled back.
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Work.Messages">
+            <summary>
+            Informational messages about the work to be done
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Work.Warnings">
+            <summary>
+            Warnings about the work to be done
+            </summary>
+        </member>
+        <member name="P:RedGate.SQLCompare.Engine.Work.Status">
+            <summary>
+            The event handler for status events
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.WorkItem">
+            <summary>
+            Summary description for WorkItem.
+            </summary>
+        </member>
+        <member name="T:RedGate.SQLCompare.Engine.WorkItems">
+            <summary>
+            Summary description for WorkItems.
+            </summary>
+        </member>
+    </members>
+</doc>

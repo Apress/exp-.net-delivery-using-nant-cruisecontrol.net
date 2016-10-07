@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<project>
+     <loadtasks assembly="D:\dotNetDelivery\Chapter8\Etomic.NAntExtensions\RedGateDBTasks\bin\Debug\Etomic.NAntExtensions.RedGateDBTasks.dll"/>
+     <dbAutoIntegrate 
+          folder="D:\dotNetDelivery\Chapter8\DBTest2\" 
+          server="localhost"
+          database="TestDB-Development"
+          uid="sa"
+          pwd="w1bbl3"
+          write="true"
+          caption="0"
+          >
+          <databases>
+               <database server="localhost" database="TestDB-Integration" uid="sa" pwd="w1bbl3" write="true"/>
+               <database server="localhost" database="TestDB-System" uid="sa" pwd="w1bbl3" write="true"/>
+          </databases>
+</dbAutoIntegrate>
+</project>
+

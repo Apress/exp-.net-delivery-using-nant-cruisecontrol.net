@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<project name="Samples" default="build">
+
+    <!--
+        Required properties:
+            * bin.dir               - bin directory
+            * src.dir               - source location(build) or target(copy)
+            * build.debug           - (true|false) debug build?
+            * build.defines.csc     - build defines for build config
+    -->
+
+    <target name="build" depends="copy">
+        <csc target="library" output="${bin.dir}/csharp-sample.dll" 
+          define="${build.defines.csc}">
+            <sources basedir="${src.dir}/samples/csharp">
+                <include name="*.cs"/>
+            </sources>
+            <references>
+                <include name="${bin.dir}/nunit.framework.dll"/>
+            </references>
+        </csc>
+    </target>
+
+    <target name="copy">
+        <copy todir="${src.dir}/samples/csharp">
+            <fileset basedir=".">
+                <include name="csharp-sample.csproj"/>
+                <include name="csharp-sample.build"/>
+                <include name="*.cs"/>
+                <include name="readme.txt"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

@@ -1,0 +1,61 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformerEngine", "TransformerEngine\TransformerEngine.csproj", "{6B154458-F1CE-4AF4-8555-B229B31479DA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformerGui", "TransformerGui\TransformerGui.csproj", "{8BF8E570-F51A-48DB-A7B9-90D3CAF2AE1D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformerTests", "TransformerTests\TransformerTests.csproj", "{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {19954F99-F621-4DD0-96EB-C8F054EDEDD7}
+		SccProjectUniqueName1 = TransformerEngine\\TransformerEngine.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = TransformerEngine\\
+		SccProjectUniqueName2 = TransformerGui\\TransformerGui.csproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = TransformerGui\\
+		SccProjectUniqueName3 = TransformerTests\\TransformerTests.csproj
+		SccLocalPath3 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection3 = TransformerTests\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Debug.ActiveCfg = Debug|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Debug.Build.0 = Debug|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Release.ActiveCfg = Release|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Release.Build.0 = Release|.NET
+		{8BF8E570-F51A-48DB-A7B9-90D3CAF2AE1D}.Debug.ActiveCfg = Debug|.NET
+		{8BF8E570-F51A-48DB-A7B9-90D3CAF2AE1D}.Debug.Build.0 = Debug|.NET
+		{8BF8E570-F51A-48DB-A7B9-90D3CAF2AE1D}.Release.ActiveCfg = Release|.NET
+		{8BF8E570-F51A-48DB-A7B9-90D3CAF2AE1D}.Release.Build.0 = Release|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Debug.ActiveCfg = Debug|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Debug.Build.0 = Debug|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Release.ActiveCfg = Release|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+		Transformer.fxcop = Transformer.fxcop
+		Transformer.ndoc = Transformer.ndoc
+		Transformer.nunit = Transformer.nunit
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

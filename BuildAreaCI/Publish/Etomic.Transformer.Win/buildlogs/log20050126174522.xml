@@ -1,0 +1,66 @@
+﻿<cruisecontrol project="Etomic.Transformer.Win">
+  <modifications>
+    <modification type="unknown">
+      <filename>Etomic.Library.Transformer.Engine.dll</filename>
+      <project>D:\BookCode\Assemblies\Etomic.Library.Transformer\Latest</project>
+      <date>26 Jan 2005 17:41:38</date>
+      <user />
+      <comment />
+      <changeNumber>0</changeNumber>
+    </modification>
+    <modification type="unknown">
+      <filename>Etomic.Library.Transformer.Engine_1.0.2.0.dll</filename>
+      <project>D:\BookCode\Assemblies\Etomic.Library.Transformer\Specific</project>
+      <date>26 Jan 2005 17:41:38</date>
+      <user />
+      <comment />
+      <changeNumber>0</changeNumber>
+    </modification>
+  </modifications>
+  <build date="26/01/2005 17:45:22" buildtime="00:00:02" error="true" buildcondition="IfModificationExists">
+    <buildresults project="Build.Core">
+      <message level="Info"><![CDATA[Buildfile: file:///D:/BookCode/Chapter7/Build.Core.xml]]></message>
+      <message level="Info"><![CDATA[Target(s) specified: ci]]></message>
+      <task name="description" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="property" />
+      <task name="sysinfo">
+        <message level="Info"><![CDATA[Setting system information properties under sys.*]]></message>
+      </task>
+      <task name="loadtasks" />
+      <task name="call">
+        <target name="fail">
+          <task name="echo">
+            <message level="Info"><![CDATA[Notifying you of a failure in the build process.]]></message>
+          </task>
+        </target>
+      </task>
+      <failure>
+        <builderror>
+          <type>NAnt.Core.BuildException</type>
+          <message><![CDATA[Path "D:\Program Files\Etomic.NAntExtensions\1.0.2.0\" does not exist. Can't scan for extensions.]]></message>
+          <location>
+            <filename>D:\BookCode\Chapter7\Build.Core.xml</filename>
+            <linenumber>22</linenumber>
+            <columnnumber>7</columnnumber>
+          </location>
+          <stacktrace><![CDATA[   at NAnt.Core.Tasks.LoadTasksTask.ExecuteTask()
+   at NAnt.Core.Task.Execute()
+   at NAnt.Core.Project.InitializeProjectDocument(XmlDocument doc)
+   at NAnt.Core.Project.Execute()
+   at NAnt.Core.Project.Run()]]></stacktrace>
+        </builderror>
+      </failure>
+    </buildresults>
+  </build>
+</cruisecontrol>

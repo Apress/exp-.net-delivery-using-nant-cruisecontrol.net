@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<ProjectSet>
+	<Settings	
+		CompanyName="Etomic"
+		CcnetUrl="http://localhost/ccnet"
+		VssFolder="D:\BookCode\VSS"
+		VssUsername="builder"
+		VssPassword="builder"
+		EnvironmentMain="D:\BookCode\BuildAreaCI"
+		EnvironmentTempDeploy="D:\TempDeploy"
+		BaseDirectory="D:\BookCode\Chapter9\" 
+		/>
+	<Projects>
+		<Project Name="Library.Transformer" ProjectType="Library" HasDatabase="false">
+			<OutputAssemblies>
+				<OutputAssembly Name="Engine" AssemblyType="dll" ShouldTest="false" ShouldDocument="true"/>
+				<OutputAssembly Name="Tests" AssemblyType="dll" ShouldTest="true" ShouldDocument="false"/>
+			</OutputAssemblies>
+		</Project>
+		<Project Name="Blah.Test" ProjectType="Library" HasDatabase="false">
+			<OutputAssemblies>
+				<OutputAssembly Name="Scooby" AssemblyType="dll" ShouldTest="false" ShouldDocument="true"/>
+				<OutputAssembly Name="Tests" AssemblyType="dll" ShouldTest="true" ShouldDocument="false"/>
+			</OutputAssemblies>
+		</Project>
+	</Projects>
+</ProjectSet>

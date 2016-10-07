@@ -1,0 +1,34 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralTasks", "GeneralTasks\GeneralTasks.csproj", "{7B151E12-FC7B-4E57-984D-92418A0781F5}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 2
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {7945DB6B-75E5-42D2-8FED-D1E300278E26}
+		SccProjectUniqueName1 = GeneralTasks\\GeneralTasks.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = GeneralTasks\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7B151E12-FC7B-4E57-984D-92418A0781F5}.Debug.ActiveCfg = Debug|.NET
+		{7B151E12-FC7B-4E57-984D-92418A0781F5}.Debug.Build.0 = Debug|.NET
+		{7B151E12-FC7B-4E57-984D-92418A0781F5}.Release.ActiveCfg = Release|.NET
+		{7B151E12-FC7B-4E57-984D-92418A0781F5}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

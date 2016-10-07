@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="Etomic.Library.Transformer" default="help">
+	<description>Deploy file for the Etomic.Library.Transformer application</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="Etomic"/>
+	<property name="solution.name" value="${company.name}.Transformer.Win"/>
+
+	<property name="core.publish" value="http://localhost/ccnet/files/${solution.name}"/>
+
+	<property name="core.deploy" value="D:\dotNetDelivery\TempDeploy"/>
+	<property name="core.environment" value="D:\dotNetDelivery\Program Files\${solution.name}"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, selectenvironments, createenvironments, position, configure, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<if test="${debug}">
+			<property name="sys.version" value="0.0.0.0"/>
+		</if>
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+			<delete dir="${core.deploy}\" failonerror="false"/>
+			<mkdir dir="${core.deploy}\${sys.version}\"/>
+               <get 
+                     src="${core.publish}/${solution.name}-Build-${sys.version}.zip"
+                     dest="${core.deploy}\${solution.name}-Build-${sys.version}.zip" 
+                   />
+			<unzip zipfile="${core.deploy}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\${sys.version}\"/>
+	</target>
+
+	<target name="selectenvironments" description="Select environments">
+		<!--Enter tasks for selectenvironments target-->
+	</target>
+
+	<target name="createenvironments" description="Create the environments required">
+		<mkdir dir="${core.environment}\${sys.version}\" failonerror="false"/>
+	</target>
+
+	<target name="position" description="Place required assets">
+		<copy todir="${core.environment}\${sys.version}\">
+			<fileset basedir="${core.deploy}\${sys.version}">
+				<include name="**"/>
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="configure" description="Amend configuration settings as necessary">
+		<!--Enter tasks for configure target-->
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the deploy process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the deploy process."/>
+	</target>
+
+	<target name="help">
+		<!--Enter tasks for help target-->
+		<echo message="The skeleton file for the deploy process is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- selectenvironments"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- configure"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="D:\dotNetDelivery\BuildArea\Output\TransformerTests.dll" total="3" failures="0" not-run="0" date="07/02/2005" time="21:59">
+  <test-suite name="D:\dotNetDelivery\BuildArea\Output\TransformerTests.dll" success="True" time="0.3125" asserts="0">
+    <results>
+      <test-suite name="TransformerTests" success="True" time="0.3125" asserts="0">
+        <results>
+          <test-suite name="EngineTests" success="True" time="0.3125" asserts="0">
+            <results>
+              <test-case name="TransformerTests.EngineTests.TestReadWriteContents" executed="True" success="True" time="0.016" asserts="2" />
+              <test-case name="TransformerTests.EngineTests.TestTransformXml" executed="True" success="True" time="0.266" asserts="1" />
+              <test-case name="TransformerTests.EngineTests.TestEmptySaveContent" executed="True" success="True" time="0.000" asserts="0" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

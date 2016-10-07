@@ -1,0 +1,58 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{B3301DCB-CAD6-451C-B83E-B39D38B85BA8}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{0F84C077-EAE5-485D-A8DC-C0AE455739C1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{20384C23-0A31-417C-8F37-50F9A0FBA58A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 4
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {273BABD1-7143-40D9-9990-9297385F3E7B}
+		SccProjectUniqueName1 = Engine\\Engine.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = Engine\\
+		SccProjectUniqueName2 = Tests\\Tests.csproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = Tests\\
+		SccProjectUniqueName3 = UI\\UI.csproj
+		SccLocalPath3 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection3 = UI\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{B3301DCB-CAD6-451C-B83E-B39D38B85BA8}.Debug.ActiveCfg = Debug|.NET
+		{B3301DCB-CAD6-451C-B83E-B39D38B85BA8}.Debug.Build.0 = Debug|.NET
+		{B3301DCB-CAD6-451C-B83E-B39D38B85BA8}.Release.ActiveCfg = Release|.NET
+		{B3301DCB-CAD6-451C-B83E-B39D38B85BA8}.Release.Build.0 = Release|.NET
+		{0F84C077-EAE5-485D-A8DC-C0AE455739C1}.Debug.ActiveCfg = Debug|.NET
+		{0F84C077-EAE5-485D-A8DC-C0AE455739C1}.Debug.Build.0 = Debug|.NET
+		{0F84C077-EAE5-485D-A8DC-C0AE455739C1}.Release.ActiveCfg = Release|.NET
+		{0F84C077-EAE5-485D-A8DC-C0AE455739C1}.Release.Build.0 = Release|.NET
+		{20384C23-0A31-417C-8F37-50F9A0FBA58A}.Debug.ActiveCfg = Debug|.NET
+		{20384C23-0A31-417C-8F37-50F9A0FBA58A}.Debug.Build.0 = Debug|.NET
+		{20384C23-0A31-417C-8F37-50F9A0FBA58A}.Release.ActiveCfg = Release|.NET
+		{20384C23-0A31-417C-8F37-50F9A0FBA58A}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

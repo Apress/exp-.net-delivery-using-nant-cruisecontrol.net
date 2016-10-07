@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<ProjectSet xmlns="http://www.etomic.co.uk">
+	<Settings	
+		CompanyName="Etomic"
+		CcnetUrl="http://localhost/ccnet"
+		VssFolder="D:\dotNetDelivery\VSS"
+		VssUsername="builder"
+		VssPassword="builder"
+		EnvironmentMain="D:\dotNetDelivery\BuildAreaCI"
+		EnvironmentTempDeploy="D:\dotNetDelivery\TempDeploy"
+		/>
+	<Projects>
+		<Project Name="Library.Transformer" ProjectType="Library" HasDatabase="false">
+			<OutputAssemblies>
+				<OutputAssembly Name="Engine" AssemblyType="dll" ShouldTest="false" ShouldDocument="true"/>
+				<OutputAssembly Name="Tests" AssemblyType="dll" ShouldTest="true" ShouldDocument="false"/>
+			</OutputAssemblies>
+		</Project>
+	</Projects>
+</ProjectSet>

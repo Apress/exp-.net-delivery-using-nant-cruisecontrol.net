@@ -1,0 +1,169 @@
+
+<project name="Etomic.NAntExtensions" default="help">
+	<description>Build file for the Etomic.NAntExtensions system.</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="Etomic"/>
+	<property name="solution.name" value="${company.name}.NAntExtensions"/>
+
+	<property name="core.directory" value="D:\dotNetDelivery\BuildAreaCI"/>
+	<property name="core.source" value="${core.directory}\Source\${solution.name}"/>
+	<property name="core.output" value="${core.directory}\Output\${solution.name}"/>
+	<property name="core.docs" value="${core.directory}\Docs\${solution.name}"/>
+	<property name="core.reports" value="${core.directory}\Reports\${solution.name}"/>
+	<property name="core.distribution" value="${core.directory}\Distribution\${solution.name}"/>
+	<property name="core.publish" value="${core.directory}\Publish\${solution.name}"/>
+
+	<property name="vss.dbpath" value="D:\dotNetDelivery\VSS\srcsafe.ini"/>
+	<property name="vss.path" value="$/Solutions/${solution.name}/"/>
+
+	<sysinfo/>
+	
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NAntContrib\0.85rc2\bin\NAnt.Contrib.Tasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Tools\NUnit2Report\1.2.2\bin\NAnt.NUnit2ReportTasks.dll"/>
+     <loadtasks assembly="D:\dotNetDelivery\Tools\Etomic.NAntExtensions\Etomic.NAntExtensions.GeneralTasks.dll"/>
+	
+	<target name="go" description="The main target for full build process execution." depends="clean, get, version1, version2, build, test, document, publish, notify"/>
+    <target name="ci" description="The main target for continuous integration." depends="clean, version1, version2, build, test, document, publish, notify"/>
+
+	<target name="clean" description="Clean up the build environment.">
+
+		<delete dir="${core.output}\" failonerror="false"/>
+		<delete dir="${core.docs}\" failonerror="false"/>
+		<delete dir="${core.reports}\" failonerror="false"/>
+		<delete dir="${core.distribution}\" failonerror="false"/>
+
+		<mkdir dir="${core.source}\" failonerror="false"/>
+		<mkdir dir="${core.output}\" failonerror="false"/>
+		<mkdir dir="${core.docs}\" failonerror="false"/>
+		<mkdir dir="${core.reports}\" failonerror="false"/>
+		<mkdir dir="${core.distribution}\" failonerror="false"/>
+		<mkdir dir="${core.publish}\" failonerror="false"/>
+
+	</target>
+
+	<target name="get" description="Grab the source code.">
+		<vssget
+			user="builder"
+			password="builder"
+			localpath="${core.source}\"
+			recursive="true"
+			replace="true"
+			dbpath="${vss.dbpath}"
+			path="${vss.path}"
+		/>
+	</target>
+
+	<target name="version1" description="Apply versioning to the source code files.">
+
+     	<property name="sys.version" value="0.0.0.0"/>
+
+		<ifnot test="${debug}">
+			<property name="sys.version" value="${ccnet.label}.0"/>
+		</ifnot>
+
+		<attrib file="${core.source}\CommonAssemblyInfo.cs" readonly="false" />
+
+		<asminfo output="${core.source}\CommonAssemblyInfo.cs" language="CSharp">
+			<imports>
+				<import name="System" />
+				<import name="System.Reflection"/>
+			</imports>
+			<attributes>
+				<attribute type="AssemblyVersionAttribute" value="${sys.version}" />
+				<attribute type="AssemblyProductAttribute" value="${solution.name}" />
+				<attribute type="AssemblyCopyrightAttribute" value="Copyright (c) 2005, ${company.name} Ltd."/>
+			</attributes>
+		</asminfo>
+
+		<attrib file="${core.source}\CommonAssemblyInfo.cs" readonly="true" />
+	</target>
+
+	<target name="version2">
+		<ifnot test="${debug}">
+			<vsslabel
+				user="builder"
+				password="builder"
+				dbpath="${vss.dbpath}"
+				path="${vss.path}"
+				comment="Automated Label"
+				label="NAnt - ${sys.version}"
+			/>
+		</ifnot>
+	</target>
+
+	<target name="build" description="Compile the application.">
+		<solution solutionfile="${core.source}\${solution.name}.sln" configuration="Debug" outputdir="${core.output}\"/>
+	</target>
+
+	<target name="test" description="Apply the unit tests.">
+
+		<fxcop executable="D:\dotNetDelivery\Tools\FxCop\1.30\FxCopCmd.exe" report="${core.reports}\fxcop.xml" failonerror="false">
+          <targets basedir="${core.output}">
+               <include name="${solution.name}*.dll" />
+               <include name="${solution.name}*.exe" />
+               <exclude name="*Tests*" />
+          </targets>
+          <ruleset basedir=" D:\dotNetDelivery\Tools\FxCop\1.30\Rules">
+               <include name="*.dll" />
+          </ruleset>
+    	</fxcop>
+
+		<style style="D:\dotNetDelivery\Tools\FxCop\1.30\Xml\FxCopReport.xsl" in="${core.reports}\fxcop.xml" out="${core.reports}\fxcop.html"/>
+		
+		<property name="nant.onfailure" value="fail"/>
+	
+	</target>
+
+	<target name="document" description="Generate documentation and reports.">
+	</target>
+
+	<target name="publish" description="Place the compiled assets, reports etc. in agreed location.">
+		<copy todir="${core.distribution}\">
+			<fileset basedir="${core.output}\">
+				<include name="*.dll"/>
+				<include name="*.exe"/>
+				<exclude name="*Tests*"/>
+			</fileset>
+		</copy>
+
+		<zip zipfile="${core.publish}\${solution.name}-Build-${sys.version}.zip">
+			<fileset basedir="${core.distribution}\">
+				<include name="**" />
+			</fileset>
+		</zip>
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the build process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the build process."/>
+	</target>
+
+	<target name="fail.test">
+		<nunit2report out="${core.reports}\NUnit.html">
+			<fileset>
+			</fileset>
+		</nunit2report>
+	</target>
+
+	<target name="help">
+		<echo message="The skeleton file for the build process is designed to execute the following targets in turn:"/>
+		<echo message="-- clean"/>
+		<echo message="-- get"/>
+		<echo message="-- version"/>
+		<echo message="-- build"/>
+		<echo message="-- test"/>
+		<echo message="-- document"/>
+		<echo message="-- publish"/>
+		<echo message="-- notify"/>
+		<echo message="This file should be run with a Boolean value for 'debug'."/>
+		<echo message="-- True indicates that no versioning be set (0.0.0.0)."/>
+		<echo message="-- False indicates that a regular version be set(1.0.x.0)."/>
+		<echo message="Example: -D:debug=true"/>
+	</target>
+
+</project>

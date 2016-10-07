@@ -1,0 +1,87 @@
+<%-- 
+Name: 			deploy.xml.cst
+Author: 		Marc Holmes
+Description: 	Providing the project deploy file using an XML file.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="Providing the project deploy file using an XML file." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation.2" %>
+<%@ Import Namespace="Etomic.CodeSmithExtensions.BuildAutomation" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+<%@ Property Name="ProjectNumber" Type="System.Int32" Description="The project element to use."%>
+
+<%
+Project p = ProjectSet.Projects[ProjectNumber];
+SettingCollection s = ProjectSet.Settings;
+%>
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="<%=s["CompanyName"]%>.<%=p.Name%>" default="help">
+	<description>Deploy file for the <%=s["CompanyName"]%>.<%=p.Name%> application</description>
+
+	<property name="nant.onfailure" value="fail"/>
+
+	<property name="company.name" value="<%=s["CompanyName"]%>"/>
+	<property name="solution.name" value="${company.name}.<%=p.Name%>"/>
+	
+	<property name="core.publish" value="<%=s["CcnetUrl"]%>/files/${solution.name}"/>
+
+	<property name="core.deploy" value="<%=s["EnvironmentTempDeploy"]%>"/>
+	<property name="core.environment" value="D:\dotNetDelivery\Assemblies"/>
+	
+	<target name="go" description="The main target for full deploy process execution." depends="selectversion, get, createenvironments, position, notify"/>
+
+	<target name="selectversion" description="Selects the correct version of the system.">
+		<if test="${debug}">
+			<property name="sys.version" value="0.0.0.0"/>
+		</if>
+	</target>
+
+	<target name="get" description="Grab the correct assets.">
+			<delete dir="${core.deploy}\" failonerror="false"/>
+			<mkdir dir="${core.deploy}\${sys.version}\"/>
+               <get 
+                     src="${core.publish}/${solution.name}-Build-${sys.version}.zip"
+                     dest="${core.deploy}\${solution.name}-Build-${sys.version}.zip" 
+                   />
+			<unzip zipfile="${core.deploy}\${solution.name}-Build-${sys.version}.zip" todir="${core.deploy}\${sys.version}\"/>
+	</target>
+
+	<target name="createenvironments" description="Create the environments required">
+		<mkdir dir="${core.environment}\${solution.name}\Latest\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Specific\" failonerror="false"/>
+		<mkdir dir="${core.environment}\${solution.name}\Deprecated\" failonerror="false"/>
+	</target>
+
+	<target name="position" description="Place required assets">
+		<%
+		foreach(OutputAssembly a in p.OutputAssemblies)
+		{
+		if(a.Name != "Tests")
+		{
+		%>
+		<copy file="${core.deploy}\${sys.version}\<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>" todir="${core.environment}\${solution.name}\Latest\" overwrite="true"/>
+		<copy file="${core.deploy}\${sys.version}\<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>.<%=a.AssemblyType%>" tofile="${core.environment}\${solution.name}\Specific\<%=s["CompanyName"]%>.<%=p.Name%>.<%=a.Name%>_${sys.version}.<%=a.AssemblyType%>"  overwrite="true"/>
+		<%
+		}
+		}
+		%>
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<echo message="Notifying you of the deploy process success."/>
+	</target>
+
+	<target name="fail">
+		<echo message="Notifying you of a failure in the deploy process."/>
+	</target>
+
+	<target name="help">
+		<echo message="The deploy file is designed to execute the following targets in turn:"/>
+		<echo message="-- selectversion"/>
+		<echo message="-- get"/>
+		<echo message="-- createenvironments"/>
+		<echo message="-- position"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

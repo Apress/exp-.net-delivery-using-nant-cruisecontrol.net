@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Etomic.Library.Transformer.Engine</name>
+    </assembly>
+    <members>
+        <member name="T:Etomic.Library.Transformer.Engine.ApplicationEngine">
+            <summary>
+            Provides logic and functionality for the Transformer GUI application
+            </summary>
+        </member>
+        <member name="M:Etomic.Library.Transformer.Engine.ApplicationEngine.#ctor">
+            <summary>
+            Default parameterless constructor
+            </summary>
+        </member>
+        <member name="M:Etomic.Library.Transformer.Engine.ApplicationEngine.GetFileContents(System.String)">
+            <summary>
+            Gets the content of the specified file
+            </summary>
+            <param name="path">The path to the specified file</param>
+            <returns>string containing file contents</returns>
+        </member>
+        <member name="M:Etomic.Library.Transformer.Engine.ApplicationEngine.SaveFileContents(System.String,System.String)">
+            <summary>
+            Saves the contents specified in the <see cref="!:contents">contents</see> parameter 
+            to the file specified in the <see cref="!:path">path</see> parameter.
+            </summary>
+            <param name="contents">The contents of the file to save</param>
+            <param name="path">The path where the contents should be written to</param>
+        </member>
+        <member name="M:Etomic.Library.Transformer.Engine.ApplicationEngine.TransformXml(System.String,System.String)">
+            <summary>
+            Transforms the provided XML data using the provided XSLT string.
+            </summary>
+            <param name="xml">The XML data to transform</param>
+            <param name="xslt">The XSLT template to use for the transformation</param>
+            <returns>The result of the transformation</returns>
+        </member>
+    </members>
+</doc>

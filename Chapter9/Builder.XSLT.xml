@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<project>
+     <property name="xslt.projectset" value="d:\dotnetdelivery\chapter9\data\projectset.xslt.xml"/>
+     <property name="xslt.directory" value="d:\dotnetdelivery\chapter9\xslt"/>
+     <property name="xslt.output" value="d:\dotnetdelivery\chapter9"/>
+
+     <target name="XsltBuilder">
+          <script language="C#">
+          <imports>
+               <import namespace="System.Xml"/>
+               <import namespace="System.Xml.Xsl"/>
+               <import namespace="System.Xml.XPath"/>
+          </imports>
+          <code><![CDATA[
+		public static void ScriptMain(Project project)
+		{
+			string projectSetFile = project.Properties["xslt.projectset"];
+              	string outputDir = project.Properties["xslt.output"];
+               string xsltDir = project.Properties["xslt.directory"];
+
+               XmlDocument dom = new XmlDocument();
+			
+               project.Log(Level.Info, "Loading projectset..."); 
+               dom.Load(projectSetFile);
+
+               project.Log(Level.Info, "Producing ccnet.config file..."); 
+			ProduceCcnetConfigFile(xsltDir, outputDir, dom);
+
+               project.Log(Level.Info, "Producing build and deploy files..."); 
+			ProduceBuildAndDeployFiles(xsltDir, outputDir, dom);
+		}
+
+		static void ProduceCcnetConfigFile(string xsltDirectory, string outputDirectory, XmlDocument dom)
+		{
+			string outputPath = Path.Combine(outputDirectory, "ccnet.config");
+			string xsltFile	  = Path.Combine(xsltDirectory, "Ccnet.xsl");
+			TransformXml(dom, xsltFile, outputPath, null);
+		}
+
+		static void ProduceBuildAndDeployFiles(string xsltDirectory, string outputDirectory, XmlDocument dom)
+		{
+			string companyName = dom.DocumentElement.SelectSingleNode("Settings").Attributes["CompanyName"].InnerText;
+
+			int index = 1;
+			foreach(XmlNode projectNode in dom.DocumentElement.SelectNodes("Projects/Project"))
+			{
+				string projectName	= projectNode.Attributes["Name"].InnerText;
+				string solutionName = string.Join(".", new string[] { companyName, projectName });
+				
+				ProduceBuildAndDeployFile("Build", xsltDirectory, outputDirectory, solutionName, projectNode, dom, index);
+				ProduceBuildAndDeployFile("Deploy", xsltDirectory, outputDirectory, solutionName, projectNode, dom, index);
+				index++;
+			}
+		}
+
+		static void ProduceBuildAndDeployFile(string type, string xsltDirectory, string outputDirectory, string solutionName, XmlNode projectNode, XmlDocument dom, int index)
+		{
+			string xslt = Path.Combine(xsltDirectory, type + ".xsl");
+			string outputFile = GetOutputFileName(outputDirectory, solutionName, type);
+
+			XPathNodeIterator iterator = projectNode.ParentNode.CreateNavigator().Select("Project[" + index + "]");
+			XsltArgumentList arguments = new XsltArgumentList();
+			arguments.AddParam("ProjectData", "", iterator);
+
+			TransformXml(dom, xslt, outputFile, arguments);
+		}
+
+		static string GetOutputFileName(string outputDirectory, string solutionName, string type)
+		{
+			return Path.Combine(outputDirectory, string.Join(".", new string[] { solutionName, type, "xml" }));
+		}
+
+		static void TransformXml(XmlDocument document, string xsltFile, string outputPath, XsltArgumentList arguments)
+		{
+			string output = "";
+			XmlUrlResolver resolver	  = new XmlUrlResolver();
+			XslTransform stylesheet   = new XslTransform();
+			stylesheet.Load(xsltFile);
+
+			using(MemoryStream stream = new MemoryStream())
+			{
+				stylesheet.Transform(document.DocumentElement.CreateNavigator(), arguments, stream, resolver);
+				stream.Position = 0;
+
+				using(StreamReader sr = new StreamReader(stream))
+				{
+					output = sr.ReadToEnd();
+				}
+			}
+
+			using(StreamWriter sw = new StreamWriter(outputPath))
+			{
+				sw.WriteLine(output);
+			}
+		}
+
+          ]]></code>
+          </script>
+     </target>
+      
+     <call target="XsltBuilder"/>
+</project>

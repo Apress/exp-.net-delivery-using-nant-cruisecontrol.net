@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<project name="FailureTest1" default="go">
+	
+	<property name="nant.onfailure" value="fail"/>
+	<property name="message" value="Hello again!"/>
+	
+	<target name="go">
+		<fail/>
+		<echo message="${message}"/>
+	</target>
+	
+	<target name="fail">
+		<echo message="Oh dear, it has all gone wrong."/>
+	</target>
+</project>

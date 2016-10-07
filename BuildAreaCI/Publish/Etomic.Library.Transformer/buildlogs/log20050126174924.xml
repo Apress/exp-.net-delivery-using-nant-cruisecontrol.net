@@ -1,0 +1,12 @@
+﻿<cruisecontrol project="Etomic.Library.Transformer">
+  <modifications />
+  <build date="26/01/2005 17:49:24" buildtime="00:00:00" error="true" buildcondition="ForceBuild"><![CDATA[NAnt 0.85 (Build 0.85.1793.0; rc1; 28/11/2004)
+Copyright (C) 2001-2004 Gerry Shaw
+http://nant.sourceforge.net
+
+
+For more information regarding the cause of the build failure, run the build again in debug mode.
+
+Try 'nant -help' for more information
+]]></build>
+</cruisecontrol>

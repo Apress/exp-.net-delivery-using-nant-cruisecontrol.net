@@ -1,0 +1,13 @@
+<%-- 
+Name: 			build.xml.cst
+Author: 		Marc Holmes
+Description: 	Providing the project build file using an XML file.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="Providing the project file using an XML file." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation" %>
+<%@ Import Namespace="Etomic.CodeSmithExtensions.BuildAutomation" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+<%@ Property Name="ProjectNumber" Type="System.Int32" Description="The project element to use."%>
+
+This is the BUILD file for <%=ProjectSet.Projects[ProjectNumber].Name%>

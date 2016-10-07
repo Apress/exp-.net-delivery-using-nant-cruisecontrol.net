@@ -1,0 +1,1718 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:st1="urn:schemas-microsoft-com:office:smarttags"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="FxCop%201_30%20Readme_files/filelist.xml">
+<title>FxCop 1.30 Readme</title>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="country-region"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="place"/>
+<o:SmartTagType namespaceuri="urn:schemas-microsoft-com:office:smarttags"
+ name="mswterms"/>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author></o:Author>
+  <o:LastAuthor></o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>2171</o:TotalTime>
+  <o:LastPrinted>2003-05-02T22:08:00Z</o:LastPrinted>
+  <o:Created>2004-03-23T17:45:00Z</o:Created>
+  <o:LastSaved>2004-03-23T17:45:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2575</o:Words>
+  <o:Characters>14682</o:Characters>
+  <o:Company>Microsoft</o:Company>
+  <o:Lines>122</o:Lines>
+  <o:Paragraphs>34</o:Paragraphs>
+  <o:CharactersWithSpaces>17223</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>BestFit</w:Zoom>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:PunctuationKerning/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-alt:"?l?r ?????";
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627421319 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	font-family:Arial;
+	mso-font-kerning:16.0pt;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	font-style:italic;}
+h3
+	{mso-style-link:"Heading 3 Char";
+	mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:4;
+	font-size:14.0pt;
+	font-family:"Times New Roman";}
+h5
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0in;
+	margin-bottom:3.0pt;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:13.0pt;
+	font-family:Verdana;
+	font-style:italic;}
+p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
+	{mso-style-noshow:yes;
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
+span.MsoCommentReference
+	{mso-style-noshow:yes;
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;}
+a:link, span.MsoHyperlink
+	{color:#003DB2;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#003DB2;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
+	{mso-style-noshow:yes;
+	mso-style-parent:"Comment Text";
+	mso-style-next:"Comment Text";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:Verdana;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-language:AR-SA;
+	font-weight:bold;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:41947544;
+	mso-list-template-ids:1422693440;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:493761401;
+	mso-list-template-ids:-683267998;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:1077357815;
+	mso-list-template-ids:-2102618520;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:1256554049;
+	mso-list-template-ids:-1014743204;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1303080579;
+	mso-list-template-ids:-1234768500;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l5
+	{mso-list-id:1349214699;
+	mso-list-template-ids:2081948838;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:1375034514;
+	mso-list-template-ids:359856802;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l7
+	{mso-list-id:1488129264;
+	mso-list-template-ids:10417314;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:1534612097;
+	mso-list-template-ids:-1307303156;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l9
+	{mso-list-id:1767073095;
+	mso-list-template-ids:1319252374;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="2050"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link="#003DB2" vlink="#003DB2" style='tab-interval:.5in'>
+
+<div class=Section1>
+
+<h1><a name="_FxCop_1.22_Readme_–_Release_Notes"></a><span class=SpellE><span
+style='font-size:18.0pt'>FxCop</span></span><span style='font-size:18.0pt'>
+1.30 <span class=SpellE>Readme</span> – Release Notes<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l7 level1 lfo1;tab-stops:list .5in'><span
+     style='font-family:Arial'><a
+     href="#Whats_New_In_V130">What’s
+     New in Version 1.30</a></span> <span style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l7 level1 lfo1;tab-stops:list .5in'><span
+     style='font-family:Arial'><a
+     href="#_FxCop_1.21_Readme_–_Release_Notes"><span
+     class=SpellE>FxCop</span> 1.23 <span class=SpellE>Readme</span> – Release
+     Notes</a></span> <span style='font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h2><a name="Whats_New_In_V130"></a><span style='font-style:normal;mso-bidi-font-style:
+italic'>What’s New in Version 1.30<o:p></o:p></span></h2>
+
+<p class=MsoNormal><b>No more locks on assemblies or <span class=SpellE>pdbs</span><o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span class=SpellE>FxCop</span> uses a new, thread-safe,
+high performance metadata reader to load assemblies. We no longer load
+assemblies via Reflection into the primary <span class=SpellE>AppDomain</span>
+and release all locks when <span class=SpellE>FxCop</span> is sent to the
+background. </p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>This feature addresses one of the biggest customer feature
+requests we’ve had in the past year:<span style='mso-spacerun:yes'>  </span>You
+can now run Visual Studio<st1:mswterms w:st="on">.NET</st1:mswterms>
+side-by-side with <span class=SpellE>FxCop</span>, recompiling and observing
+the results of an analysis without having to exit and re-start <span
+class=SpellE>FxCop</span>. (On reactivating <span class=SpellE>FxCop</span>,
+btw, the tool will automatically determine whether it needs to reload a file
+that has changed).</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>Ability to resolve missing dependencies<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>We’ve also addressed another big frustration with <span
+class=SpellE>FxCop</span>: the inability to load files due to missing assembly
+references. <span class=SpellE>FxCop</span> will now actively query for any
+missing assemblies that it requires. If you choose not to resolve a dependency,
+analysis will still occur (but will possibly be incomplete). <span
+class=SpellE>FxCop</span> will <span class=GramE>persists</span> dependency
+directory locations to the project files, so that subsequent analysis don’t
+require further input. Also FxCopCmd.exe supports a new command-line argument
+for specifying dependency directories.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>Ability to analyze just about anything running just about
+anywhere<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Because most metadata analysis occurs directly from the
+binary and not through Framework APIs, it is now possible to analyze just about
+any version of an assembly, no matter what version of the framework <span
+class=SpellE>FxCop</span> is running on. E.g., you can analyze version 1.0 of
+your binaries while running on version 1.1, or vice versa. There will be some
+limitations analyzing binaries compiled against future versions of the
+framework, however, due to changes in resource stream formats and the addition of
+new security permissions that can’t be instantiated on 1.0 or 1.1.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><b>Analysis is now multi-threaded. And can be cancelled (via
+UI or due to exceeding an exceptions threshold).<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The new analysis engine is multi-threaded, permitting much
+greater CPU utilization on multi-proc systems. Analysis can be cancelled before
+completion, in which case the message set will consist of those violations that
+have occurred so far. There are also new project settings to disable rules or
+suspend analysis completely when exceeding an exception threshold. You can
+specify that rules should be disabled if they raise more than 10 exceptions,
+for example, and that analysis should stop completely if more than 100 occur.</p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>New, powerful data flow analysis<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><span class=SpellE>FxCop</span> ships with a new data flow
+analysis engine that enables a powerful set of new rules. For example, we use
+this functionality to detect <span class=SpellE>String.Concat</span> calls that
+occur in a code loop. This functionality comes at a performance cost, however,
+so it can be disabled within the UI if you’re most interested in speedy
+analysis with fewer code correctness violations.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>Lots of UI improvements<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>The <span class=SpellE>FxCop</span> UI contains many subtle
+and a few not-so-subtle improvements:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>There
+     is now a tracing window to capture tool output during analysis that might
+     be useful in resolving issues. </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>A new
+     properties pane can be used to view metadata details for methods and
+     types, or as an alternate to the message details dialog. </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'><span
+     class=SpellE>FxCop</span> can now show you the IL for method bodies, or
+     generate a closure of the managed (and native) dependencies of an
+     assembly. </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>We
+     have collapsed message level into a single, <span class=SpellE>sortable</span>
+     column. We now support shift-click multi-column sorting. </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>There
+     are improved message copying options (you can specify your own XSL to
+     apply before placing info on the clipboard). </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>Most
+     windows are ‘sticky’, size and location details are persisted between
+     runs. We also have separate ‘sticky’ directory locations for adding rules,
+     targets, or saving reports. </li>
+ <li class=MsoNormal style='mso-list:l3 level1 lfo2;tab-stops:list .5in'>There
+     is improved support for jumping to method source locations in VS. </li>
+</ul>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>New Rules, Rule Topics and Rule Fixes<o:p></o:p></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>This release contains 20+ new rules in the areas of
+globalization, performance, design and usage as well as numerous rules fixes
+and refinements to eliminate false positives. <span class=SpellE>FxCop</span>
+can now pick up multiple custom dictionaries. You can also now specify an
+alternate language dictionary or locale, assuming one is installed on your
+machine. Users in the <st1:country-region w:st="on"><st1:place w:st="on">U.K.</st1:place></st1:country-region>,
+for example, can set spelling options to British English rather than U.S. English.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>New rules in <span class=SpellE>FxCop</span> 1.30:<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal><b>Design Rules<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in .75in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>1.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Consider passing base types as parameters<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>Using
+base types as parameters to methods improves re-use of these methods if you
+only use methods and properties from the parameter's base class.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// This method should take a Stream as an argument,
+since it doesn't<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// call any methods that are unique to <span
+class=SpellE>FileStream</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void Read(<span
+class=SpellE>FileStream</span> stream) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>byte[</span>] <span class=SpellE>myList</span> = new byte[1024];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>int</span> <span class=SpellE>numBytesToRead</span> = (<span
+class=SpellE>int</span>) <span class=SpellE>myList.Length</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>int</span> <span class=SpellE>numBytesRead</span> = 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>stream.Read</span></span><span class=GramE>(</span><span
+class=SpellE>myList</span>, <span class=SpellE>numBytesRead</span>, <span
+class=SpellE>numBytesToRead</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void Read(Stream <span
+class=SpellE>stream</span>) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>byte[</span>] <span class=SpellE>myList</span> = new byte[1024];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>int</span> <span class=SpellE>numBytesToRead</span> = (<span
+class=SpellE>int</span>) <span class=SpellE>myList.Length</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>int</span> <span class=SpellE>numBytesRead</span> = 0;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>stream.Read</span></span><span class=GramE>(</span><span
+class=SpellE>myList</span>, <span class=SpellE>numBytesRead</span>, <span
+class=SpellE>numBytesToRead</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.75in'><span style='font-size:9.0pt;
+mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:9.0pt;
+mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in .75in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>2.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>URI parameters should be of type <span
+class=SpellE>System.Uri</span> rather than string<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>If a
+parameter name contains &quot;<span class=SpellE>uri</span>&quot; or &quot;<span
+class=SpellE>url</span>&quot; or &quot;urn&quot;, and it's typed as string, the
+parameter type should be changed to <span class=SpellE>System.Uri</span>,
+unless there is an overload method where the same parameter is typed as Uri.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:</span></b><span style='font-size:
+9.0pt'><span style='mso-tab-count:1'>     </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// No overload takes a <span class=SpellE>System.Uri</span>
+object<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void <span class=SpellE>GoTo</span>(string
+<span class=SpellE>url</span>) { ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void <span class=SpellE>GoTo</span>(<span
+class=SpellE>Systm.Uri</span> <span class=SpellE>url</span>) { ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void <span class=SpellE>GoTo</span>(string
+<span class=SpellE>url</span>)<span style='mso-spacerun:yes'>    </span>{ ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:9.0pt'><span
+style='mso-spacerun:yes'>    </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in .75in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>3.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>URI properties should be of type <span
+class=SpellE>System.Uri</span> rather than string<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>If a
+property name contains &quot;<span class=SpellE>uri</span>&quot; or &quot;<span
+class=SpellE>url</span>&quot; or &quot;urn&quot; and it's typed as string, it
+should be changed to <span class=SpellE>System.Uri</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> string <span class=SpellE>TheUrn</span>
+{ get { ... } }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> <span class=SpellE>System.Uri</span>
+<span class=SpellE>TheUrn</span> { get { ... } }<o:p></o:p></span></p>
+
+<b style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;font-family:
+Verdana;mso-fareast-font-family:"Times New Roman";mso-bidi-font-family:"Times New Roman";
+mso-ansi-language:EN-US;mso-fareast-language:EN-US;mso-bidi-language:AR-SA'><br
+clear=all style='mso-special-character:line-break;page-break-before:always'>
+</span></b>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in .75in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>4.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>URI return values should be of type <span
+class=SpellE>System.Uri</span> rather than string<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>If a
+function name contains &quot;<span class=SpellE>uri</span>&quot; or &quot;<span
+class=SpellE>url</span>&quot; or &quot;urn&quot; and the return type is string,
+the return type should be changed to <span class=SpellE>System.Uri</span>.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> string <span class=SpellE>GetUri</span>
+{ ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> <span class=SpellE>System.Uri</span>
+<span class=SpellE>GetUri</span> { ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>Globalization Rules<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>1.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Controls that will be localized should be
+marked Localizable == true<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+mso-bidi-font-family:"Courier New"'>Controls marked Localizable persist all
+localizable properties to a <span class=SpellE>resx</span> file rather than
+source code. The <span class=SpellE>resx</span> file can then be modified
+without requiring access to source.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>Note</span></b><span
+style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>: Sample code is
+omitted since Localizable is a design-time property.<span
+style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>2.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Do not hard-code system strings that are
+locale-specific<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>Do
+not use string literals for system items that have locale-specific
+designations.<span style='mso-spacerun:yes'>  </span>Special system locations
+should be retrieved using provided API such as <span class=SpellE>GetFolderPath</span>.
+See the <span class=SpellE>System.Environment.SpecialFolder</span> enumeration
+for more information.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad: <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>// Path to &quot;Program Files&quot; is hard coded<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> static void <span
+class=SpellE>ShowProgramFolders</span>() {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>   
+</span>string<span style='mso-spacerun:yes'>   </span>dir<span
+style='mso-spacerun:yes'>      </span>= &quot;c:&quot; + @&quot;\Program
+Files&quot;;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>string[</span>] <span class=SpellE>subdirs</span><span
+style='mso-spacerun:yes'>  </span>= <span class=SpellE>Directory.GetDirectories</span>(dir);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>foreach</span> (string <span class=SpellE>subdir</span> in <span
+class=SpellE>subdirs</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>Console.WriteLine</span></span><span
+class=GramE>(</span><span class=SpellE>subdir</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><span
+style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> static void <span
+class=SpellE>ShowProgramFolders</span>() {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>string</span> dir = <span class=SpellE>Environment.GetFolderPath</span>(<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE>Environment.SpecialFolder.ProgramFiles</span>);<span
+style='mso-spacerun:yes'>  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>string[</span>] <span class=SpellE>subdirs</span><span
+style='mso-spacerun:yes'>  </span>= <span class=SpellE>Directory.GetDirectories</span>(dir);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>foreach</span> (string <span class=SpellE>subdir</span> in <span
+class=SpellE>subdirs</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>        </span><span
+class=SpellE><span class=GramE>Console.WriteLine</span></span><span
+class=GramE>(</span><span class=SpellE>subdir</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<span style='font-size:10.0pt;font-family:"Courier New";mso-fareast-font-family:
+"Times New Roman";mso-ansi-language:EN-US;mso-fareast-language:EN-US;
+mso-bidi-language:AR-SA'><br clear=all style='mso-special-character:line-break;
+page-break-before:always'>
+</span>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='mso-bidi-font-size:
+10.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>3.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Controls should not define duplicate menu
+accelerators<span style='mso-spacerun:yes'>  </span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt'>Controls should have unique accelerators for all items
+and sub-controls.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'>item1.Text =
+&quot;&amp;Save&quot;;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'>item2.Text = &quot;&amp;Save
+As”<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'>item1.Text =
+&quot;&amp;Save&quot;;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'>item2.Text = &quot;Save
+&amp;As&quot;;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Note: </span></b><span style='font-size:
+9.0pt'>Consider the above as pseudo-code. In reality, the rule can only detect
+duplicate resources if the texts are stored in a resource.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>4.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Do not pass literals where a localized
+string is expected<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>String
+literals that are embedded in source code are difficult to localize. Avoid
+passing string literals as arguments in circumstances where a localized string
+is generally expected.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad: <o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>throw</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> new <span class=SpellE>ArgumentException</span>(“Bad
+argument”);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>throw</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> new <span class=SpellE>ArgumentException</span>(<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>resourceManager.GetString</span></span><span
+class=GramE>(</span>“BAD_ARGUMENT”));<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>5.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Provide <span class=SpellE>MessageBoxOptions</span>
+to all calls to <span class=SpellE>MessageBox.Show</span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>In
+order to run correctly on right-to-left systems, all calls to <span
+class=SpellE>MessageBox.Show</span> should use the overload that specifies <span
+class=SpellE>MessageBoxOptions</span> as an argument. Programs should detect
+whether they are running on a right-to-left system at run-time and pass the
+appropriate <span class=SpellE>MessageBoxOptions</span> value in order to
+display correctly.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> static void <span
+class=SpellE>ShowMessage</span>(string message) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>MessageBox.Show</span></span><span class=GramE>(</span>message);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> static void <span
+class=SpellE>ShowMessage</span>(string message) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE>MessageBoxOptions</span> options = (<span class=SpellE>MessageBoxOptions</span><span
+class=GramE>)0</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>if (<span
+class=SpellE>Thread.CurrentThread.CurrentUICulture.TextInfo.IsRightToLeft</span>)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>       
+</span>options = (<span class=SpellE>MesageBoxOptions.RtlReading</span> <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                  
+</span>| <span class=SpellE>MessageBoxOptions.RightAlign</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>  </span><span
+style='mso-spacerun:yes'>                  </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>MessageBox.Show</span></span><span class=GramE>(</span>message,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                   
+</span><span class=SpellE>String.Empty</span>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                   
+</span><span class=SpellE>MessageBoxButtons.OK</span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                   
+</span><span class=SpellE>MessageBoxIcon.Information</span>,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                   
+</span>MessageBoxDefaultButton.Button1,<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>                   
+</span>options);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-size:9.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal><b>Performance Rules<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>1.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Avoid method implementations that contain
+more than 64 local variables<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>In
+order for the run-time to <span class=SpellE>enregister</span> local variables
+most efficiently, there should be 64 or fewer of them. <span class=SpellE>Enregistering</span>
+based on flow analysis will not occur for locals in excess of 64, which may
+result in slower performance.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>2.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Do not call properties that clone values
+while inside a loop<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in;text-indent:.25in'><span
+style='font-size:9.0pt;font-family:"Courier New"'>public class Box {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>private <span
+class=SpellE>ArrayList</span> <span class=SpellE>m_items</span>;<span
+style='mso-spacerun:yes'>    </span><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>public</span> Box(<span class=SpellE>ArrayList</span> items) { <span
+class=SpellE>m_items</span> = items; }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>public</span> <span class=SpellE>ArrayList</span> Items { return <span
+class=SpellE>m_items.Clone</span>(); }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span></span><span
+style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'><o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>for (<span class=SpellE>int</span> <span
+class=SpellE>i</span> = 0; <span class=SpellE>i</span> &lt; <span class=SpellE>myBox.Items.Length</span>;
+<span class=SpellE>i</span>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>Console.WriteLine</span></span><span
+class=GramE>(</span><span class=SpellE>myBox.Items</span>[<span class=SpellE>i</span>]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;font-family:"Courier New"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=SpellE><span
+style='font-size:9.0pt;font-family:"Courier New"'>ArrayList</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> <span class=SpellE>myItems</span>
+= <span class=SpellE>myBox.Items</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>for (<span class=SpellE>int</span> <span
+class=SpellE>i</span> = 0; <span class=SpellE>i</span> &lt; <span class=SpellE>mytems.Length</span>;
+<span class=SpellE>i</span>++)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>Console.WriteLine</span></span><span
+class=GramE>(</span><span class=SpellE>myItems</span>[<span class=SpellE>i</span>]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>3.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Do not call <span class=SpellE>String.Concat</span>
+inside loops<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>string result = <span class=SpellE>String.Empty</span>;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>for (<span class=SpellE>int</span> <span
+class=SpellE>i</span> = 0; <span class=SpellE>i</span> &lt; 1; <span
+class=SpellE>i</span>++) <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>result =
+result + token[<span class=SpellE>i</span>];<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=SpellE><span
+style='font-size:9.0pt;font-family:"Courier New"'>StringBuilder</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> <span class=SpellE>sb</span>
+= new <span class=SpellE><span class=GramE>StringBuilder</span></span><span
+class=GramE>(</span>);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>for (<span class=SpellE>int</span> <span
+class=SpellE>i</span> = 0; <span class=SpellE>i</span> &lt; 1; <span
+class=SpellE>i</span>++) <o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=SpellE><span class=GramE>sb.Append</span></span><span class=GramE>(</span>token[<span
+class=SpellE>i</span>]);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>string</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> result = <span class=SpellE>sb.ToString</span>();<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.25in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>4.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Do not declare explicit static
+constructors<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>Static
+fields should be initialized when declared. For reference types, initializing
+static data in explicit static constructors results in less <span class=SpellE>performant</span>
+code. For value types, this can also be a code correctness issue since, in some
+<span class=GramE>cases,</span> the existence of an explicit static constructor
+on a value type will prevent its guaranteed execution before fields on the
+value type are accessed<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>class <span class=SpellE>Foo</span> {<b
+style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>static <span
+class=SpellE>int</span> bar;<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span><span
+class=GramE>static</span> <span class=SpellE>Foo</span>() { bar = 7; }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>class <span class=SpellE>Foo</span> {<b
+style='mso-bidi-font-weight:normal'><o:p></o:p></b></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>static <span
+class=SpellE>int</span> bar = 7;<o:p></o:p></span></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal><b>Usage Rules<o:p></o:p></b></p>
+
+<p class=MsoNormal><b><o:p>&nbsp;</o:p></b></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>1.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Call <span class=SpellE>ArgumentException</span>
+with correct arguments<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>Types
+derived from <span class=SpellE>ArgumentException</span> have inconsistent
+constructor overloads with respect to the message and <span class=SpellE>paramName</span>
+parameters as compared to <span class=SpellE>ArgumentException</span>. This
+rule simply enforces that callers don’t swap the <span class=SpellE>paramName</span>
+and message arguments.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void Method(string s) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>if (s ==
+null)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>throw</span> new <span class=SpellE>ArgumentNullException</span>(“s
+cannot be null”, “s”);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>   </span>...<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt;mso-bidi-font-family:"Courier New"'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void Method(string s) {<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>    </span>if (s ==
+null)<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>        </span><span
+class=GramE>throw</span> new <span class=SpellE>ArgumentNullException</span>(“s”,
+“s cannot be null”);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'><span style='mso-spacerun:yes'>   </span>...<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt;
+font-family:"Courier New"'>}<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in;text-indent:-.25in;tab-stops:list .5in'><b
+style='mso-bidi-font-weight:normal'><span style='font-size:9.0pt;mso-fareast-font-family:
+Verdana;mso-bidi-font-family:Verdana'>2.</span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:7.0pt;font-family:"Times New Roman";mso-fareast-font-family:
+Verdana'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></b><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Pass <span class=SpellE>System.Uri</span>
+objects instead of strings<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span style='font-size:9.0pt'>If
+there are two overloads one taking <span class=SpellE>System.Uri</span> and one
+taking <span class=SpellE>System.String</span>, library code should never call
+the string-based overload.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.25in'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void <span class=SpellE>GoTo</span>(<span
+class=SpellE>Systm.Uri</span> <span class=SpellE>url</span>) { ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=GramE><span
+style='font-size:9.0pt;font-family:"Courier New"'>public</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'> void <span class=SpellE>GoTo</span>(string
+<span class=SpellE>url</span>)<span style='mso-spacerun:yes'>    </span>{ ... }<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Bad:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=SpellE><span
+class=GramE><span style='font-size:9.0pt;font-family:"Courier New"'>GoTo</span></span></span><span
+class=GramE><span style='font-size:9.0pt;font-family:"Courier New"'>(</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'>&quot;http://www.<st1:mswterms
+w:st="on">msn</st1:mswterms>.com&quot;);<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:.5in'><b style='mso-bidi-font-weight:
+normal'><span style='font-size:9.0pt'>Good:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-left:.5in'><span class=SpellE><span
+class=GramE><span style='font-size:9.0pt;font-family:"Courier New"'>GoTo</span></span></span><span
+class=GramE><span style='font-size:9.0pt;font-family:"Courier New"'>(</span></span><span
+style='font-size:9.0pt;font-family:"Courier New"'>new Uri(&quot;http://www.<st1:mswterms
+w:st="on">msn</st1:mswterms>.com<b style='mso-bidi-font-weight:normal'>&quot;));<o:p></o:p></b></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><a name=NetCF></a><b>Ability to Analyze <st1:mswterms w:st="on">.NET</st1:mswterms>
+Compact Framework (<span class=SpellE>NetCF</span>) Binaries<o:p></o:p></b></p>
+
+<p class=MsoNormal>&nbsp;</p>
+
+<p class=MsoNormal>To analyze <span class=SpellE>NetCF</span> binaries from the
+command line follow these steps:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>When not using a project file: add the argument /<span
+class=GramE>platform:</span>&lt;<span class=SpellE>path_to_mscorlib_for_NetCF</span>&gt;
+</p>
+
+<p class=MsoNormal>When using a project, use the option to set the path in the
+UI as described below </p>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span></p>
+
+<p class=MsoNormal>To analyze <span class=SpellE>NetCF</span> binaries from the
+UI follow these steps:</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3;tab-stops:list .5in'>Create
+     an empty project </li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3;tab-stops:list .5in'>Add <span
+     class=SpellE>mscorlib</span> from the <span class=SpellE>NetCF</span>
+     binaries as the first assembly to your project </li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3;tab-stops:list .5in'>Remove
+     <span class=SpellE>mscorlib</span> from your project </li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3;tab-stops:list .5in'>Add
+     the assembly you wish to analyze to the project </li>
+ <li class=MsoNormal style='mso-list:l1 level1 lfo3;tab-stops:list .5in'>Save
+     the project </li>
+</ul>
+
+<p class=MsoNormal><span style='mso-spacerun:yes'> </span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal>Although <span class=SpellE>FxCop</span> can now analyze <span
+class=SpellE>NetCF</span> binaries, beware that not all rules may apply to this
+platform.</p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b>Other Features and Fixes<o:p></o:p></b></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'>Sort By</span></b><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'>option
+to sort messages by any column. <span class=GramE>Available from the pop-up
+menu invoked by right-clicking anywhere on the messages pane.</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'>Mark as Absent/Active</span></b><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span class=GramE><span style='mso-bidi-font-size:10.0pt;
+font-family:Arial'>option</span></span><span style='mso-bidi-font-size:10.0pt;
+font-family:Arial'> to immediately change the state of a message between <i
+style='mso-bidi-font-style:normal'>Active</i> and <i style='mso-bidi-font-style:
+normal'>Absent</i>. <span class=GramE>Available from the pop-up menu invoked by
+right-clicking on a message.</span><o:p></o:p></span></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></b></p>
+
+<p class=MsoNormal><b style='mso-bidi-font-weight:normal'><span
+style='mso-bidi-font-size:10.0pt;font-family:Arial'>Attempt source file lookup</span></b><span
+style='font-family:Arial'> <o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span class=GramE><span style='font-family:Arial'>option</span></span><span
+style='font-family:Arial'> to enable/disable looking up source locations for
+messages. </span><span style='mso-bidi-font-size:10.0pt;font-family:Tahoma'>Disabling
+source lookup can greatly increase performance.</span><span style='font-family:
+Arial'> Available from the Project - Options menu and the Tools - Settings
+menu, New Project Defaults tab.</span><span style='mso-bidi-font-size:10.0pt;
+font-family:Arial'><o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'>Multi-user
+notes. Notes are now grouped by name under a <b style='mso-bidi-font-weight:
+normal'>&lt;User&gt;</b> element in the project/report file. This allows the
+merging of files when each file contains notes from a different user in the
+same message.<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h3>Fixes</h3>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Analysis now includes
+     all externally visible members (with the addition of protected internal
+     members </span><span style='font-family:Arial'>including nested types with
+     protected internal accessibility).</span> <span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>ALT-TAB application
+     switching now works correctly when dialog boxes are open in <span
+     class=SpellE>FxCop</span>.</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>The migration wizard
+     now locates all excluded messages (previously some were missed due to case
+     sensitive lookups).</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Improved
+     project/report file format: deterministic saves for easier source control
+     merging, <span class=SpellE><b style='mso-bidi-font-weight:normal'>LastSeen</b></span><b
+     style='mso-bidi-font-weight:normal'> </b>attribute not saved to reduce
+     churn when comparing files, new-line added to the end of file as required
+     by some file comparing tools.</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>The console
+     application now correctly handles a target file that is not a valid
+     managed code assembly by reporting an error.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Issues that resulted
+     in infrequent load failures for some Visual Basic and Managed C++
+     assemblies have been corrected.</span> <span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l2 level1 lfo4;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Rules fixes.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<h1><a name="_New_on_the_FxCop_Web_Site"></a><a name="_Known_Issues"></a><a
+name="_FxCop_SDK_1.2"></a><a name="_FxCop_1.21_Readme_–_Release_Notes"></a><a
+name=Readme123></a><span class=SpellE><span style='font-size:18.0pt'>FxCop</span></span><span
+style='font-size:18.0pt'> 1.23 <span class=SpellE>Readme</span> – Release Notes<o:p></o:p></span></h1>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l9 level1 lfo6;tab-stops:list .5in'><span
+     style='font-family:Arial'><a
+     href="#_What’s_New_in_Version_1.23">What’s
+     New in Version 1.23</a></span> <span style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l9 level1 lfo6;tab-stops:list .5in'><span
+     style='font-family:Arial'><a
+     href="#_New_on_the_FxCop_Web_Site">New
+     on the <span class=SpellE>FxCop</span> Web Site</a></span> <span
+     style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l9 level1 lfo6;tab-stops:list .5in'><span
+     style='font-family:Arial'><a
+     href="#_FxCop_1.21_Readme_–_Release_Notes"><span
+     class=SpellE>FxCop</span> 1.21 <span class=SpellE>Readme</span> – Release
+     Notes</a></span> <span style='font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+3.0pt;margin-left:0in;mso-outline-level:2'><b><span style='font-size:14.0pt;
+font-family:Arial;mso-bidi-font-style:italic'>What’s New in Version <span
+class=GramE>1.23</span><o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+3.0pt;margin-left:0in;mso-outline-level:3'><b><span style='font-size:13.0pt;
+font-family:Arial'>New Content<o:p></o:p></span></b></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo7;tab-stops:list .5in'><span
+     class=SpellE><span style='font-family:Arial'>FxCop</span></span><span
+     style='font-family:Arial'> 1.2 SDK </span><span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'>documentation and sample files </span><span
+     style='font-family:Arial'>for custom rule development.</span> <span
+     style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo7;tab-stops:list .5in'><span
+     style='font-family:Arial'>Updated rule topics.</span> <span
+     style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l6 level1 lfo7;tab-stops:list .5in'><span
+     style='font-family:Arial'>Dictionary updates.</span> <span
+     style='font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+3.0pt;margin-left:0in;mso-outline-level:3'><b><span style='font-size:13.0pt;
+font-family:Arial'>New Features<o:p></o:p></span></b></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo8;tab-stops:list .5in'><b
+     style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'>Sort By</span></b><span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'> option to sort messages by any column. Available from
+     the pop-up menu invoked by right-clicking anywhere on the messages pane.</span>
+     <span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo8;tab-stops:list .5in'><b
+     style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'>Mark as Absent/Active</span></b><span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'> option to immediately change the state of a
+     message between <i style='mso-bidi-font-style:normal'>Active</i> and <i
+     style='mso-bidi-font-style:normal'>Absent</i>. Available from the pop-up
+     menu invoked by right-clicking on a message.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo8;tab-stops:list .5in'><b
+     style='mso-bidi-font-weight:normal'><span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'>Attempt source file lookup</span></b><span
+     style='font-family:Arial'> option to enable/disable looking up source
+     locations for messages. </span><span style='mso-bidi-font-size:10.0pt;
+     font-family:Tahoma'>Disabling source lookup can greatly increase
+     performance.</span><span style='font-family:Arial'> Available from the
+     Project - Options menu and the Tools - Settings menu, New Project Defaults
+     tab.</span> <span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l4 level1 lfo8;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Multi-user notes.
+     Notes are now grouped by name under a <b style='mso-bidi-font-weight:normal'>&lt;User&gt;</b>
+     element in the project/report file. This allows the merging of files when
+     each file contains notes from a different user in the same message.</span>
+     <span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+3.0pt;margin-left:0in;mso-outline-level:3'><b><span style='font-size:13.0pt;
+font-family:Arial'>Fixes<o:p></o:p></span></b></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Analysis now includes
+     all externally visible members (with the addition of protected internal
+     members </span><span style='font-family:Arial'>including nested types with
+     protected internal accessibility).</span> <span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>ALT-TAB application
+     switching now works correctly when dialog boxes are open in <span
+     class=SpellE>FxCop</span>.</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>The migration wizard
+     now locates all excluded messages (previously some were missed due to case
+     sensitive lookups).</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Improved
+     project/report file format: deterministic saves for easier source control
+     merging, <span class=SpellE><b style='mso-bidi-font-weight:normal'>LastSeen</b></span><b
+     style='mso-bidi-font-weight:normal'> </b>attribute not saved to reduce
+     churn when comparing files, new-line added to the end of file as required
+     by some file comparing tools.</span> <span style='mso-bidi-font-size:10.0pt;
+     font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>The console
+     application now correctly handles a target file that is not a valid
+     managed code assembly by reporting an error.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Issues that resulted
+     in infrequent load failures for some Visual Basic and Managed C++
+     assemblies have been corrected.</span> <span style='mso-bidi-font-size:
+     10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l8 level1 lfo9;tab-stops:list .5in'><span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'>Rules fixes.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='margin-top:12.0pt;margin-right:0in;margin-bottom:
+3.0pt;margin-left:0in;mso-outline-level:2'><b><span style='font-size:14.0pt;
+font-family:Arial'>New on the <span class=SpellE>FxCop</span> Web Site<o:p></o:p></span></b></p>
+
+<p class=MsoNormal><span style='font-family:Arial'>The <span class=SpellE>FxCop</span>
+web site, <a href="http://www.gotdotnet.com/team/fxcop">http://www.gotdotnet.com/team/fxcop</a>,
+contains the following new content:<o:p></o:p></span></p>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<ul style='margin-top:0in' type=disc>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo10;tab-stops:list .5in'><span
+     style='font-family:Arial'>SDK 1.2 documentation - detailed information for
+     creating custom </span><span style='mso-bidi-font-size:10.0pt;font-family:
+     Arial'>rules. Included is a zip file containing sample rules that
+     demonstrate the important features in custom rule creation.</span> <span
+     style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo10;tab-stops:list .5in'><span
+     style='font-family:Arial'>FAQ - answers to common questions concerning <span
+     class=SpellE>FxCop</span>.</span> <span style='font-family:Arial'><o:p></o:p></span></li>
+ <li class=MsoNormal style='mso-list:l0 level1 lfo10;tab-stops:list .5in'><span
+     style='font-family:Arial'>Share custom rules - an area on the <span
+     class=SpellE>GotDotNet</span> web site where users can share custom <span
+     class=SpellE>FxCop</span> rules.</span> <span style='font-family:Arial'><o:p></o:p></span></li>
+</ul>
+
+<p class=MsoNormal><span style='font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal><span style='mso-bidi-font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

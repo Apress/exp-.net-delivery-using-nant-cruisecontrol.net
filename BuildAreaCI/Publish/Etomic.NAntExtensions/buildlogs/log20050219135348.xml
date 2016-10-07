@@ -1,0 +1,114 @@
+<cruisecontrol project="Etomic.NAntExtensions">
+  <modifications />
+  <build date="19/02/2005 13:53:48" buildtime="00:00:01" error="true" buildcondition="ForceBuild"><buildresults project="Etomic.NAntExtensions">
+  <message level="Info"><![CDATA[Buildfile: file:///D:/dotNetDelivery/Chapter9/Etomic.NAntExtensions.Build.xml]]></message>
+  <message level="Info"><![CDATA[Target framework: Microsoft .NET Framework 1.1]]></message>
+  <message level="Info"><![CDATA[Target(s) specified: ci]]></message>
+  <task name="description" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="sysinfo">
+    <message level="Info"><![CDATA[Setting system information properties under sys.*]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.Contrib.Tasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.NUnit2ReportTasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "Etomic.NAntExtensions.GeneralTasks" for extensions.]]></message>
+  </task>
+  <target name="clean">
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Output\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Docs\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Reports\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Distribution\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir" />
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Output\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Docs\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Reports\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Distribution\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir" />
+  </target>
+  <target name="version1">
+    <task name="property" />
+    <task name="ifnot">
+      <task name="property" />
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to Normal.]]></message>
+    </task>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(64,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(65,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <task name="asminfo">
+      <message level="Info"><![CDATA[Generated file 'D:\dotNetDelivery\BuildAreaCI\Source\Etomic.NAntExtensions\CommonAssemblyInfo.cs'.]]></message>
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to ReadOnly.]]></message>
+    </task>
+  </target>
+  <target name="version2">
+    <task name="ifnot">
+      <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(80,8): Attribute 'user' for <vsslabel ... /> is deprecated.  Use "username" attribute instead.]]></message>
+      <task name="vsslabel">
+        <message level="Info"><![CDATA[Applied label 'NAnt - 1.0.1.0' to '$/Solutions/Etomic.NAntExtensions/'.]]></message>
+      </task>
+    </task>
+  </target>
+  <target name="build" />
+  <task name="call">
+    <target name="fail">
+      <task name="echo">
+        <message level="Info"><![CDATA[Notifying you of a failure in the build process.]]></message>
+      </task>
+    </target>
+  </task>
+  <failure>
+    <builderror>
+      <type>NAnt.Core.BuildException</type>
+      <message><![CDATA[Couldn't find solution file 'D:\dotNetDelivery\BuildAreaCI\Source\Etomic.NAntExtensions\{$ProjectName}.sln'.]]></message>
+      <location>
+        <filename>D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml</filename>
+        <linenumber>85</linenumber>
+        <columnnumber>6</columnnumber>
+      </location>
+      <stacktrace><![CDATA[   at NAnt.VSNet.Tasks.SolutionTask.InitializeTask(XmlNode taskNode)
+   at NAnt.Core.Task.InitializeElement(XmlNode elementNode)
+   at NAnt.Core.Element.Initialize(XmlNode elementNode, PropertyDictionary properties, FrameworkInfo framework)
+   at NAnt.Core.Project.CreateTask(XmlNode taskNode, Target target)
+   at NAnt.Core.Target.Execute()
+   at NAnt.Core.Project.Execute(String targetName, Boolean forceDependencies)
+   at NAnt.Core.Project.Execute()
+   at NAnt.Core.Project.Run()]]></stacktrace>
+    </builderror>
+  </failure>
+</buildresults>
+</build>
+</cruisecontrol>

@@ -1,0 +1,166 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Etomic.VSSManager.Server</name>
+    </assembly>
+    <members>
+        <member name="T:Etomic.VSSManager.Server.User">
+            <summary>
+            A concrete implementation of the IUser interface.
+            This class wraps the COM IVSSUser interface and is remotable.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.User.#ctor(SourceSafeTypeLib.IVSSUser)">
+            <summary>
+            Constructor wraps the IVSSUser implementation.
+            </summary>
+            <param name="vssUser">The IVSSUser to wrap.</param>
+        </member>
+        <member name="P:Etomic.VSSManager.Server.User.HasReadOnly">
+            <summary>
+            True if the user has readonly access to a VSS Database, false if the user has readwrite access.
+            </summary>
+        </member>
+        <member name="P:Etomic.VSSManager.Server.User.Name">
+            <summary>
+            The login name for the user.
+            </summary>
+        </member>
+        <member name="T:Etomic.VSSManager.Server.Log">
+            <summary>
+            Wraps the log4net library offering simple logging functions. 
+            Use the app.config file to change logging settings.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.Log.Info(System.String)">
+            <summary>
+            Logs 'Info' level messages.
+            </summary>
+            <param name="message">Message to log.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.Log.Debug(System.String)">
+            <summary>
+            Logs 'Debug' level messages.
+            </summary>
+            <param name="message">Message to log.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.Log.Warn(System.String)">
+            <summary>
+            Logs 'Warn' level messages.
+            </summary>
+            <param name="message">Message to log.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.Log.Fatal(System.String)">
+            <summary>
+            Logs 'Fatal' level messages.
+            </summary>
+            <param name="message">Message to log.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.Log.Error(System.String)">
+            <summary>
+            Logs 'Error' level messages.
+            </summary>
+            <param name="message">Message to log.</param>
+        </member>
+        <member name="T:Etomic.VSSManager.Server.VssDatabaseConfigHandler">
+            <summary>
+            Used to handle the exceptionUsers and standardUsers elements of the app.config file.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabaseConfigHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Returns an ArrayList of configuration information.
+            </summary>
+            <param name="parent">Standard param</param>
+            <param name="configContext">Standard param</param>
+            <param name="section">Standard param</param>
+            <returns>ArrayList of string objects representing user names.</returns>
+        </member>
+        <member name="T:Etomic.VSSManager.Server.VssManager">
+            <summary>
+            A concrete implementation of the IVssManager interface.
+            This object is remotable.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssManager.GetDatabaseNames">
+            <summary>
+            Returns and IList of string objects representing the friendly names of available VSS Databases.
+            </summary>
+            <returns>An IList of string objects.</returns>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssManager.GetDatabase(System.String)">
+            <summary>
+            Returns a connected instance of a VSS Database using the friendly name.
+            </summary>
+            <param name="name">The friendly (folder) name of the VSS Database required.</param>
+            <returns>An connected instance of an IVssDatabase</returns>
+        </member>
+        <member name="T:Etomic.VSSManager.Server.UserConfigHandler">
+            <summary>
+            Used to handle the exceptionUsers and standardUsers elements of the app.config file.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.UserConfigHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+            <summary>
+            Returns an ArrayList of configuration information.
+            </summary>
+            <param name="parent">Standard param</param>
+            <param name="configContext">Standard param</param>
+            <param name="section">Standard param</param>
+            <returns>ArrayList of string objects representing user names.</returns>
+        </member>
+        <member name="T:Etomic.VSSManager.Server.VssDatabase">
+            <summary>
+            A concrete implementation of the IVssDatabase interface.
+            This class wraps the COM VSSDatabase class and is remotable.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.#ctor(System.String)">
+            <summary>
+            Constructor accepts the database friendly name and connects to the database or reports and logs an application exception during the attempt.
+            </summary>
+            <param name="name">The friendly (folder) name of the database.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.UpdateReadOnlyAll">
+            <summary>
+            Updates all users in the database to 'readonly' access apart from those in the exception list.
+            Cannot be used to update all users to 'readwrite' access.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.UpdateReadOnly(Etomic.VSSManager.Remote.IUser)">
+            <summary>
+            Updates a single user to 'readonly' access if the user is 'readwrite', or vice versa.
+            </summary>
+            <param name="user">The IUser object for update</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.UpdateReadOnly(System.String)">
+            <summary>
+            Updates a single user to 'readonly' access if the user is 'readwrite', or vice versa.
+            </summary>
+            <param name="userName">A string of the user login name for update.</param>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.SetStandardUsers">
+            <summary>
+            Deletes all current users, apart from those in the exception list, in the database, and replaces with the standard list from the configuration file.
+            All users have a standard password of p@55word, and are initially set to 'readonly'.
+            </summary>
+        </member>
+        <member name="M:Etomic.VSSManager.Server.VssDatabase.AddUser(System.String,System.Boolean)">
+            <summary>
+            Adds a user to the current sourcesafe database with the default password.
+            </summary>
+            <param name="username">The username for the user</param>
+            <param name="readOnly">Whether the user should have readonly priviliges</param>
+        </member>
+        <member name="P:Etomic.VSSManager.Server.VssDatabase.Users">
+            <summary>
+            Returns an IList of string objects representing user names apart from those on the exception list.
+            </summary>
+        </member>
+        <member name="P:Etomic.VSSManager.Server.VssDatabase.Name">
+            <summary>
+            The friendly (folder) name of the VSS Database.
+            </summary>
+        </member>
+    </members>
+</doc>

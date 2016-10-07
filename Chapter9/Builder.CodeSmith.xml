@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<project>
+      <exec program="D:\Program Files\CodeSmith\v2.6\CodeSmithConsole">
+            <arg value="/template:D:\dotNetDelivery\Chapter9\CodeSmith\CI2\master.cst"/>
+            <arg value="/properties:D:\dotNetDelivery\Chapter9\Data\ProjectSet.CodeSmith.xml" />
+      </exec>
+</project>

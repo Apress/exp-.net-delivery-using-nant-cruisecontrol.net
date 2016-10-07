@@ -1,0 +1,411 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>RedGate.SQL.Shared</name>
+    </assembly>
+    <members>
+        <member name="T:RedGate.SQL.Shared.Batch">
+            <summary>
+            A batch of SQL statements
+            </summary>
+            <remarks>
+            A batch is a set of SQL statements which can be executed on a SQL Server. The batch might contain more than one SQL statement, but this is not normally the case. A batch can, however, contain more than one line (for example, the SQL to create a stored procedure might contain 100 lines).
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Batch.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Batch.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contents">The SQL statement that the batch contains</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Batch.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contents">The SQL statement that the batch contains</param>
+            <param name="repeating">The SQL statement that the batch contains</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Batch.#ctor(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contents">The SQL statement that the batch contains</param>
+            <param name="repeating">The SQL statement that the batch contains</param>
+            <param name="marker">True if the SQL statement should not be executed but is merely a marker (eg a GO statement)</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Batch.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contents">The SQL statement that the batch contains</param>
+            <param name="repeating">The SQL statement that the batch contains</param>
+            <param name="marker">True if the SQL statement should not be executed but is merely a marker (eg a GO statement)</param>
+            <param name="extraCRLF">True if an extra CRLF has been appended to the SQL statement</param>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Batch.ExtraCRLF">
+            <summary>
+            True if an extra CRLF has been appended to the batch
+            </summary>
+            <remarks>
+            Sometimes the definitions of stored procedures, views etc. do not end in a CRLF. If executed in SQL Query Analyzer, an extra CRLF will be appended. If this flag is set then the extra CRLF will be stripped when the script is run using <see cref="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String)"/>.
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Batch.Marker">
+            <summary>
+            True if this batch is really a separator (eg a GO statement)
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Batch.Repeating">
+            <summary>
+            True if the contents of the batch needs to be executed every time a command is executed
+            </summary>
+            <remarks>
+            If a variable declaration is made then this will be set to true since the variable needs to be declared
+            at the beginning of every statement that is executed
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Batch.Contents">
+            <summary>
+            The contents of the batch
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.ExecutionBlock">
+            <summary>
+            A series of SQL batches to be executed
+            </summary>
+            <remarks>
+            <para>An ExecutionBlock contains a series of SQL batches which can be executed against a SQL database.
+            It is essentially a wrapper over a text file but with extra information about
+            batch markers (GO statements) and statements that need to be repeated before
+            any batch is run (eg variable declarations)</para>
+            <para>
+            An ExecutionBlock contains <see cref="T:RedGate.SQL.Shared.Batch"/> objects which in turn contain <see cref="T:RedGate.SQL.Shared.Line"/> objects.
+            </para>
+            <para>The underlying stream can be accessed from <see cref="M:RedGate.SQL.Shared.ExecutionBlock.GetFileStream"/></para>
+            <para>ExecutionBlock objects are created by <see cref="M:RedGate.SQLDataCompare.Engine.SqlProvider.GetMigrationSQL"/> and <see cref="M:RedGate.SQLCompare.Engine.Work.BuildFromDifferences"/>.
+            There should be no need to create an ExecutionBlock manually.
+            </para>
+            <para>
+            It is essential to call the <see cref="M:RedGate.SQL.Shared.ExecutionBlock.Dispose"/> method of ExecutionBlock objects to make sure temporary files are deleted.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:RedGate.SQL.Shared.IBlockWriter">
+            <summary>
+            For internal use by Red Gate Software
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.IBlockWriter.AddBatch(System.String)">
+            <summary>
+            For internal use
+            </summary>
+            <param name="batch"></param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.IBlockWriter.AddBatchMarker">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.IBlockWriter.BatchWritten">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.Dispose">
+            <summary>
+            Dispose of the object
+            </summary>
+            <remarks>
+            The ExecutionBlock makes extensive use of temporary files so it is very important to dispose of the object to ensure
+            these files are deleted.
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.AddBatch(System.String)">
+            <summary>
+            Adds a batch of SQL
+            </summary>
+            <param name="batch">The SQL statement to add</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.AddBatch(System.String,System.Boolean)">
+            <summary>
+            Adds a batch of SQL to be repeated on every execution
+            </summary>
+            <param name="batch">The SQL statement that the batch contains</param>
+            <param name="repeating">True if the batch needs to be repeated every time it is executed (eg for a variable declaration)</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.AddBatchMarker">
+            <summary>
+            Add a 'GO' statement as a batch marker
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.GetLine(System.Int64)">
+            <summary>
+            Get a line of SQL
+            </summary>
+            <param name="index">The index of the line to get</param>
+            <returns>A line of SQL</returns>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.GetBatch(System.Int64)">
+            <summary>
+            Gets a batch of SQL
+            </summary>
+            <param name="index">The index of the batch to get</param>
+            <returns>A batch of SQL</returns>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.StopWriting">
+            <summary>
+            Indicate that we have finished writing
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.ToString">
+            <summary>
+            Returns the contents of the ExecutionBlock
+            </summary>
+            <returns>
+            A large SQL statement
+            </returns>
+            <remarks>
+            If the ExecutionBlock contains a lot of SQL then this method might cause virtual memory problems.
+            GetFileStream is a better option.
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ExecutionBlock.GetFileStream">
+            <summary>
+            Returns a stream to the underlying SQL text file
+            </summary>
+            <returns>A stream</returns>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ExecutionBlock.CharCount">
+            <summary>
+            The number of characters in the ExecutionBlock
+            </summary>
+            <remarks>
+            Note that this isn't necessarily the same as the number of bytes because of Unicode issues
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ExecutionBlock.BatchWritten">
+            <summary>
+            For internal use only
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ExecutionBlock.MaxLineLength">
+            <summary>
+            The maximum length of a line
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ExecutionBlock.BatchCount">
+            <summary>
+            The number of batches
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ExecutionBlock.LineCount">
+            <summary>
+            The number of lines
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.ICancellable">
+            <summary>
+            An interface for objects with operations that can be cancelled
+            </summary>
+            <remarks>
+            SQL Compare and SQL Data Compare have operations which can take a long time and may need to be cancelled. Examples include
+            executing SQL scripts, registering databases in SQL Compare and generating SQL Data Compare scripts.
+            <para>If a long-running operation is cancelled then an OperationCancelledException is thrown</para>
+            <para>See <see cref="T:RedGate.SQLDataCompare.Engine.ComparisonSession"/> for a code sample.</para>
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.ICancellable.CancelOperation">
+            <summary>
+            Cancels the operation
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.ICancellable.Status">
+            <summary>
+            An event handler for providing progress feedback
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.StatusEventArgs">
+            <summary>
+            Arguments used in status events
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.StatusEventArgs.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">The status message</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.StatusEventArgs.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="percentage">The percentage complete</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.StatusEventArgs.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">The status message</param>
+            <param name="percentage">The percentage complete</param>
+        </member>
+        <member name="P:RedGate.SQL.Shared.StatusEventArgs.Message">
+            <summary>
+            A progress message
+            </summary>
+            <remarks>
+            This can be null
+            </remarks>
+        </member>
+        <member name="P:RedGate.SQL.Shared.StatusEventArgs.Percentage">
+            <summary>
+            A percentage complete
+            </summary>
+            <remarks>
+            This can be -1 if there is no percentage complete information
+            </remarks>
+        </member>
+        <member name="T:RedGate.SQL.Shared.OperationCancelledException">
+            <summary>
+            An exception thrown when an operation is cancelled
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.OperationCancelledException.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.StatusEventHandler">
+            <summary>
+            The delegate for status events
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.Line">
+            <summary>
+            Represents a line of SQL
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Line.#ctor(System.String,System.Int64)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="contents"></param>
+            <param name="startIndex"></param>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Line.Contents">
+            <summary>
+            The contents of the line
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Line.StartIndex">
+            <summary>
+            For internal use
+            </summary>
+        </member>
+        <member name="T:RedGate.SQL.Shared.Utils">
+            <summary>
+            A utilities class containing methods used in both SQL Compare and SQL Data Compare
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.GetDatabases(System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Returns a list of databases present on the server
+            </summary>
+            <param name="serverName">The name of the server</param>
+            <param name="integratedSecurity">True to use integrated security</param>
+            <param name="userName">The user name to connect as</param>
+            <param name="password">The password to connect as</param>
+            <returns>An array of database names</returns>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.GetDatabases(System.String,System.Boolean,System.String,System.String,System.Boolean)">
+            <summary>
+            Gets a list of databases given server information
+            </summary>
+            <param name="serverName">The name of the server</param>
+            <param name="integratedSecurity">True to use integrated security, false to use SQL authentication</param>
+            <param name="userName">The name of the user to connect as</param>
+            <param name="password">The password of the user</param>
+            <param name="forceRefresh">True to force a reload of the database names</param>
+            <returns>An array of database names</returns>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.GetAvailableServers(System.Boolean)">
+            <summary>
+            Returns a list of available servers
+            </summary>
+            <remarks>
+            Note that this list of servers may not be complete
+            </remarks>
+            <param name="forceRefresh">True to force a reload of the server names</param>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String)">
+            <summary>
+            Runs a set of SQL contained in an ExecutionBlock using integrated security
+            </summary>
+            <param name="block">The block of SQL to run</param>
+            <param name="server">The server to run it on</param>
+            <param name="database">The database to run it on</param>
+            <remarks>
+            Feedback is provided via the Status event handler. See <see cref="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String,System.Boolean,System.String,System.String)"/> for more details.
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.GetLast500Errors">
+            <summary>
+            Returns the last 500 errors from the <see cref="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String,System.Boolean,System.String,System.String)"/> method
+            </summary>
+            <returns>
+            The last 500 errors
+            </returns>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Runs a set of SQL contained in an ExecutionBlock
+            </summary>
+            <param name="block">The block of SQL to run</param>
+            <param name="server">The server to run it on</param>
+            <param name="database">The database to run it on</param>
+            <param name="integratedSecurity">True to use integrated security</param>
+            <param name="password">The password to connect to the database with</param>
+            <param name="userName">The user name to connect to the database with</param>
+            <remarks>
+            Feedback is provided via the Status event handler.
+            <para>See <see cref="M:RedGate.SQLDataCompare.Engine.SqlProvider.GetMigrationSQL"/> and <see cref="M:RedGate.SQLCompare.Engine.BuildFromDifferences"/> for code samples.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.CancelOperation">
+            <summary>
+            Cancels the current operation
+            </summary>
+        </member>
+        <member name="M:RedGate.SQL.Shared.Utils.OnStatus(RedGate.SQL.Shared.StatusEventArgs)">
+            <summary>
+            Fires the Status event
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Utils.LastCommandText">
+            <summary>
+            The last SQL command to be executed from the <see cref="M:RedGate.SQL.Shared.Utils.ExecuteBlock(RedGate.SQL.Shared.ExecutionBlock,System.String,System.String,System.Boolean,System.String,System.String)"/> method
+            </summary>
+        </member>
+        <member name="P:RedGate.SQL.Shared.Utils.Status">
+            <summary>
+            The event handler for status events
+            </summary>
+        </member>
+    </members>
+</doc>

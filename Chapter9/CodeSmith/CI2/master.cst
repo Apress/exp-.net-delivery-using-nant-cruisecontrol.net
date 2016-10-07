@@ -1,0 +1,97 @@
+<%-- 
+Name:			master.cst
+Author: 		Marc Holmes
+Description: 	Creates all required outputs for the build automation.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Src="" Inherits="" Debug="False" Description="Creates all required outputs for the build automation." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation.2" %>
+<%@ Assembly Name="System.Design" %>
+<%@ Import NameSpace="System.IO" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+
+<script runat="template">
+
+private CodeTemplate _ccnetTemplate;
+private CodeTemplate _buildTemplate;
+private CodeTemplate _deployTemplate;
+private string _outputDirectory = String.Empty; 
+
+[Editor(typeof(System.Windows.Forms.Design.FolderNameEditor), typeof(System.Drawing.Design.UITypeEditor))] 
+[CodeTemplateProperty(CodeTemplatePropertyOption.Optional)]
+[Category("Output")]
+[Description("The directory to output the results to.")]
+public string OutputDirectory 
+{ 
+	get
+	{
+		if (_outputDirectory.Length == 0) return this.CodeTemplateInfo.DirectoryName + "output";
+		return _outputDirectory;
+	}
+	set
+	{
+		if (value.EndsWith("\\")) value = value.Substring(0, value.Length - 1);
+		_outputDirectory = value;
+	} 
+}
+
+public CodeTemplate CompileTemplate(string templateName)
+{
+	CodeTemplateCompiler compiler = new CodeTemplateCompiler(templateName);
+	compiler.Compile();
+	
+	if (compiler.Errors.Count == 0)
+	{
+		return compiler.CreateInstance();
+	}
+	else
+	{
+		for (int i = 0; i < compiler.Errors.Count; i++)
+		{
+			Response.WriteLine(compiler.Errors[i].ToString());
+		}
+		
+		return null;
+	}
+}
+
+public CodeTemplate GetTemplate(string templateName)
+{
+	return this.CompileTemplate(this.CodeTemplateInfo.DirectoryName + templateName);
+}
+
+public void Go()
+{
+	DateTime startTime = DateTime.Now;
+	
+	Response.WriteLine("Beginning generation...");
+	
+	_ccnetTemplate = this.GetTemplate("CCNet.cst");
+	_buildTemplate = this.GetTemplate("Build.cst");
+	_deployTemplate = this.GetTemplate("Deploy.cst");
+	
+	_buildTemplate.SetProperty("ProjectSet", ProjectSet);
+	_deployTemplate.SetProperty("ProjectSet", ProjectSet);
+	for(int i = 0; i < ProjectSet.Projects.Length; i++)
+	{
+		Response.WriteLine("Preparing Build for " + ProjectSet.Projects[i].Name);
+		_buildTemplate.SetProperty("ProjectNumber", i);
+		_buildTemplate.RenderToFile(OutputDirectory + "\\" + ProjectSet.Settings["CompanyName"] +"." + ProjectSet.Projects[i].Name +".Build.xml", true);
+		Response.WriteLine("Preparing Deploy for " + ProjectSet.Projects[i].Name);
+		_deployTemplate.SetProperty("ProjectNumber", i);
+		_deployTemplate.RenderToFile(OutputDirectory + "\\" + ProjectSet.Settings["CompanyName"] +"." + ProjectSet.Projects[i].Name +".Deploy.xml", true);
+	}
+	
+	Response.WriteLine("Preparing CCNet...");
+	
+	_ccnetTemplate.SetProperty("ProjectSet", ProjectSet);
+	_ccnetTemplate.RenderToFile(OutputDirectory + "\\ccnet.config", true);
+	
+	Response.WriteLine("Generation complete. Execution time: " + (DateTime.Now - startTime).ToString());
+	Response.WriteLine("To view the output go here: " + OutputDirectory);
+}
+</script>
+
+<%
+this.Go();
+%>

@@ -1,0 +1,70 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Remote", "Remote\Remote.csproj", "{8775DAB9-42FE-4FA2-BCE7-38EA355EC4C3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Server", "Server\Server.csproj", "{038170F5-7AE6-467E-B940-1F5ED8B61945}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerConsole", "ServerConsole\ServerConsole.csproj", "{F5F6F51E-EAB4-4B07-B2D7-5620E9CA6FDE}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{C43046F2-900E-414D-BE78-E1B4F090C29F}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 5
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {6A7940CD-AFA6-4309-BF5D-D6ED3E7DA488}
+		SccProjectUniqueName1 = Remote\\Remote.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = Remote\\
+		SccProjectUniqueName2 = Server\\Server.csproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = Server\\
+		SccProjectUniqueName3 = ServerConsole\\ServerConsole.csproj
+		SccLocalPath3 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection3 = ServerConsole\\
+		SccProjectUniqueName4 = Service\\Service.csproj
+		SccLocalPath4 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection4 = Service\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{8775DAB9-42FE-4FA2-BCE7-38EA355EC4C3}.Debug.ActiveCfg = Debug|.NET
+		{8775DAB9-42FE-4FA2-BCE7-38EA355EC4C3}.Debug.Build.0 = Debug|.NET
+		{8775DAB9-42FE-4FA2-BCE7-38EA355EC4C3}.Release.ActiveCfg = Release|.NET
+		{8775DAB9-42FE-4FA2-BCE7-38EA355EC4C3}.Release.Build.0 = Release|.NET
+		{038170F5-7AE6-467E-B940-1F5ED8B61945}.Debug.ActiveCfg = Debug|.NET
+		{038170F5-7AE6-467E-B940-1F5ED8B61945}.Debug.Build.0 = Debug|.NET
+		{038170F5-7AE6-467E-B940-1F5ED8B61945}.Release.ActiveCfg = Release|.NET
+		{038170F5-7AE6-467E-B940-1F5ED8B61945}.Release.Build.0 = Release|.NET
+		{F5F6F51E-EAB4-4B07-B2D7-5620E9CA6FDE}.Debug.ActiveCfg = Debug|.NET
+		{F5F6F51E-EAB4-4B07-B2D7-5620E9CA6FDE}.Debug.Build.0 = Debug|.NET
+		{F5F6F51E-EAB4-4B07-B2D7-5620E9CA6FDE}.Release.ActiveCfg = Release|.NET
+		{F5F6F51E-EAB4-4B07-B2D7-5620E9CA6FDE}.Release.Build.0 = Release|.NET
+		{C43046F2-900E-414D-BE78-E1B4F090C29F}.Debug.ActiveCfg = Debug|.NET
+		{C43046F2-900E-414D-BE78-E1B4F090C29F}.Debug.Build.0 = Debug|.NET
+		{C43046F2-900E-414D-BE78-E1B4F090C29F}.Release.ActiveCfg = Release|.NET
+		{C43046F2-900E-414D-BE78-E1B4F090C29F}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

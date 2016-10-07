@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<project>
+     <xmlpoke
+        file="D:\BookCode\Chapter3\app.config"
+        xpath="/configuration/appSettings/add[@key='MyKey']/@value"
+        value="SomeValue" />
+</project>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project name="NAnt Examples" default="build">
+    <target name="*">
+        <nant target="${target::get-current-target()}">
+            <buildfiles>
+                <include name="**/*.build" />
+                <exclude name="examples.build" />
+                
+                <exclude name="ScriptTask/script-sample.build" />
+                <exclude name="Solution/**/*.build"/>
+            </buildfiles>
+        </nant>
+    </target>
+</project>

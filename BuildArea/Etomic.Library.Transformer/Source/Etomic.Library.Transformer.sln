@@ -1,0 +1,46 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csproj", "{6B154458-F1CE-4AF4-8555-B229B31479DA}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SourceCodeControl) = preSolution
+		SccNumberOfProjects = 3
+		SccLocalPath0 = .
+		CanCheckoutShared = false
+		SolutionUniqueID = {BA7D244B-EEBA-4473-B013-6E594064492A}
+		SccProjectUniqueName1 = Engine\\Engine.csproj
+		SccLocalPath1 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection1 = Engine\\
+		SccProjectUniqueName2 = Tests\\Tests.csproj
+		SccLocalPath2 = .
+		CanCheckoutShared = false
+		SccProjectFilePathRelativizedFromConnection2 = Tests\\
+	EndGlobalSection
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Debug.ActiveCfg = Debug|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Debug.Build.0 = Debug|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Release.ActiveCfg = Release|.NET
+		{6B154458-F1CE-4AF4-8555-B229B31479DA}.Release.Build.0 = Release|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Debug.ActiveCfg = Debug|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Debug.Build.0 = Debug|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Release.ActiveCfg = Release|.NET
+		{5C2103DC-21B1-4333-8774-E4AB5F4D2C10}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(SolutionItems) = postSolution
+		CommonAssemblyInfo.cs = CommonAssemblyInfo.cs
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

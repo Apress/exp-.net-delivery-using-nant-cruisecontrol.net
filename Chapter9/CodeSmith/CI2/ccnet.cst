@@ -1,0 +1,68 @@
+<%-- 
+Name: 			ccnet.xml.cst
+Author: 		Marc Holmes
+Description: 	Providing the ccnet.config file using an XML file.
+%>
+<%@ CodeTemplate Language="C#" TargetLanguage="Text" Description="Providing the ccnet.config file using an XML file." %>
+<%@ Assembly Name="Etomic.CodeSmithExtensions.BuildAutomation.2" %>
+<%@ Import Namespace="Etomic.CodeSmithExtensions.BuildAutomation" %>
+
+<%@ Property Name="ProjectSet" Type="Etomic.CodeSmithExtensions.BuildAutomation.ProjectSet" Description="The XML file containing the project definitions." %>
+
+<?xml version="1.0" encoding="utf-8" ?>
+<cruisecontrol>
+<%
+SettingCollection s = ProjectSet.Settings;
+foreach(Project p in ProjectSet.Projects)
+{
+%>
+<project name="<%=s["CompanyName"]%>.<%=p.Name%>">
+	<webURL><%=s["CcnetUrl"]%>/Controller.aspx?_action_ViewProjectReport=true&amp;server=local&amp;project=<%=s["CompanyName"]%>.<%=p.Name%></webURL>
+    <artifactDirectory><%=s["EnvironmentMain"]%>\Publish\<%=s["CompanyName"]%>.<%=p.Name%>\</artifactDirectory>
+    <modificationDelaySeconds>10</modificationDelaySeconds>
+
+    <triggers>
+      <intervalTrigger/>
+    </triggers>
+    
+	<sourcecontrol type="vss" autoGetSource="true">
+		<ssdir>"<%=s["VssFolder"]%>"</ssdir>
+		<project>$/Solutions/<%=s["CompanyName"]%>.<%=p.Name%>/</project>
+		<username><%=s["VssUsername"]%></username>
+		<password><%=s["VssPassword"]%></password>
+		<workingDirectory><%=s["EnvironmentMain"]%>\Source\<%=s["CompanyName"]%>.<%=p.Name%></workingDirectory>
+	</sourcecontrol>
+    
+	<build type="nant">
+      <baseDirectory>D:\dotNetDelivery\Chapter9\</baseDirectory>
+      <buildArgs>-D:debug=false</buildArgs>
+      <buildFile><%=s["CompanyName"]%>.<%=p.Name%>.Build.xml</buildFile>
+      <targetList>
+        <target>ci</target>
+      </targetList>
+      <buildTimeoutSeconds>300</buildTimeoutSeconds>
+    </build>
+
+   <labeller type="defaultlabeller">
+     <prefix>1.0.</prefix>
+   </labeller>
+
+	<tasks>
+        <merge>
+            <files>
+                <file><%=s["EnvironmentMain"]%>\Reports\<%=s["CompanyName"]%>.<%=p.Name%>\*-results.xml</file>
+                <file><%=s["EnvironmentMain"]%>\Reports\<%=s["CompanyName"]%>.<%=p.Name%>\fxcop.xml</file>
+            </files>
+        </merge>
+    </tasks>
+    
+	<publishers>
+      <xmllogger />
+    </publishers>
+  
+</project>
+
+<%
+}
+%>
+</cruisecontrol>

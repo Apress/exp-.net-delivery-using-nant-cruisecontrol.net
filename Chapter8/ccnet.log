@@ -1,0 +1,99 @@
+14/02/2005 19:51:33: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter8\ccnet.config"
+14/02/2005 19:51:33: [CruiseControl Server:Info]: Registered channel: tcp
+14/02/2005 19:51:33: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.3:21234/CruiseManager.rem
+14/02/2005 19:51:33: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+14/02/2005 19:51:33: [CruiseControl Server:Info]: Starting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:51:33: [Etomic.ShareTransformer:Info]: Starting integration for project: Etomic.ShareTransformer
+14/02/2005 19:51:33: [Etomic.ShareTransformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:51:33~13/02/2005;19:51:33 -Ybuilder,builder -I-Y
+14/02/2005 19:51:33: [Etomic.ShareTransformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\dotNetDelivery\BuildAreaCI\Source\Etomic.ShareTransformer] with arguments [history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:51:33~13/02/2005;19:51:33 -Ybuilder,builder -I-Y]
+14/02/2005 19:51:33: [Etomic.ShareTransformer:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:51:34: [Etomic.ShareTransformer:Info]: Integration complete: 14/02/2005 19:51:33
+14/02/2005 19:51:37: [CruiseControl Server:Info]: Disconnecting remote server: 
+14/02/2005 19:51:37: [CruiseControl Server:Info]: Unregistering channel: tcp
+14/02/2005 19:51:37: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+14/02/2005 19:51:37: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:51:37: [Etomic.ShareTransformer:Info]: Integrator for project: Etomic.ShareTransformer is now stopped.
+14/02/2005 19:52:52: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter8\ccnet.config"
+14/02/2005 19:52:52: [CruiseControl Server:Info]: Registered channel: tcp
+14/02/2005 19:52:52: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.3:21234/CruiseManager.rem
+14/02/2005 19:52:52: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+14/02/2005 19:52:52: [CruiseControl Server:Info]: Starting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:52:52: [Etomic.ShareTransformer:Info]: Starting integration for project: Etomic.ShareTransformer
+14/02/2005 19:52:53: [Etomic.ShareTransformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:52:53~14/02/2005;19:51:33 -Ybuilder,builder -I-Y
+14/02/2005 19:52:53: [Etomic.ShareTransformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\dotNetDelivery\BuildAreaCI\Source\Etomic.ShareTransformer] with arguments [history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:52:53~14/02/2005;19:51:33 -Ybuilder,builder -I-Y]
+14/02/2005 19:52:53: [Etomic.ShareTransformer:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:52:53: [Etomic.ShareTransformer:Info]: Integration complete: 14/02/2005 19:52:53
+14/02/2005 19:53:08: [CruiseControl Server:Info]: Disconnecting remote server: 
+14/02/2005 19:53:08: [CruiseControl Server:Info]: Unregistering channel: tcp
+14/02/2005 19:53:08: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+14/02/2005 19:53:08: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:53:08: [Etomic.ShareTransformer:Info]: Integrator for project: Etomic.ShareTransformer is now stopped.
+14/02/2005 19:53:29: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter8\ccnet.config"
+14/02/2005 19:53:29: [CruiseControl Server:Info]: Registered channel: tcp
+14/02/2005 19:53:29: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.3:21234/CruiseManager.rem
+14/02/2005 19:53:29: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+14/02/2005 19:53:29: [CruiseControl Server:Info]: Starting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:53:29: [Etomic.ShareTransformer:Info]: Starting integration for project: Etomic.ShareTransformer
+14/02/2005 19:53:30: [Etomic.ShareTransformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:53:30~14/02/2005;19:52:53 -Ybuilder,builder -I-Y
+14/02/2005 19:53:30: [Etomic.ShareTransformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\dotNetDelivery\BuildAreaCI\Source\Etomic.ShareTransformer] with arguments [history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:53:30~14/02/2005;19:52:53 -Ybuilder,builder -I-Y]
+14/02/2005 19:53:30: [Etomic.ShareTransformer:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:53:30: [Etomic.ShareTransformer:Info]: Integration complete: 14/02/2005 19:53:30
+14/02/2005 19:53:47: [CruiseControl Server:Info]: Disconnecting remote server: 
+14/02/2005 19:53:47: [CruiseControl Server:Info]: Unregistering channel: tcp
+14/02/2005 19:53:47: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+14/02/2005 19:53:47: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:53:47: [Etomic.ShareTransformer:Info]: Integrator for project: Etomic.ShareTransformer is now stopped.
+14/02/2005 19:53:52: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter8\ccnet.config"
+14/02/2005 19:53:52: [CruiseControl Server:Info]: Registered channel: tcp
+14/02/2005 19:53:52: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.3:21234/CruiseManager.rem
+14/02/2005 19:53:52: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+14/02/2005 19:53:52: [CruiseControl Server:Info]: Starting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:53:52: [Etomic.ShareTransformer:Info]: Starting integration for project: Etomic.ShareTransformer
+14/02/2005 19:53:52: [Etomic.ShareTransformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:53:52~14/02/2005;19:53:30 -Ybuilder,builder -I-Y
+14/02/2005 19:53:52: [Etomic.ShareTransformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\dotNetDelivery\BuildAreaCI\Source\Etomic.ShareTransformer] with arguments [history $/Solutions/Etomic.ShareTransformer/ -R -Vd14/02/2005;19:53:52~14/02/2005;19:53:30 -Ybuilder,builder -I-Y]
+14/02/2005 19:53:53: [Etomic.ShareTransformer:Info]: No modifications detected.
+14/02/2005 19:53:53: [Etomic.ShareTransformer:Info]: Integration complete: 14/02/2005 19:53:53
+14/02/2005 19:53:55: [CruiseControl Server:Info]: Disconnecting remote server: 
+14/02/2005 19:53:55: [CruiseControl Server:Info]: Unregistering channel: tcp
+14/02/2005 19:53:55: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+14/02/2005 19:53:55: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.ShareTransformer
+14/02/2005 19:53:55: [Etomic.ShareTransformer:Info]: Integrator for project: Etomic.ShareTransformer is now stopped.

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="IfElse" default="go">
+
+	<property name="ifelse" value="true"/>
+
+	<target name="go" depends="if, else"/>
+
+	<target name="if" if="${ifelse}">
+		<echo message="Executed if..."/>
+	</target>
+
+	<target name="else" unless="${ifelse}">
+		<echo message="Executed else..."/>
+	</target>
+
+</project>

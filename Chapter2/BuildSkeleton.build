@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="BuildSkeleton" default="help">
+	<description>The skeleton file for the build process</description>
+
+	<property name="nant.onfailure" value="fail"/>
+	
+	<target name="go" description="The main target for full build process execution." depends="clean, get, version, build, test, document, publish, notify"/>
+
+	<target name="clean" description="Clean up the build environment.">
+		<!--Enter tasks for clean target-->
+	</target>
+
+	<target name="get" description="Grab the source code.">
+		<!--Enter tasks for get target-->
+	</target>
+
+	<target name="version" description="Apply versioning to the source code files.">
+		<!--Enter tasks for version target-->
+	</target>
+
+	<target name="build" description="Compile the application.">
+		<!--Enter tasks for build target-->
+	</target>
+
+	<target name="test" description="Apply the unit tests.">
+		<!--Enter tasks for test target-->
+	</target>
+
+	<target name="document" description="Generate documentation and reports.">
+		<!--Enter tasks for document target-->
+	</target>
+
+	<target name="publish" description="Place the compiled assets, reports etc. in agreed location.">
+		<!--Enter tasks for publish target-->
+	</target>
+
+	<target name="notify" description="Tell everyone of the success or failure.">
+		<!--Enter tasks for notify target-->
+	</target>
+
+	<target name="fail">
+		<!--Enter tasks for fail target-->
+	</target>
+
+	<target name="help">
+		<!--Enter tasks for help target-->
+		<echo message="The skeleton file for the build process is designed to execute the following targets in turn:"/>
+		<echo message="-- clean"/>
+		<echo message="-- get"/>
+		<echo message="-- version"/>
+		<echo message="-- build"/>
+		<echo message="-- test"/>
+		<echo message="-- document"/>
+		<echo message="-- publish"/>
+		<echo message="-- notify"/>
+	</target>
+
+</project>

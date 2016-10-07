@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="ReadOnlyProperty" default="go">
+	<target name="go">
+		<property name="alwaysthesame" value="true" readonly="true"/>
+		<echo message="alwaysthesame = ${alwaysthesame}"/>
+		<property name="alwaysthesame" value="false"/>
+		<echo message="alwaysthesame = ${alwaysthesame}"/>
+	</target>
+</project>

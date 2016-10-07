@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="DynamicProperty" default="go">
+
+	<property name="one" value="one"/>
+	<property name="two" value="two"/>
+	<property name="both" value="${one}${two}" dynamic="${dynamic}"/>
+
+	<target name="go" depends="change"/>
+
+	<target name="change">
+		<echo message="one=${one}"/>
+		<echo message="two=${two}"/>
+		<property name="one" value="three"/>
+		<echo message="one=${one}"/>
+		<echo message="both=${both}"/>
+	</target>
+</project>

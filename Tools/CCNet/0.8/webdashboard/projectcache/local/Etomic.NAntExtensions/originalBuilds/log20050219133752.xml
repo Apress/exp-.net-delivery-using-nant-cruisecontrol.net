@@ -1,0 +1,356 @@
+<cruisecontrol project="Etomic.NAntExtensions">
+  <modifications />
+  <build date="19/02/2005 13:37:52" buildtime="00:00:04" error="true" buildcondition="ForceBuild"><buildresults project="Etomic.NAntExtensions">
+  <message level="Info"><![CDATA[Buildfile: file:///D:/dotNetDelivery/Chapter9/Etomic.NAntExtensions.Build.xml]]></message>
+  <message level="Info"><![CDATA[Target framework: Microsoft .NET Framework 1.1]]></message>
+  <message level="Info"><![CDATA[Target(s) specified: ci]]></message>
+  <task name="description" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="sysinfo">
+    <message level="Info"><![CDATA[Setting system information properties under sys.*]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.Contrib.Tasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.NUnit2ReportTasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "Etomic.NAntExtensions.GeneralTasks" for extensions.]]></message>
+  </task>
+  <target name="clean">
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(23,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Output\Etomic.NAntExtensions\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(25,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Docs\Etomic.NAntExtensions\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(27,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Reports\Etomic.NAntExtensions\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(29,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Distribution\Etomic.NAntExtensions\'. The directory does not exist.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Source\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Output\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Docs\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Reports\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Distribution\Etomic.NAntExtensions\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Publish\Etomic.NAntExtensions\'.]]></message>
+    </task>
+  </target>
+  <target name="version1">
+    <task name="property" />
+    <task name="ifnot">
+      <task name="property" />
+    </task>
+    <task name="attrib" />
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(58,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(59,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <task name="asminfo">
+      <message level="Info"><![CDATA[Generated file 'D:\dotNetDelivery\Chapter9\Source\Etomic.NAntExtensions\CommonAssemblyInfo.cs'.]]></message>
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to ReadOnly.]]></message>
+    </task>
+  </target>
+  <target name="version2">
+    <task name="ifnot">
+      <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml(74,8): Attribute 'user' for <vsslabel ... /> is deprecated.  Use "username" attribute instead.]]></message>
+      <task name="vsslabel">
+        <message level="Info"><![CDATA[Applied label 'NAnt - 1.0.1.0' to '$/Solutions/Etomic.NAntExtensions/'.]]></message>
+      </task>
+    </task>
+  </target>
+  <target name="build" />
+  <task name="call">
+    <target name="fail">
+      <task name="echo">
+        <message level="Info"><![CDATA[Notifying you of a failure in the build process.]]></message>
+      </task>
+    </target>
+  </task>
+  <failure>
+    <builderror>
+      <type>NAnt.Core.BuildException</type>
+      <message><![CDATA[Couldn't find solution file 'D:\dotNetDelivery\Chapter9\Source\Etomic.NAntExtensions\{$ProjectName}.sln'.]]></message>
+      <location>
+        <filename>D:\dotNetDelivery\Chapter9\Etomic.NAntExtensions.Build.xml</filename>
+        <linenumber>79</linenumber>
+        <columnnumber>6</columnnumber>
+      </location>
+      <stacktrace><![CDATA[   at NAnt.VSNet.Tasks.SolutionTask.InitializeTask(XmlNode taskNode)
+   at NAnt.Core.Task.InitializeElement(XmlNode elementNode)
+   at NAnt.Core.Element.Initialize(XmlNode elementNode, PropertyDictionary properties, FrameworkInfo framework)
+   at NAnt.Core.Project.CreateTask(XmlNode taskNode, Target target)
+   at NAnt.Core.Target.Execute()
+   at NAnt.Core.Project.Execute(String targetName, Boolean forceDependencies)
+   at NAnt.Core.Project.Execute()
+   at NAnt.Core.Project.Run()]]></stacktrace>
+    </builderror>
+  </failure>
+</buildresults>
+</build><FxCopReport Version="1.3" LastAnalysis="2005-01-26 22:01:52Z">
+  <Namespaces>
+    <Namespace Name="Etomic.NAntExtenstions.GeneralTasks">
+      <Messages>
+        <Message ID="Extenstions" Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+          <Issues>
+            <Issue Certainty="50" Level="CriticalWarning">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.NAntExtenstions.GeneralTasks</Item>
+                    <Item>Extenstions</Item>
+                  </Items>
+                </Data>
+                <Text>Correct the spelling of the unrecognized word 'Extenstions' in the namespace name 'Etomic.NAntExtenstions.GeneralTasks'.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message ID="Etomic" Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+          <Issues>
+            <Issue Certainty="50" Level="CriticalWarning">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.NAntExtenstions.GeneralTasks</Item>
+                    <Item>Etomic</Item>
+                  </Items>
+                </Data>
+                <Text>Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.NAntExtenstions.GeneralTasks'.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="AvoidNamespacesWithFewMembers" />
+          <Issues>
+            <Issue Certainty="50" Level="Warning">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.NAntExtenstions.GeneralTasks</Item>
+                  </Items>
+                </Data>
+                <Text>Consider merging the types defined in  'Etomic.NAntExtenstions.GeneralTasks' with another namespace.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+      </Messages>
+    </Namespace>
+  </Namespaces>
+  <Targets>
+    <Target Name="D:\BookCode\BuildAreaCI\Output\Etomic.NAntExtensions\Etomic.NAntExtensions.GeneralTasks.dll">
+      <Messages>
+        <Message Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="AssembliesHavePermissionRequests" />
+          <Issues>
+            <Issue Certainty="99" Level="CriticalError">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.NAntExtensions.GeneralTasks</Item>
+                  </Items>
+                </Data>
+                <Text>No valid permission requests were found for assembly 'Etomic.NAntExtensions.GeneralTasks'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="AssembliesHaveStrongNames" />
+          <Issues>
+            <Issue Certainty="95" Level="Error">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.NAntExtensions.GeneralTasks</Item>
+                  </Items>
+                </Data>
+                <Text>Sign 'Etomic.NAntExtensions.GeneralTasks' with a strong name key.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="AssembliesShouldBeComVisibleAttributed" />
+          <Issues>
+            <Issue Certainty="99" Level="CriticalError">
+              <Resolution>
+                <Data>
+                  <Id>NoAttribute</Id>
+                  <Items>
+                    <Item>Etomic.NAntExtensions.GeneralTasks</Item>
+                  </Items>
+                </Data>
+                <Text>Explicitly mark 'Etomic.NAntExtensions.GeneralTasks' with the ComVisible attribute.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message Status="Active" Created="2005-01-26 22:01:52Z">
+          <Rule TypeName="AssembliesAreMarkedClsCompliant" />
+          <Issues>
+            <Issue Certainty="99" Level="Error">
+              <Resolution>
+                <Data>
+                  <Id>NoAttr</Id>
+                  <Items>
+                    <Item>Etomic.NAntExtensions.GeneralTasks</Item>
+                  </Items>
+                </Data>
+                <Text>'Etomic.NAntExtensions.GeneralTasks' should have the CLSCompliantAttribute, and its value should be true.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+      </Messages>
+      <Modules>
+        <Module Name="etomic.nantextensions.generaltasks.dll">
+          <Namespaces>
+            <Namespace Name="Etomic.NAntExtenstions.GeneralTasks">
+              <Classes>
+                <Class Name="FxCopTask">
+                  <Methods>
+                    <Method Name="FormatArgument(System.String,Etomic.NAntExtenstions.GeneralTasks.FxCopTask+FxCopArgument):System.String">
+                      <Messages>
+                        <Message ID="System.String.Format(System.String,System.Object,System.Object)" Status="Active" Created="2005-01-26 22:01:52Z">
+                          <Rule TypeName="IFormatProviderShouldBePassed" />
+                          <Issues>
+                            <Issue Certainty="95" Level="Error">
+                              <SourceCode Path="d:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions\GeneralTasks" File="FxCopTask.cs" Line="153" />
+                              <Resolution>
+                                <Data>
+                                  <Items>
+                                    <Item>String.Format(String format, Object arg0, Object arg1)</Item>
+                                    <Item>String.Format(IFormatProvider provider, String format, Object[] args)</Item>
+                                  </Items>
+                                </Data>
+                                <Text>The call to 'String.Format(String format, Object arg0, Object arg1)' does not explicitly provide IFormatProvider. This should be replaced with a call to an overload that does: String.Format(IFormatProvider provider, String format, Object[] args)</Text>
+                              </Resolution>
+                            </Issue>
+                          </Issues>
+                        </Message>
+                      </Messages>
+                    </Method>
+                  </Methods>
+                </Class>
+              </Classes>
+            </Namespace>
+          </Namespaces>
+        </Module>
+      </Modules>
+    </Target>
+  </Targets>
+  <Rules>
+    <Rule TypeName="AssembliesAreMarkedClsCompliant">
+      <Name>Assemblies are marked CLSCompliant</Name>
+      <Description>Assemblies should explicitly state their CLS compliance using the CLSCompliant attribute. An assembly without this attribute is not CLS-compliant.</Description>
+      <LongDescription>Assemblies, modules, and types can be CLS-compliant even if some parts of the assembly, module, or type are not CLS-compliant. The following rules apply: 1) If the element is marked CLSCompliant, any noncompliant members must have the CLSCompliant attribute present with its argument set to false. 2) A comparable CLS-compliant alternative member must be supplied for each member that is not CLS-compliant.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssemblyClsCompliant.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="99">Error</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AssembliesHavePermissionRequests">
+      <Name>Assemblies specify permission requests</Name>
+      <Description>Permission requests prevent security exceptions from being thrown after code in an assembly has already begun executing. With permission requests, the assembly does not load if it has insufficient permissions. This rule will fire if you have specified a permission request incorrectly, or incompletely. If you have specified requests but FxCop reports a violation for this rule, use the PermView.exe tool to view the security permissions in the assembly. An unenforceable permission appears as an empty permission set.</Description>
+      <LongDescription>You should add attributes specifying what permissions your assembly will demand, might demand, and what permissions it does not want granted.  For example, the following attribute indicates that an assembly will, at minimum, require read access to the USERNAME environment variable: [assembly:EnvironmentPermissionAttribute(SecurityAction.RequestMinimum,
+Read="USERNAME")]. To specify permissions that the assembly might demand, use SecurityAction.RequestOptional. To specify permissions that the assembly must not be granted, use SecurityAction.RequestRefuse.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/AssembliesPermissionRequests.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="99">CriticalError</MessageLevel>
+      <File Name="UsageRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AssembliesHaveStrongNames">
+      <Name>Assemblies have strong names</Name>
+      <Description>Assemblies with strong names can be placed in the global assembly cache and can be checked for tampering at run time.</Description>
+      <LongDescription>The common language runtime compares the key in the assembly's manifest to the key used to generate the strong name, to ensure that the assembly's bits have not been tampered with.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesHaveStrongNames.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="95">Error</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AssembliesShouldBeComVisibleAttributed">
+      <Name>Assemblies should have the ComVisible attribute</Name>
+      <Description>The ComVisible attribute indicates whether COM clients can use the library. Good design dictates that developers explicitly indicate COM visibility.</Description>
+      <LongDescription>The default value for this attribute is 'true'. However, the best design is to mark the assembly ComVisible false, and then marking types, interfaces, and individual members as ComVisible true, as appropriate. For more information, see the Design Guidelines section titled Exposing Functionality to COM. </LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesShouldHaveComVisibleAttribute.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="75-99">CriticalError, Error</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AvoidNamespacesWithFewMembers">
+      <Name>Avoid having a namespace with a small number of types</Name>
+      <Description>A namespace should generally have more than five types.</Description>
+      <LongDescription />
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AvoidSmallNamespaces.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="50">Warning</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="IFormatProviderShouldBePassed">
+      <Name>IFormatProvider should be passed</Name>
+      <Description>If an overload exists that takes an IFormatProvider argument, it should always be called in favor of an overload that does not.</Description>
+      <LongDescription>Some methods in the common language runtime convert a value to or from a string representation and take a string parameter that contains one or more characters, called format specifiers, which indicate how the value is to be converted. If the meaning of the format specifier varies by culture, a formatting object supplies the actual characters used in the string representation. In scenarios where sorting and comparison behavior should never change between cultures, specify CultureInfo.InvariantCulture.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/Globalization/IFormatProviderPassed.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="95">Error</MessageLevel>
+      <File Name="GlobalizationRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly">
+      <Name>Namespace names should consist of correctly spelled words</Name>
+      <Description>The individual words that make up a namespace should not be abbreviated and should be spelled correctly.</Description>
+      <LongDescription>If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/NamespaceSpelling.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="50">CriticalWarning</MessageLevel>
+      <File Name="UsageRules.dll" Version="1.30.0.0" />
+    </Rule>
+  </Rules>
+</FxCopReport></cruisecontrol>

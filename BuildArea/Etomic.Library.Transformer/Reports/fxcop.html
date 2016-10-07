@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?><html xmlns="http://www.w3.org/TR/xhtml1/strict"><head><title>Analysis Report</title></head><style>
+		#Title {font-family: Verdana; font-size: 14pt; color: black; font-weight: bold}
+		.ColumnHeader {font-family: Verdana; font-size: 8pt; background-color:white; color: black}
+		.CriticalError {font-family: Verdana; font-size: 8pt; color: darkred; font-weight: bold; text-align: center}
+		.Error {font-family: Verdana; font-size: 8pt; color: royalblue; font-weight: bold; text-align: center}
+		.CriticalWarning {font-family: Verdana; font-size: 8pt; color: green; font-weight: bold; text-align: center}
+		.Warning {font-family: Verdana; font-size: 8pt; color: darkgray; font-weight: bold; text-align: center}
+		.Information {font-family: Verdana; font-size: 8pt; color: black; font-weight: bold; text-align: center}
+
+		.PropertyName {font-family: Verdana; font-size: 8pt; color: black; font-weight: bold}
+		.PropertyContent {font-family: Verdana; font-size: 8pt; color: black}
+		.NodeIcon { font-family: WebDings; font-size: 12pt; color: navy; padding-right: 5;}
+		.MessagesIcon { font-family: WebDings; font-size: 12pt; color: red;}
+		.RuleDetails { padding-top: 10;}
+		.SourceCode { background-color:#DDDDFF; }
+		.RuleBlock { background-color:#EEEEFF; }
+		.MessageNumber { font-family: Verdana; font-size: 10pt; color: darkred; }
+		.MessageBlock { font-family: Verdana; font-size: 10pt; color: darkred; }
+		.Resolution {font-family: Verdana; font-size: 8pt; color: black; }		
+		.NodeLine { font-family: Verdana; font-size: 9pt;}
+		.Note { font-family: Verdana; font-size: 9pt; color:black; background-color: #DDDDFF; }
+		.NoteUser { font-family: Verdana; font-size: 9pt; font-weight: bold; }
+		.NoteTime { font-family: Verdana; font-size: 8pt; font-style: italic; }
+		.Button { font-family: Verdana; font-size: 9pt; color: blue; background-color: #EEEEEE; }
+	</style><script>
+		function ViewState(blockId)
+		{
+			var block = document.all.item(blockId);
+			if (block.style.display=='none')
+			{
+				block.style.display='block';
+			}
+			else
+			{ 
+				block.style.display='none';
+			}
+		}
+		
+		function SwitchAll(how)
+		{
+			var len = document.all.length-1;
+			for(i=0;i!=len;i++)
+			{	
+				var block = document.all[i];
+				if (block != null)
+				{
+				    if(block.className == 'NodeDiv' || 
+						block.className == 'MessageBlockDiv' ||
+						block.className == 'MessageDiv')
+						
+				    {
+					    block.style.display=how;
+					}					
+				}
+			}
+		}
+
+		function ExpandAll()
+		{
+			SwitchAll('block');
+		}
+		
+		function CollapseAll()
+		{
+			SwitchAll('none');
+		}
+
+	</script><body bgcolor="white" alink="Black" vlink="Black" link="Black"><div id="Title">
+		FxCop 1.3 Analysis Report
+	</div><br /><table><tr><td class="Button"><a onClick="ExpandAll();">Expand All</a></td><td class="Button"><a onClick="CollapseAll();">Collapse All</a></td></tr></table><br /><div class="NodeLine" onClick="&#xD;&#xA;						javascript:ViewState('XSLTNamespace120120121120');&#xD;&#xA;					"><nobr style="color: navy;">{} </nobr>Etomic.Library.Transformer.Engine<nobr class="MessageNumber">
+						(2)
+					</nobr></div><div class="NodeDiv" style="display: none; position: relative; padding-left: 11;" id="XSLTNamespace120120121120"><div class="MessageBlock" onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessages120120120121120');&#xD;&#xA;		"><nobr class="MessagesIcon">@</nobr>2
+			Messages
+			for 
+			Etomic.Library.Transformer.Engine</div><div class="MessageBlockDiv" style="display: none; position: relative; padding-left: 5;" id="XSLTMessages120120120121120"><table width="100%"><tr><td class="ColumnHeader">Message Level</td><td class="ColumnHeader">Certainty</td><td class="ColumnHeader" width="100%">Resolution</td></tr><tr onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessage120120120120121120');&#xD;&#xA;		" bgcolor="#EEEEEE"><td valign="top" class="Warning">Warning</td><td valign="top" class="Warning">50</td><td class="Resolution" valign="top">Consider merging the types defined in  'Etomic.Library.Transformer.Engine' with another namespace.</td></tr><tr><td colspan="3"><div class="MessageDiv" style="display: none" id="XSLTMessage120120120120121120"><table width="100%" class="RuleBlock"><tr><td class="PropertyName">Rule:</td><td class="PropertyContent">Avoid having a namespace with a small number of types</td></tr><tr><td class="PropertyName">Rule Description:</td><td class="PropertyContent">A namespace should generally have more than five types.</td></tr><tr><td class="PropertyName">Rule File:</td><td class="PropertyContent">DesignRules.dll [1.30.0.0]</td></tr></table></div></td></tr><tr onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessage121120120120121120');&#xD;&#xA;		" bgcolor="#EEEEEE"><td valign="top" class="CriticalWarning">CriticalWarning</td><td valign="top" class="CriticalWarning">50</td><td class="Resolution" valign="top">Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.Library.Transformer.Engine'.</td></tr><tr><td colspan="3"><div class="MessageDiv" style="display: none" id="XSLTMessage121120120120121120"><table width="100%" class="RuleBlock"><tr><td class="PropertyName">Rule:</td><td class="PropertyContent">Namespace names should consist of correctly spelled words</td></tr><tr><td class="PropertyName">Rule Description:</td><td class="PropertyContent">The individual words that make up a namespace should not be abbreviated and should be spelled correctly.</td></tr><tr><td class="PropertyName">Long Description:</td><td class="PropertyContent">If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</td></tr><tr><td class="PropertyName">Rule File:</td><td class="PropertyContent">UsageRules.dll [1.30.0.0]</td></tr></table></div></td></tr></table></div></div><hr /><div class="NodeLine" onClick="&#xD;&#xA;						javascript:ViewState('XSLTTarget120121121120');&#xD;&#xA;					"><nobr class="NodeIcon">2</nobr>D:\BookCode\BuildArea\Etomic.Library.Transformer\Output\Etomic.Library.Transformer.Engine.dll<nobr class="MessageNumber">
+						(3)
+					</nobr></div><div class="NodeDiv" style="display: none; position: relative; padding-left: 11;" id="XSLTTarget120121121120"><div class="MessageBlock" onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessages120120121121120');&#xD;&#xA;		"><nobr class="MessagesIcon">@</nobr>3
+			Messages
+			for 
+			D:\BookCode\BuildArea\Etomic.Library.Transformer\Output\Etomic.Library.Transformer.Engine.dll</div><div class="MessageBlockDiv" style="display: none; position: relative; padding-left: 5;" id="XSLTMessages120120121121120"><table width="100%"><tr><td class="ColumnHeader">Message Level</td><td class="ColumnHeader">Certainty</td><td class="ColumnHeader" width="100%">Resolution</td></tr><tr onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessage120120120121121120');&#xD;&#xA;		" bgcolor="#EEEEEE"><td valign="top" class="CriticalError">CriticalError</td><td valign="top" class="CriticalError">99</td><td class="Resolution" valign="top">No valid permission requests were found for assembly 'Etomic.Library.Transformer.Engine'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </td></tr><tr><td colspan="3"><div class="MessageDiv" style="display: none" id="XSLTMessage120120120121121120"><table width="100%" class="RuleBlock"><tr><td class="PropertyName">Rule:</td><td class="PropertyContent">Assemblies specify permission requests</td></tr><tr><td class="PropertyName">Rule Description:</td><td class="PropertyContent">Permission requests prevent security exceptions from being thrown after code in an assembly has already begun executing. With permission requests, the assembly does not load if it has insufficient permissions. This rule will fire if you have specified a permission request incorrectly, or incompletely. If you have specified requests but FxCop reports a violation for this rule, use the PermView.exe tool to view the security permissions in the assembly. An unenforceable permission appears as an empty permission set.</td></tr><tr><td class="PropertyName">Long Description:</td><td class="PropertyContent">You should add attributes specifying what permissions your assembly will demand, might demand, and what permissions it does not want granted.  For example, the following attribute indicates that an assembly will, at minimum, require read access to the USERNAME environment variable: [assembly:EnvironmentPermissionAttribute(SecurityAction.RequestMinimum,
+Read="USERNAME")]. To specify permissions that the assembly might demand, use SecurityAction.RequestOptional. To specify permissions that the assembly must not be granted, use SecurityAction.RequestRefuse.</td></tr><tr><td class="PropertyName">Rule File:</td><td class="PropertyContent">UsageRules.dll [1.30.0.0]</td></tr></table></div></td></tr><tr onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessage121120120121121120');&#xD;&#xA;		" bgcolor="#EEEEEE"><td valign="top" class="Error">Error</td><td valign="top" class="Error">95</td><td class="Resolution" valign="top">Sign 'Etomic.Library.Transformer.Engine' with a strong name key.</td></tr><tr><td colspan="3"><div class="MessageDiv" style="display: none" id="XSLTMessage121120120121121120"><table width="100%" class="RuleBlock"><tr><td class="PropertyName">Rule:</td><td class="PropertyContent">Assemblies have strong names</td></tr><tr><td class="PropertyName">Rule Description:</td><td class="PropertyContent">Assemblies with strong names can be placed in the global assembly cache and can be checked for tampering at run time.</td></tr><tr><td class="PropertyName">Long Description:</td><td class="PropertyContent">The common language runtime compares the key in the assembly's manifest to the key used to generate the strong name, to ensure that the assembly's bits have not been tampered with.</td></tr><tr><td class="PropertyName">Rule File:</td><td class="PropertyContent">DesignRules.dll [1.30.0.0]</td></tr></table></div></td></tr><tr onClick="&#xD;&#xA;			javascript:ViewState('XSLTMessage122120120121121120');&#xD;&#xA;		" bgcolor="#EEEEEE"><td valign="top" class="Error">Error</td><td valign="top" class="Error">95</td><td class="Resolution" valign="top">Add an AssemblyVersion attribute to the 'Etomic.Library.Transformer.Engine' assembly.</td></tr><tr><td colspan="3"><div class="MessageDiv" style="display: none" id="XSLTMessage122120120121121120"><table width="100%" class="RuleBlock"><tr><td class="PropertyName">Rule:</td><td class="PropertyContent">Assemblies have version numbers</td></tr><tr><td class="PropertyName">Rule Description:</td><td class="PropertyContent">Assemblies should use version numbers. The version number is considered part of an assembly's identity.</td></tr><tr><td class="PropertyName">Long Description:</td><td class="PropertyContent">Versioning is applied by means of the AssemblyVersion attribute.</td></tr><tr><td class="PropertyName">Rule File:</td><td class="PropertyContent">DesignRules.dll [1.30.0.0]</td></tr></table></div></td></tr></table></div></div></body></html>

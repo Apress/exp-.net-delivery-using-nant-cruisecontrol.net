@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ProjectSet xmlns="http://www.etomic.co.uk">
+	<Projects>
+		<Project Name="Etomic.Library.Transformer">
+			<Assemblies>
+				<Assembly Name="Etomic.Library.Transformer.Engine" Test="false" Document="true"/>
+				<Assembly Name="Etomic.Library.Transformer.Tests" Test="true" Document="false"/>
+			</Assemblies>
+			<EnvDevelopment WebServer="" DbServer=""/>
+			<EnvIntegration WebServer="" DbServer=""/>
+			<EnvSystemTesting WebServer="" DbServer=""/>
+			<EnvUserTesting WebServer="" DbServer=""/>
+			<EnvProduction WebServer="" DbServer=""/>
+		</Project>
+	</Projects>
+</ProjectSet>

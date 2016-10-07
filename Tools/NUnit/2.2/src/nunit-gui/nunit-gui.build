@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<project name="NUnit-Gui" default="build">
+
+    <!--
+        Required properties:
+            * bin.dir               - bin directory
+            * src.dir               - source location(build) or target(copy)
+            * build.debug           - (true|false) debug build?
+            * build.defines.csc     - build defines for build config
+    -->
+
+    <target name="build" depends="copy">
+
+        <csc target="winexe" output="${bin.dir}/nunit-gui.exe" 
+                win32icon="Logo.ico" debug="${build.debug}"
+                define="${build.defines.csc}">
+            <sources basedir="${src.dir}/nunit-gui">
+                <include name="**/*.cs"/>
+            </sources>
+            <resources basedir="${src.dir}/nunit-gui">
+                <include name="*.resx"/>
+            </resources>
+            <references basedir="${bin.dir}">
+                <include name="nunit.util.dll"/>
+                <include name="nunit.uikit.dll"/>
+                <include name="nunit.core.dll"/>
+                <include name="nunit.framework.dll"/>
+            </references>
+        </csc>
+
+        <copy file="nunit-gui.exe.config" todir="${bin.dir}"/>
+
+    </target>
+
+    <target name="copy">
+        <copy todir="${src.dir}/nunit-gui">
+            <fileset basedir=".">
+                <include name="nunit-gui.csproj"/>
+                <include name="nunit-gui.build"/>
+                <include name="AboutBox.cs"/>
+                <include name="AboutBox.resx"/>
+                <include name="AppEntry.cs"/>
+                <include name="AssemblyInfo.cs"/>
+                <include name="DetailResults.cs"/>
+		<include name="ExceptionDetailsForm.cs"/>
+                <include name="NUnitForm.cs"/>
+                <include name="NUnitForm.resx"/>
+                <include name="OptionsDialog.cs"/>
+                <include name="OptionsDialog.resx"/>
+                <include name="ProjectEditor.cs"/>
+                <include name="ProjectEditor.resx"/>
+                <include name="App.ico"/>
+                <include name="Logo.ico"/>
+                <include name="nunit-gui.exe.config"/>
+            </fileset>
+        </copy>
+    </target>
+</project>

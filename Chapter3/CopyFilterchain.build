@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<project>
+
+<copy file="template.txt" tofile="specific.txt">
+    <filterchain>
+        <replacetokens>
+            <token key="DRIVELETTER" value="D" />
+        </replacetokens>
+    </filterchain>
+</copy>
+
+</project>

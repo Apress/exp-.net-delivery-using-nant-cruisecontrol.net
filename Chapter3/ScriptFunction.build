@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<project>
+     <script language="C#" prefix="etomic" >
+     <code><![CDATA[                 
+          [Function("hello-world")]
+          public static string HelloWorld() 
+          {
+               return "Hello World!";
+          }
+     ]]></code>
+     </script>
+      
+     <echo message="${etomic::hello-world()}"/>
+</project>

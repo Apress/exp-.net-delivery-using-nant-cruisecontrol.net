@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="ErrorHandlingExample" default="DoomedToFail">
+
+<target name="DoomedToFail">
+     <property name="nant.onfailure" value="GiveUp"/>
+     <fail message="This target is not going to work"/>
+</target>
+
+<target name="GiveUp">
+     <echo message="I give up, I really do."/>
+     <call target="CleanUp1"/>
+     <call target="CleanUp2"/>
+</target>
+
+<target name="CleanUp1">
+     <echo message="Doing CleanUp1..."/>
+     <property name="nant.onfailure" value="CleanUp2"/>
+     <fail/>
+</target>
+
+<target name="CleanUp2">
+     <echo message="Doing CleanUp2..."/>
+</target>
+
+</project>

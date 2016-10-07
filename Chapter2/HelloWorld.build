@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="HelloWorld" default="go">
+	<property name="message" value="Hello World!"/>
+	<target name="go">
+		<echo message="${message}"/>
+	</target>
+</project>

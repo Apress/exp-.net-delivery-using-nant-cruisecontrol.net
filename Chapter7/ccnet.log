@@ -1,0 +1,202 @@
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Registered channel: tcp
+26/01/2005 17:43:58: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.4:21234/CruiseManager.rem
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Reading configuration file "D:\BookCode\Chapter7\ccnet.config"
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Starting integrator for project: Etomic.NAntExtensions
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Web
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Library.Transformer
+26/01/2005 17:43:58: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Win
+26/01/2005 17:43:58: [Etomic.NAntExtensions:Info]: Starting integration for project: Etomic.NAntExtensions
+26/01/2005 17:43:58: [Etomic.Transformer.Web:Info]: Starting integration for project: Etomic.Transformer.Web
+26/01/2005 17:43:58: [Etomic.Library.Transformer:Info]: Starting integration for project: Etomic.Library.Transformer
+26/01/2005 17:43:58: [Etomic.Transformer.Win:Info]: Starting integration for project: Etomic.Transformer.Win
+26/01/2005 17:43:58: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:43~20/12/2004;21:16 -Ybuilder,builder -I-Y
+26/01/2005 17:43:58: [Etomic.NAntExtensions:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:43~29/11/2004;21:29 -Ybuilder,builder -I-Y
+26/01/2005 17:43:58: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:43~29/11/2004;21:44 -Ybuilder,builder -I-Y
+26/01/2005 17:43:58: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:43~20/12/2004;21:16 -Ybuilder,builder -I-Y
+26/01/2005 17:43:58: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:43~20/12/2004;21:16 -Ybuilder,builder -I-Y]
+26/01/2005 17:43:58: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:43~29/11/2004;21:44 -Ybuilder,builder -I-Y]
+26/01/2005 17:43:58: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:43~20/12/2004;21:16 -Ybuilder,builder -I-Y]
+26/01/2005 17:43:58: [Etomic.NAntExtensions:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions] with arguments [history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:43~29/11/2004;21:29 -Ybuilder,builder -I-Y]
+26/01/2005 17:43:58: [Etomic.Transformer.Web:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 94
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.MultiSourceControl.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\MultiSourceControl.cs:line 31
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+26/01/2005 17:43:58: [Etomic.Transformer.Web:Info]: Integration complete: 26/01/2005 17:43:58
+26/01/2005 17:43:58: [Etomic.NAntExtensions:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 94
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+26/01/2005 17:43:58: [Etomic.NAntExtensions:Info]: Integration complete: 26/01/2005 17:43:58
+26/01/2005 17:43:59: [Etomic.Library.Transformer:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 94
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+26/01/2005 17:43:59: [Etomic.Library.Transformer:Info]: Integration complete: 26/01/2005 17:43:59
+26/01/2005 17:43:59: [Etomic.Transformer.Win:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 94
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.MultiSourceControl.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\MultiSourceControl.cs:line 31
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+26/01/2005 17:43:59: [Etomic.Transformer.Win:Info]: Integration complete: 26/01/2005 17:43:59
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Disconnecting remote server: 
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Unregistering channel: tcp
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Integrator for project: Etomic.NAntExtensions is now stopped.
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Integrator for project: Etomic.Transformer.Web is now stopped.
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Integrator for project: Etomic.Library.Transformer is now stopped.
+26/01/2005 17:44:18: [CruiseControl Server:Info]: Integrator for project: Etomic.Transformer.Win is now stopped.
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Registered channel: tcp
+26/01/2005 17:45:21: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.4:21234/CruiseManager.rem
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Reading configuration file "D:\BookCode\Chapter7\ccnet.config"
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Starting integrator for project: Etomic.NAntExtensions
+26/01/2005 17:45:21: [Etomic.NAntExtensions:Info]: Starting integration for project: Etomic.NAntExtensions
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Web
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Library.Transformer
+26/01/2005 17:45:21: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Win
+26/01/2005 17:45:21: [Etomic.Transformer.Web:Info]: Starting integration for project: Etomic.Transformer.Web
+26/01/2005 17:45:22: [Etomic.Library.Transformer:Info]: Starting integration for project: Etomic.Library.Transformer
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Info]: Starting integration for project: Etomic.Transformer.Win
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:45~20/12/2004;21:16 -Ybuilder,builder -I-Y
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:45~20/12/2004;21:16 -Ybuilder,builder -I-Y]
+26/01/2005 17:45:22: [Etomic.NAntExtensions:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:45~29/11/2004;21:29 -Ybuilder,builder -I-Y
+26/01/2005 17:45:22: [Etomic.NAntExtensions:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions] with arguments [history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:45~29/11/2004;21:29 -Ybuilder,builder -I-Y]
+26/01/2005 17:45:22: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:45~29/11/2004;21:44 -Ybuilder,builder -I-Y
+26/01/2005 17:45:22: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:45~29/11/2004;21:44 -Ybuilder,builder -I-Y]
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:45~20/12/2004;21:16 -Ybuilder,builder -I-Y
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:45~20/12/2004;21:16 -Ybuilder,builder -I-Y]
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Info]: 2 modifications detected.
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Info]: 2 modifications detected.
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Info]: Getting source from VSS
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe get $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:45 -Ybuilder,builder -I-N -GWR
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [get $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:45 -Ybuilder,builder -I-N -GWR]
+26/01/2005 17:45:22: [Etomic.NAntExtensions:Info]: No modifications detected.
+26/01/2005 17:45:22: [Etomic.NAntExtensions:Info]: Integration complete: 26/01/2005 17:45:22
+26/01/2005 17:45:22: [Etomic.Library.Transformer:Info]: No modifications detected.
+26/01/2005 17:45:22: [Etomic.Library.Transformer:Info]: Integration complete: 26/01/2005 17:45:22
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Info]: Getting source from VSS
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe get $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:45 -Ybuilder,builder -I-N -GWR
+26/01/2005 17:45:22: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [get $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:45 -Ybuilder,builder -I-N -GWR]
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Warning]: Source control wrote output to stderr: Set D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win as the default folder for project $/Solutions/Etomic.Transformer.Win?(Y/N)N
+Project $Etomic.NAntExtensions has been destroyed, and cannot be rebuilt.
+Continue anyway?(Y/N)N
+Project $Etomic.NAntExtensions has been destroyed, and cannot be rebuilt.
+Continue anyway?(Y/N)N
+
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Info]: Building
+26/01/2005 17:45:22: [Etomic.Transformer.Win:Debug]: Attempting to start process [nant.exe] in working directory [D:\BookCode\Chapter7\] with arguments [-buildfile:Build.Core.xml -logger:NAnt.Core.XmlLogger -D:solution.stub=Transformer.Win -D:debug=false -D:label-to-apply=1.0.3 -D:ccnet.label=1.0.3 -D:ccnet.buildcondition=IfModificationExists ci]
+26/01/2005 17:45:23: [Etomic.Transformer.Web:Warning]: Source control wrote output to stderr: Set D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web as the default folder for project $/Solutions/Etomic.Transformer.Web?(Y/N)N
+Project $Etomic.NAntExtensions has been destroyed, and cannot be rebuilt.
+Continue anyway?(Y/N)N
+Project $Etomic.NAntExtensions has been destroyed, and cannot be rebuilt.
+Continue anyway?(Y/N)N
+
+26/01/2005 17:45:23: [Etomic.Transformer.Web:Info]: Building
+26/01/2005 17:45:23: [Etomic.Transformer.Web:Debug]: Attempting to start process [nant.exe] in working directory [D:\BookCode\Chapter7\] with arguments [-buildfile:Build.Core.xml -logger:NAnt.Core.XmlLogger -D:solution.stub=Transformer.Web -D:debug=false -D:label-to-apply=1.0.4 -D:ccnet.label=1.0.4 -D:ccnet.buildcondition=IfModificationExists ci]
+26/01/2005 17:45:24: [Etomic.Transformer.Win:Info]: NAnt build failed: 
+26/01/2005 17:45:24: [Etomic.Transformer.Win:Info]: Build complete: Failure
+26/01/2005 17:45:24: [Etomic.Transformer.Win:Info]: Merging file: D:\BookCode\BuildAreaCI\Reports\Etomic.Transformer.Win\fxcop.xml
+26/01/2005 17:45:24: [Etomic.Transformer.Win:Warning]: File not Found: D:\BookCode\BuildAreaCI\Reports\Etomic.Transformer.Win\fxcop.xml
+26/01/2005 17:45:24: [Etomic.Transformer.Web:Info]: NAnt build failed: 
+26/01/2005 17:45:24: [Etomic.Transformer.Web:Info]: Build complete: Failure
+26/01/2005 17:45:24: [Etomic.Transformer.Web:Info]: Merging file: D:\BookCode\BuildAreaCI\Reports\Etomic.Transformer.Web\fxcop.xml
+26/01/2005 17:45:24: [Etomic.Transformer.Web:Warning]: File not Found: D:\BookCode\BuildAreaCI\Reports\Etomic.Transformer.Web\fxcop.xml
+26/01/2005 17:45:24: [Etomic.Transformer.Web:Info]: Integration complete: 26/01/2005 17:45:24
+26/01/2005 17:45:24: [Etomic.Transformer.Win:Info]: Integration complete: 26/01/2005 17:45:24
+26/01/2005 17:46:22: [Etomic.NAntExtensions:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:46~29/11/2004;21:29 -Ybuilder,builder -I-Y
+26/01/2005 17:46:22: [Etomic.NAntExtensions:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions] with arguments [history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:46~29/11/2004;21:29 -Ybuilder,builder -I-Y]
+26/01/2005 17:46:22: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:46~29/11/2004;21:44 -Ybuilder,builder -I-Y
+26/01/2005 17:46:22: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:46~29/11/2004;21:44 -Ybuilder,builder -I-Y]
+26/01/2005 17:46:22: [Etomic.NAntExtensions:Info]: No modifications detected.
+26/01/2005 17:46:22: [Etomic.NAntExtensions:Info]: Integration complete: 26/01/2005 17:46:22
+26/01/2005 17:46:22: [Etomic.Library.Transformer:Info]: No modifications detected.
+26/01/2005 17:46:22: [Etomic.Library.Transformer:Info]: Integration complete: 26/01/2005 17:46:22
+26/01/2005 17:46:25: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:46~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:46:25: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:46~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:46:25: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:46~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:46:25: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:46~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:46:25: [Etomic.Transformer.Win:Info]: No modifications detected.
+26/01/2005 17:46:25: [Etomic.Transformer.Win:Info]: Integration complete: 26/01/2005 17:46:25
+26/01/2005 17:46:25: [Etomic.Transformer.Web:Info]: No modifications detected.
+26/01/2005 17:46:25: [Etomic.Transformer.Web:Info]: Integration complete: 26/01/2005 17:46:25
+26/01/2005 17:47:22: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:47~29/11/2004;21:44 -Ybuilder,builder -I-Y
+26/01/2005 17:47:22: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:47~29/11/2004;21:44 -Ybuilder,builder -I-Y]
+26/01/2005 17:47:22: [Etomic.NAntExtensions:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:47~29/11/2004;21:29 -Ybuilder,builder -I-Y
+26/01/2005 17:47:22: [Etomic.NAntExtensions:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions] with arguments [history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:47~29/11/2004;21:29 -Ybuilder,builder -I-Y]
+26/01/2005 17:47:22: [Etomic.Library.Transformer:Info]: No modifications detected.
+26/01/2005 17:47:22: [Etomic.Library.Transformer:Info]: Integration complete: 26/01/2005 17:47:22
+26/01/2005 17:47:22: [Etomic.NAntExtensions:Info]: No modifications detected.
+26/01/2005 17:47:22: [Etomic.NAntExtensions:Info]: Integration complete: 26/01/2005 17:47:22
+26/01/2005 17:47:25: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:47~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:47:25: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:47~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:47:25: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:47~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:47:25: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:47~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:47:25: [Etomic.Transformer.Win:Info]: No modifications detected.
+26/01/2005 17:47:25: [Etomic.Transformer.Win:Info]: Integration complete: 26/01/2005 17:47:25
+26/01/2005 17:47:25: [Etomic.Transformer.Web:Info]: No modifications detected.
+26/01/2005 17:47:25: [Etomic.Transformer.Web:Info]: Integration complete: 26/01/2005 17:47:25
+26/01/2005 17:48:23: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:48~29/11/2004;21:44 -Ybuilder,builder -I-Y
+26/01/2005 17:48:23: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd26/01/2005;17:48~29/11/2004;21:44 -Ybuilder,builder -I-Y]
+26/01/2005 17:48:23: [Etomic.NAntExtensions:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:48~29/11/2004;21:29 -Ybuilder,builder -I-Y
+26/01/2005 17:48:23: [Etomic.NAntExtensions:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.NAntExtensions] with arguments [history $/Solutions/Etomic.NAntExtensions/ -R -Vd26/01/2005;17:48~29/11/2004;21:29 -Ybuilder,builder -I-Y]
+26/01/2005 17:48:23: [Etomic.Library.Transformer:Info]: No modifications detected.
+26/01/2005 17:48:23: [Etomic.Library.Transformer:Info]: Integration complete: 26/01/2005 17:48:23
+26/01/2005 17:48:23: [Etomic.NAntExtensions:Info]: No modifications detected.
+26/01/2005 17:48:23: [Etomic.NAntExtensions:Info]: Integration complete: 26/01/2005 17:48:23
+26/01/2005 17:48:25: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:48~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:48:25: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd26/01/2005;17:48~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:48:25: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:48~26/01/2005;17:45 -Ybuilder,builder -I-Y
+26/01/2005 17:48:25: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd26/01/2005;17:48~26/01/2005;17:45 -Ybuilder,builder -I-Y]
+26/01/2005 17:48:26: [Etomic.Transformer.Win:Info]: No modifications detected.
+26/01/2005 17:48:26: [Etomic.Transformer.Win:Info]: Integration complete: 26/01/2005 17:48:26
+26/01/2005 17:48:26: [Etomic.Transformer.Web:Info]: No modifications detected.
+26/01/2005 17:48:26: [Etomic.Transformer.Web:Info]: Integration complete: 26/01/2005 17:48:26
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Disconnecting remote server: 
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Unregistering channel: tcp
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Integrator for project: Etomic.NAntExtensions is now stopped.
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Integrator for project: Etomic.Transformer.Web is now stopped.
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Integrator for project: Etomic.Library.Transformer is now stopped.
+26/01/2005 17:49:22: [CruiseControl Server:Info]: Integrator for project: Etomic.Transformer.Win is now stopped.

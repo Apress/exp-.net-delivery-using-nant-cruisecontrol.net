@@ -1,0 +1,30 @@
+[FILES]
+Etomic.Library.Transformer.Engine.html
+Etomic.Library.Transformer.EngineHierarchy.html
+Etomic.Library.Transformer.Engine.ApplicationEngine.html
+Etomic.Library.Transformer.Engine.ApplicationEngineMembers.html
+Etomic.Library.Transformer.Engine.ApplicationEngineConstructor.html
+Etomic.Library.Transformer.Engine.ApplicationEngineMethods.html
+Etomic.Library.Transformer.Engine.ApplicationEngine.GetFileContents.html
+Etomic.Library.Transformer.Engine.ApplicationEngine.SaveFileContents.html
+Etomic.Library.Transformer.Engine.ApplicationEngine.TransformXml.html
+
+[OPTIONS]
+Title=Etomic.Library.Transformer
+Auto Index=Yes
+Binary TOC=Yes
+Compatibility=1.1 or later
+Compiled file=Etomic.Library.Transformer.chm
+Default Window=MsdnHelp
+Default topic=Etomic.Library.Transformer.Engine.html
+Display compile progress=No
+Error log file=Etomic.Library.Transformer.log
+Full-text search=Yes
+Index file=Etomic.Library.Transformer.hhk
+Language=0x409 English (United States)
+Contents file=Etomic.Library.Transformer.hhc
+
+[WINDOWS]
+MsdnHelp="Etomic.Library.Transformer Help","Etomic.Library.Transformer.hhc","Etomic.Library.Transformer.hhk","Etomic.Library.Transformer.Engine.html","Etomic.Library.Transformer.Engine.html",,,,,0x62520,220,0x387e,[86,51,872,558],,,,,,,0
+
+[INFOTYPES]

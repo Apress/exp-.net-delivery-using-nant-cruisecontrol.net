@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="NUnit.Mocks" default="build">
+
+    <!--
+        Required properties:
+            * bin.dir               - bin directory
+            * src.dir               - source location(build) or target(copy)
+            * build.debug           - (true|false) debug build?
+            * build.defines.csc     - build defines for build config
+    -->
+
+    <target name="build" depends="copy">
+
+        <csc target="library" output="${bin.dir}/nunit.mocks.dll"
+                debug="${build.debug}" define="${build.defines.csc}">
+            <sources basedir="${src.dir}/mocks">
+                <include name="*.cs"/>
+            </sources>
+            <references>
+                <include name="${bin.dir}/nunit.framework.dll"/>
+            </references>
+        </csc>
+
+    </target>
+
+    <target name="copy">
+        <copy todir="${src.dir}/mocks">
+            <fileset basedir=".">
+                <include name="nunit.mocks.csproj"/>
+                <include name="nunit.mocks.build"/>
+                <include name="AssemblyInfo.cs"/>
+                <include name="DynamicMock.cs"/>
+                <include name="ICall.cs"/>
+                <include name="ICallHandler.cs"/>
+                <include name="IMethod.cs"/>
+                <include name="IMock.cs"/>
+                <include name="IVerify.cs"/>
+                <include name="MethodSignature.cs"/>
+                <include name="Mock.cs"/>
+                <include name="MockCall.cs"/>
+                <include name="MockInterfaceHandler.cs"/>
+                <include name="MockMethod.cs"/>
+            </fileset>
+        </copy>
+    </target>
+
+</project>

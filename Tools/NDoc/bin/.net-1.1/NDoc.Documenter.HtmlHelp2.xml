@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NDoc.Documenter.HtmlHelp2</name>
+    </assembly>
+    <members>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HelpTopicType">
+            <summary>
+            Describes what type of thing the help file describes
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile">
+            <summary>
+            Summary description for HtmlHelpFile.
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.#ctor(System.IO.FileInfo)">
+            <summary>
+            Creates a new instance of the HtmlHelpFile class
+            </summary>
+            <param name="f">The path to the file</param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.Save">
+            <summary>
+            persists the Html document back to its original location
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.GetXmlDataIsland">
+            <summary>
+            The Xml data island in this html help file
+            (if there is more than one returns the last one , in document order
+            </summary>
+            <returns>IHTMLElement pointer</returns>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.AppendDataIslandHtml(System.Text.StringBuilder)">
+            <summary>
+            Sets the contents of the Xml data island (if present)
+            </summary>
+            <param name="html">The new html</param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.GetHtmlDocument(System.IO.FileInfo)">
+            <summary>
+            Opens the HTML document at the specified location
+            </summary>
+            <param name="f">The Html file</param>
+            <returns>Pointer to the parsed Html document</returns>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.TypeName">
+            <summary>
+            The name of the type (class, member, namespace) that the file describes
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.ParentNamespace">
+            <summary>
+            The namespace to which the described type belongs
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.TopicType">
+            <summary>
+            The type of thing that the file describes
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.Dirty">
+            <summary>
+            Describes whether the document has beeen changed since it was opened
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.Title">
+            <summary>
+            The title of the document
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HtmlHelpFile.HeadingTitle">
+            <summary>
+            Return the title used in the First H1 tag
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxAugmenter">
+            <summary>
+            Augments the Xml dat islands that HxConv creates by default
+            in the html help files with additional index and MSHelp tags
+            to increase integration with VS.NET
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxAugmenter.Augment(System.IO.DirectoryInfo,System.String)">
+            <summary>
+            Augments all of the html files in the specified directory
+            with additonal MSHelp tags
+            </summary>
+            <param name="workingDir">The root directory of the project</param>
+            <param name="helpName">The name of the help project</param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxAugmenter.CreateIndexFile(System.IO.DirectoryInfo,System.String,System.String,System.String)">
+            <summary>
+            Extracts the specified index resource from the assembly and adds it
+            to the project directory
+            </summary>
+            <param name="workingDir">The project directory</param>
+            <param name="resourceName">The name of the embedded resource</param>
+            <param name="helpName">The name of the help project</param>
+            <param name="IndexID">The index to assign to the new index</param>
+            <returns>The file name (without path) of the new index file</returns>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxAugmenter.FixUp(System.IO.DirectoryInfo)">
+            <summary>
+            Iterates over all html files in the specified directory,
+            adding additional tags to their XML data islands
+            </summary>
+            <param name="workingDir">The location of the html file to fixed</param>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler">
+            <summary>
+            Summary description for HxCompiler.
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.#ctor">
+            <summary>
+            Creates new instnace of an HxCompiler
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.Compile(System.IO.DirectoryInfo,System.String,System.Int16)">
+            <summary>
+            Compiles the Html Help 2 project
+            </summary>
+            <param name="projectRoot">The root locaion of the project inputs</param>
+            <param name="helpName">The name of the project</param>
+            <param name="langID">The language ID of the final help file</param>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.CompilerStatus">
+            <summary>
+            Captures compilsation status from the HXComp process
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.CompilerStatus.#ctor(System.String)">
+            <summary>
+            Creates a new instance of CompilerStatus
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.CompilerStatus.CompileFailed">
+            <summary>
+            Indicates whether a fatal compilation error has occured
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxCompiler.CompilerStatus.ErrorMessage">
+            <summary>
+            If the compile failed this holds whatever error message was return by HxComp
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxConv">
+            <summary>
+            Converts compiled Html Help version 1 CHM files into
+            Compiled Html Help version 2 HxS files
+            This class wraps the HxConv.exe converter supplied with the HTML v2 SDK
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxObject">
+            <summary>
+            HxObject is the base class wrapper around the HTML Help v2 compiler
+            executables that ship with the HTML v2 SDK
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.#ctor(System.String,System.String)">
+            <summary>
+            Create a new instance of the HxObject class
+            </summary>
+            <param name="compilerPath">See <see cref="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.CompilerPath"/></param>
+            <param name="appName">The name of the executable that implements 
+            the functionality wrapped by an HxObject derived class</param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.Execute(System.String,System.String)">
+            <summary>
+            Invokes the Hx executable (see <see cref="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.AppName"/>)
+            </summary>
+            <param name="arguments">The command line arguments to passed to the compiler</param>
+            <param name="workingDirectory">The working directory for the process</param>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.CompilerPath">
+            <summary>
+            The location of the executable file
+            <see cref="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.AppName"/>
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.CompilerEXEPath">
+            <summary>
+            The full path and file name of the Hx executable file
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.AppName">
+            <summary>
+            The name of the executable that the class wraps
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.ProcessTimeout">
+            <summary>
+            The number of milliseconds to wait before timing out the process once Execute is called
+            see <see cref="M:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.Execute(System.String,System.String)"/>
+            </summary>
+            <remarks>Can be overridden by derived classes to provide custom timeout intervals</remarks>
+            <value>600000</value>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxConv.#ctor(System.String)">
+            <summary>
+            Create new instance of a Chm2HxsConverter
+            </summary>
+            <param name="compilerPath"><see cref="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.CompilerPath"/></param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxConv.Convert(System.IO.FileInfo)">
+            <summary>
+            Converts the specified CHM files
+            </summary>
+            <param name="CHMFile">The CHM Help file to convert</param>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.Compiler.HxConv.CharacterSet">
+            <summary>
+            Gets or sets the character set that will be used when converting the CHM file.
+            Defaults to Ascii.
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.Compiler.HxReg">
+            <summary>
+            Wraps the HxReg.exe registry component
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxReg.#ctor(System.String)">
+            <summary>
+            Create a new instance of a HxReg object
+            </summary>
+            <param name="compilerPath"><see cref="P:NDoc.Documenter.HtmlHelp2.Compiler.HxObject.CompilerPath"/></param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxReg.RegisterNamespace(System.String,System.IO.FileInfo,System.String)">
+            <summary>
+            Registers the a help namespace
+            </summary>
+            <param name="Namespace">The ID of the namespace to register</param>
+            <param name="CollectionFile">The collection (HxS or HxC) file</param>
+            <param name="Description">Namespace description</param>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.Compiler.HxReg.RegisterTitle(System.String,System.String,System.IO.FileInfo)">
+            <summary>
+            Register an HxS title with a help namespace
+            </summary>
+            <param name="Namespace">The namespace to register with</param>
+            <param name="TitleID">The id of the new title</param>
+            <param name="HxsFile">The location of the HxS file</param>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.CharacterSet">
+            <summary>
+            Represents the character set  that will be used when compiling the Hxs file
+            </summary>
+        </member>
+        <member name="F:NDoc.Documenter.HtmlHelp2.CharacterSet.Ascii">
+            <summary>
+            Ascii characters set
+            </summary>
+        </member>
+        <member name="F:NDoc.Documenter.HtmlHelp2.CharacterSet.UTF8">
+            <summary>
+            UTF 8 character set
+            </summary>
+        </member>
+        <member name="F:NDoc.Documenter.HtmlHelp2.CharacterSet.Unicode">
+            <summary>
+            Unicode chacracters
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config">
+            <summary>
+            Config setting for the CHM to HxS converter/compiler
+            </summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.#ctor">
+            <summary>Initializes a new instance of the MsdnHelpConfig class.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.CharacterSet">
+            <summary>
+            Gets or sets the character set that will be used when compiling the help file.
+            Defaults to Ascii.
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.LangID">
+            <summary>The language ID of the locale used by the compiled helpfile</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.DeleteCHM">
+            <summary>Flag that indicates whether to keep the CHM file after successful conversion</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.AugmentXmlDataIslands">
+            <summary>Adds additional tags to the embedded Xml data islands (results in slower builds but tighter VS.NET integration)</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.RegisterTitleWithNamespace">
+            <summary>
+            Should the compiled Html 2 title be registered after it is compiled. (If true ParentCollectionNamespace is required)
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.ParentCollectionNamespace">
+            <summary>
+            If RegisterTitleWithNamespace is true this is the namesapce to which it will be added.
+            </summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Config.RegisterTitleAsCollection">
+            <summary>
+            If true the HxS title will be registered as a collection (ignored if RegisterTitleWithNamespace is ture)
+            </summary>
+        </member>
+        <member name="T:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter">
+            <summary>CHM to HxS converter/compiler</summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.#ctor">
+            <summary>Initializes a new instance of the HtmlHelp2 class.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.Clear">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.CanBuild(NDoc.Core.Project,System.Boolean)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.Build(NDoc.Core.Project)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.MainOutputFile">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.HtmlHelp2.HtmlHelp2Documenter.DevelopmentStatus">
+            <summary>
+            The development status (alpha, beta, stable) of this documenter.
+            </summary>
+        </member>
+    </members>
+</doc>

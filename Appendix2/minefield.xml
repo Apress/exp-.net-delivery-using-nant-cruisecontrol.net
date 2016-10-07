@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="minefield.xslt" ?>
+<minefield rows="9" columns="9" turns="2" status="2">
+  <row>?Z2      </row>
+  <row>MM311    </row>
+  <row>???M1    </row>
+  <row>?1111  11</row>
+  <row>M1   112M</row>
+  <row>?1   1M??</row>
+  <row>?1   12??</row>
+  <row>M1    1M?</row>
+  <row>?1    1??</row>
+</minefield>

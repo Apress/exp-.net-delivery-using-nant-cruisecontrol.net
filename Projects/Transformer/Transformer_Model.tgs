@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<ProjectSupport>
+  <SupportedProjects>
+    <ProjectName>TransformerGui</ProjectName>
+    <ProjectName>TransformerEngine</ProjectName>
+    <ProjectName>TransformerTests</ProjectName>
+  </SupportedProjects>
+</ProjectSupport>

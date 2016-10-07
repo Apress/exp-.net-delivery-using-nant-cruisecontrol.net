@@ -1,0 +1,127 @@
+<cruisecontrol project="Etomic.Library.Transformer">
+  <modifications />
+  <build date="19/02/2005 13:56:05" buildtime="00:00:03" error="true" buildcondition="ForceBuild"><buildresults project="Etomic.Library.Transformer">
+  <message level="Info"><![CDATA[Buildfile: file:///D:/dotNetDelivery/Chapter9/Etomic.Library.Transformer.Build.xml]]></message>
+  <message level="Info"><![CDATA[Target framework: Microsoft .NET Framework 1.1]]></message>
+  <message level="Info"><![CDATA[Target(s) specified: ci]]></message>
+  <task name="description" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="sysinfo">
+    <message level="Info"><![CDATA[Setting system information properties under sys.*]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.Contrib.Tasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.NUnit2ReportTasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "Etomic.NAntExtensions.GeneralTasks" for extensions.]]></message>
+  </task>
+  <target name="clean">
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Output\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Docs\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Reports\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Info"><![CDATA[Deleting directory 'D:\dotNetDelivery\BuildAreaCI\Distribution\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir" />
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Output\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Docs\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Reports\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\BuildAreaCI\Distribution\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir" />
+  </target>
+  <target name="version1">
+    <task name="property" />
+    <task name="ifnot">
+      <task name="property" />
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to Normal.]]></message>
+    </task>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(64,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(65,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <task name="asminfo">
+      <message level="Info"><![CDATA[Generated file 'D:\dotNetDelivery\BuildAreaCI\Source\Etomic.Library.Transformer\CommonAssemblyInfo.cs'.]]></message>
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to ReadOnly.]]></message>
+    </task>
+  </target>
+  <target name="version2">
+    <task name="ifnot">
+      <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(80,8): Attribute 'user' for <vsslabel ... /> is deprecated.  Use "username" attribute instead.]]></message>
+      <task name="vsslabel">
+        <message level="Info"><![CDATA[Applied label 'NAnt - 1.0.1.0' to '$/Solutions/Etomic.Library.Transformer/'.]]></message>
+      </task>
+    </task>
+  </target>
+  <target name="build">
+    <task name="solution">
+      <message level="Info"><![CDATA[Starting solution build.]]></message>
+      <message level="Info"><![CDATA[Building 'Engine' [Debug] ...]]></message>
+      <task name="attrib" />
+      <message level="Info"><![CDATA[d:\dotNetDelivery\BuildAreaCI\Source\Etomic.Library.Transformer\Engine\ApplicationEngine.cs(52,54): warning CS1574: XML comment on 'Etomic.Library.Transformer.Engine.ApplicationEngine.SaveFileContents(string, string)' has cref attribute 'contents' that could not be found]]></message>
+      <message level="Info"><![CDATA[d:\dotNetDelivery\BuildAreaCI\Source\Etomic.Library.Transformer\Engine\ApplicationEngine.cs(53,47): warning CS1574: XML comment on 'Etomic.Library.Transformer.Engine.ApplicationEngine.SaveFileContents(string, string)' has cref attribute 'path' that could not be found]]></message>
+      <task name="copy" />
+      <task name="copy" />
+      <task name="copy" />
+      <message level="Info"><![CDATA[Building 'Tests' [Debug] ...]]></message>
+      <task name="delete" />
+    </task>
+  </target>
+  <task name="call">
+    <target name="fail">
+      <task name="echo">
+        <message level="Info"><![CDATA[Notifying you of a failure in the build process.]]></message>
+      </task>
+    </target>
+  </task>
+  <failure>
+    <builderror>
+      <type>NAnt.Core.BuildException</type>
+      <message><![CDATA[Couldn't find referenced assembly 'D:\dotNetDelivery\BuildAreaCI\Program Files\NUnit V2.1\bin\nunit.framework.dll'.]]></message>
+      <stacktrace><![CDATA[   at NAnt.VSNet.FileReferenceBase.GetAssemblyOutputFiles(String assemblyFile)
+   at NAnt.VSNet.AssemblyReferenceBase.GetOutputFiles(ConfigurationBase config)
+   at NAnt.VSNet.ProjectBase.GetOutputFiles(String configuration)
+   at NAnt.VSNet.ProjectBase.Prepare(ConfigurationBase config)
+   at NAnt.VSNet.ManagedProjectBase.Prepare(ConfigurationBase config)
+   at NAnt.VSNet.ProjectBase.Compile(String configuration)
+   at NAnt.VSNet.SolutionBase.Compile(String configuration)
+   at NAnt.VSNet.Tasks.SolutionTask.ExecuteTask()
+   at NAnt.Core.Task.Execute()
+   at NAnt.Core.Target.Execute()
+   at NAnt.Core.Project.Execute(String targetName, Boolean forceDependencies)
+   at NAnt.Core.Project.Execute()
+   at NAnt.Core.Project.Run()]]></stacktrace>
+    </builderror>
+  </failure>
+</buildresults>
+</build>
+</cruisecontrol>

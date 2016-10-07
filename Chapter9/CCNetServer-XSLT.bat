@@ -1,0 +1,1 @@
+"D:/dotNetDelivery/Tools/CCNet/0.8/Server/CCnet.exe" -remoting:off -config:ccnet-xslt.config

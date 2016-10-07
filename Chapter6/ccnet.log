@@ -1,0 +1,180 @@
+13/02/2005 19:31:36: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter6\ccnet.config"
+13/02/2005 19:31:37: [CruiseControl Server:Error]: INTERNAL ERROR: ExpandableObjectConverter cannot convert from System.String.
+----------
+System.NotSupportedException: ExpandableObjectConverter cannot convert from System.String.
+   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   at Exortech.NetReflector.Util.ReflectorTypeConverter.Convert(Type to, Object from)
+   at Exortech.NetReflector.XmlArraySerialiser.Read(XmlNode node, Type instanceType, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlMemberSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.ReadMembers(XmlNode node, Object instance, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.NetReflector.Read(XmlNode node, NetReflectorTypeTable table)
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.PopulateProjectsFromXml(XmlDocument configXml) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 98
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.Load(FileInfo configFile) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Config.FileConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\FileConfigurationService.cs:line 30
+   at ThoughtWorks.CruiseControl.Core.Config.CachingConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\CachingConfigurationService.cs:line 24
+   at ThoughtWorks.CruiseControl.Core.CruiseServer.CreateIntegrators() in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 96
+   at ThoughtWorks.CruiseControl.Core.CruiseServer..ctor(IConfigurationService configurationService, IProjectIntegratorListFactory projectIntegratorListFactory, IProjectSerializer projectSerializer) in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 36
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateLocal(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 12
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateRemote(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 25
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.Create(Boolean remote, String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 30
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.LaunchServer() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 52
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Run() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 43
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Main(String[] args) in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 18
+----------
+
+14/02/2005 19:24:15: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter6\ccnet.config"
+14/02/2005 19:24:15: [CruiseControl Server:Error]: INTERNAL ERROR: ExpandableObjectConverter cannot convert from System.String.
+----------
+System.NotSupportedException: ExpandableObjectConverter cannot convert from System.String.
+   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   at Exortech.NetReflector.Util.ReflectorTypeConverter.Convert(Type to, Object from)
+   at Exortech.NetReflector.XmlArraySerialiser.Read(XmlNode node, Type instanceType, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlMemberSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.ReadMembers(XmlNode node, Object instance, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.NetReflector.Read(XmlNode node, NetReflectorTypeTable table)
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.PopulateProjectsFromXml(XmlDocument configXml) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 98
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.Load(FileInfo configFile) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Config.FileConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\FileConfigurationService.cs:line 30
+   at ThoughtWorks.CruiseControl.Core.Config.CachingConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\CachingConfigurationService.cs:line 24
+   at ThoughtWorks.CruiseControl.Core.CruiseServer.CreateIntegrators() in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 96
+   at ThoughtWorks.CruiseControl.Core.CruiseServer..ctor(IConfigurationService configurationService, IProjectIntegratorListFactory projectIntegratorListFactory, IProjectSerializer projectSerializer) in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 36
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateLocal(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 12
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateRemote(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 25
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.Create(Boolean remote, String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 30
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.LaunchServer() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 52
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Run() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 43
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Main(String[] args) in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 18
+----------
+
+14/02/2005 19:26:06: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter6\ccnet.config"
+14/02/2005 19:26:06: [CruiseControl Server:Error]: INTERNAL ERROR: ExpandableObjectConverter cannot convert from System.String.
+----------
+System.NotSupportedException: ExpandableObjectConverter cannot convert from System.String.
+   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   at Exortech.NetReflector.Util.ReflectorTypeConverter.Convert(Type to, Object from)
+   at Exortech.NetReflector.XmlArraySerialiser.Read(XmlNode node, Type instanceType, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlMemberSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.ReadMembers(XmlNode node, Object instance, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.NetReflector.Read(XmlNode node, NetReflectorTypeTable table)
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.PopulateProjectsFromXml(XmlDocument configXml) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 98
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.Load(FileInfo configFile) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Config.FileConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\FileConfigurationService.cs:line 30
+   at ThoughtWorks.CruiseControl.Core.Config.CachingConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\CachingConfigurationService.cs:line 24
+   at ThoughtWorks.CruiseControl.Core.CruiseServer.CreateIntegrators() in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 96
+   at ThoughtWorks.CruiseControl.Core.CruiseServer..ctor(IConfigurationService configurationService, IProjectIntegratorListFactory projectIntegratorListFactory, IProjectSerializer projectSerializer) in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 36
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateLocal(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 12
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateRemote(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 25
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.Create(Boolean remote, String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 30
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.LaunchServer() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 52
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Run() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 43
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Main(String[] args) in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 18
+----------
+
+14/02/2005 19:28:47: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter6\ccnet.config"
+14/02/2005 19:28:47: [CruiseControl Server:Error]: INTERNAL ERROR: ExpandableObjectConverter cannot convert from System.String.
+----------
+System.NotSupportedException: ExpandableObjectConverter cannot convert from System.String.
+   at System.ComponentModel.TypeConverter.GetConvertFromException(Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, Object value)
+   at System.ComponentModel.TypeConverter.ConvertFrom(Object value)
+   at Exortech.NetReflector.Util.ReflectorTypeConverter.Convert(Type to, Object from)
+   at Exortech.NetReflector.XmlArraySerialiser.Read(XmlNode node, Type instanceType, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlMemberSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.ReadMembers(XmlNode node, Object instance, NetReflectorTypeTable table)
+   at Exortech.NetReflector.XmlTypeSerialiser.Read(XmlNode node, NetReflectorTypeTable table)
+   at Exortech.NetReflector.NetReflector.Read(XmlNode node, NetReflectorTypeTable table)
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.PopulateProjectsFromXml(XmlDocument configXml) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 98
+   at ThoughtWorks.CruiseControl.Core.Config.DefaultConfigurationFileLoader.Load(FileInfo configFile) in d:\sourceforge\ccnet\project\core\configuration\DefaultConfigurationFileLoader.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Config.FileConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\FileConfigurationService.cs:line 30
+   at ThoughtWorks.CruiseControl.Core.Config.CachingConfigurationService.Load() in d:\sourceforge\ccnet\project\core\configuration\CachingConfigurationService.cs:line 24
+   at ThoughtWorks.CruiseControl.Core.CruiseServer.CreateIntegrators() in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 96
+   at ThoughtWorks.CruiseControl.Core.CruiseServer..ctor(IConfigurationService configurationService, IProjectIntegratorListFactory projectIntegratorListFactory, IProjectSerializer projectSerializer) in d:\sourceforge\ccnet\project\core\CruiseServer.cs:line 36
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateLocal(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 12
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.CreateRemote(String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 25
+   at ThoughtWorks.CruiseControl.Core.CruiseServerFactory.Create(Boolean remote, String configFile) in d:\sourceforge\ccnet\project\core\CruiseServerFactory.cs:line 30
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.LaunchServer() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 52
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Run() in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 43
+   at ThoughtWorks.CruiseControl.Console.ConsoleRunner.Main(String[] args) in d:\sourceforge\ccnet\project\console\ConsoleRunner.cs:line 18
+----------
+
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Reading configuration file "D:\dotNetDelivery\Chapter6\ccnet.config"
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Registered channel: tcp
+14/02/2005 19:29:46: [CruiseControl Server:Info]: CruiseManager: Listening on url: tcp://192.168.0.3:21234/CruiseManager.rem
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Starting CruiseControl.NET Server
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Web
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Library.Transformer
+14/02/2005 19:29:46: [CruiseControl Server:Info]: Starting integrator for project: Etomic.Transformer.Win
+14/02/2005 19:29:46: [Etomic.Transformer.Web:Info]: Starting integration for project: Etomic.Transformer.Web
+14/02/2005 19:29:46: [Etomic.Library.Transformer:Info]: Starting integration for project: Etomic.Library.Transformer
+14/02/2005 19:29:46: [Etomic.Transformer.Win:Info]: Starting integration for project: Etomic.Transformer.Win
+14/02/2005 19:29:47: [Etomic.Transformer.Win:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Win/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:55:55 -Ybuilder,builder -I-Y
+14/02/2005 19:29:47: [Etomic.Library.Transformer:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Library.Transformer/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:36:23 -Ybuilder,builder -I-Y
+14/02/2005 19:29:47: [Etomic.Transformer.Web:Debug]: VSS: C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe history $/Solutions/Etomic.Transformer.Web/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:55:55 -Ybuilder,builder -I-Y
+14/02/2005 19:29:47: [Etomic.Library.Transformer:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Library.Transformer] with arguments [history $/Solutions/Etomic.Library.Transformer/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:36:23 -Ybuilder,builder -I-Y]
+14/02/2005 19:29:47: [Etomic.Transformer.Win:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Win] with arguments [history $/Solutions/Etomic.Transformer.Win/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:55:55 -Ybuilder,builder -I-Y]
+14/02/2005 19:29:47: [Etomic.Transformer.Web:Debug]: Attempting to start process [C:\Program Files\Microsoft Visual Studio\VSS\win32\ss.exe] in working directory [D:\BookCode\BuildAreaCI\Source\Etomic.Transformer.Web] with arguments [history $/Solutions/Etomic.Transformer.Web/ -R -Vd14/02/2005;19:29:47~19/12/2004;16:55:55 -Ybuilder,builder -I-Y]
+14/02/2005 19:29:47: [Etomic.Library.Transformer:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:29:47: [Etomic.Transformer.Web:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.MultiSourceControl.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\MultiSourceControl.cs:line 31
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:29:47: [Etomic.Transformer.Win:Error]: INTERNAL ERROR: The directory name is invalid
+----------
+System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.MultiSourceControl.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\MultiSourceControl.cs:line 31
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163
+----------
+
+14/02/2005 19:29:47: [Etomic.Transformer.Win:Info]: Integration complete: 14/02/2005 19:29:47
+14/02/2005 19:29:47: [Etomic.Library.Transformer:Info]: Integration complete: 14/02/2005 19:29:47
+14/02/2005 19:29:47: [Etomic.Transformer.Web:Info]: Integration complete: 14/02/2005 19:29:47
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Disconnecting remote server: 
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Unregistering channel: tcp
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Aborting CruiseControl.NET Server
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.Transformer.Web
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.Library.Transformer
+14/02/2005 19:29:55: [CruiseControl Server:Info]: Aborting integrator for project: Etomic.Transformer.Win
+14/02/2005 19:29:56: [Etomic.Library.Transformer:Info]: Integrator for project: Etomic.Library.Transformer is now stopped.
+14/02/2005 19:29:56: [Etomic.Transformer.Win:Info]: Integrator for project: Etomic.Transformer.Win is now stopped.
+14/02/2005 19:29:56: [Etomic.Transformer.Web:Info]: Integrator for project: Etomic.Transformer.Web is now stopped.

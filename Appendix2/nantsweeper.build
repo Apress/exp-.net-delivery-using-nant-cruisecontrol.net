@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<project name="minesweeper" default="startGame">
+    <property name="rows" value=""/>
+	<property name="columns" value=""/>
+	<property name="turns" value="0"/>
+	<property name="mines_found" value="0"/>
+	<property name="visited_squares" value=""/>
+	<property name="iter_list" value="-1,-1;00,01;00,01;01,00;00,-2;01,00;00,01;00,01"/>
+	
+	<target name="getUserInput">
+		<script language="C#" mainclass="GetSquareCoords">
+ 	        <code>
+            <![CDATA[
+                class GetSquareCoords 
+                {
+                    public static void ScriptMain(Project project) 
+                    {
+                        PropertyDictionary pd = project.Properties;
+
+                        System.Console.WriteLine("Please enter row between 1 and " + 
+							pd["rows"] + " (or return to exit");
+                        pd["row"] = (Int32.Parse(System.Console.ReadLine())-1).ToString();
+						
+                        if (pd["row"].Length > 0)
+                        {
+							System.Console.WriteLine("Please enter column between 1 and " +
+								pd["columns"]);
+						    pd["column"] = (Int32.Parse(System.Console.ReadLine())-1).ToString();
+					                 
+							Console.WriteLine("Processing ... please wait"); 
+						}
+                    }
+                }
+            ]]>
+			</code>
+		</script>
+	</target>
+
+	<target name="startGame">
+		<copy file="minefield.bak" tofile="minefield.xml" overwrite="true"/>
+		<xmlpeek file="minefield.xml" property="rows" xpath="//@rows"/>
+		<xmlpeek file="minefield.xml" property="columns" xpath="//@columns"/>
+		<call target="doGameTurn"/>
+	</target>
+
+	<target name="doGameTurn">
+		<exec program="minefield.bat" if="${int::parse(turns)==0}"/>	
+		<call target="getUserInput"/>
+		<if test="${string::get-length(row) &gt; 0}">	
+			<property name="turns" value="${int::parse(turns)+1}"/>
+			<xmlpoke file="minefield.xml" xpath="//@turns" value="${turns}"/>
+			<property name="test_row" value="${row}"/>
+			<property name="test_column" value="${column}"/>
+			<call target="testSquare"/>
+			<if test="${valid_square}">
+				<if test="${string::substring(temp_row_string, test_column, 1)!='X'}">
+					<property name="adjacency_list" value="${row},${column}"/>
+					<property name="visited_squares" value=""/>
+					<call target="revealSquares"/>
+					<xmlpeek file="minefield.xml" property="temp_row_string" xpath="minefield"/>
+					<if test="${not string::contains(temp_row_string, '?')}">
+						<xmlpoke file="minefield.xml" xpath="//@status" value="1"/>
+						<xmlpeek file="minefield.xml" property="temp_row_string" xpath="minefield"/>
+						<xmlpoke file="minefield.xml" xpath="minefield" value="${string::replace(temp_row_string, 'X', 'M')}"/>
+						<exec program="minefield.bat"/>
+					</if>
+					<if test="${string::contains(temp_row_string, '?')}">
+						<exec program="minefield.bat"/>
+						<call target="doGameTurn"/>
+					</if>
+				</if>
+				<if test="${string::substring(temp_row_string, test_column, 1)=='X'}">
+					<property name="temp_len" value="${string::get-length(temp_row_string) - int::parse(test_column) -1}"/>
+					<property name="temp_row_string" value="${string::substring(temp_row_string, 0, test_column) + 'Z' + 
+						string::substring(temp_row_string, int::parse(test_column)+1, temp_len)}"/>
+					<xmlpoke file="minefield.xml" xpath="minefield/row[position()='${int::parse(test_row)+1}']" 
+						value="${temp_row_string}"/>
+					<xmlpoke file="minefield.xml" xpath="//@status" value="2"/>
+					<xmlpeek file="minefield.xml" property="temp_row_string" xpath="minefield"/>
+					<xmlpoke file="minefield.xml" xpath="minefield" value="${string::replace(temp_row_string, 'X', 'M')}"/>
+					<exec program="minefield.bat"/>
+				</if>
+			</if>
+		</if>
+	</target>
+	
+	<target name="revealSquares">
+		<property name="new_adjacency_list" value=""/>
+		<foreach item="String" in="${adjacency_list}" delim=";" property="pair">
+			<property name="test_row" value="${string::substring(pair,0,1)}"/>
+			<property name="test_column" value="${string::substring(pair,2,1)}"/>
+			<call target="testSquare"/>
+			<if test="${valid_square}">
+				<if test="${item_at_square=='?'}">
+					<property name="row_string" value="${temp_row_string}"/>
+					<call target="uncoverSquare"/>
+					<call target="countAdjacentMines"/>
+					<if test="${int::parse(adjacent_mines)==0}">
+						<call target="addNeighboursToAdjacencyList"/>
+					</if>
+				</if>
+			</if>
+		</foreach>
+		<property name="adjacency_list" value="${new_adjacency_list}"/>
+		<if test="${string::get-length(adjacency_list) &gt; 0}">
+	    	<call target="revealSquares"/>
+		</if>
+	</target>
+	
+	<target name="testSquare">
+		<property name="temp_row_string" value=""/>
+		<property name="valid_square" value="false"/>
+		
+		<if test="${int::parse(test_row) &gt; -1}">
+			<if test="${int::parse(test_row) &lt; int::parse(rows)}">
+				<if test="${int::parse(test_column) &gt; -1}">
+					<if test="${int::parse(test_column) &lt; int::parse(columns)}">
+						<property name="valid_square" value="true"/>
+						<xmlpeek file="minefield.xml" property="temp_row_string" xpath="minefield/row" nodeindex="${test_row}"/>
+						<property name="item_at_square" value="${string::substring(temp_row_string, test_column, 1)}"/>
+					</if>
+				</if>
+			</if>
+		</if>
+	</target>
+
+	<target name="uncoverSquare">
+		<property name="visited_squares" value="${visited_squares};${test_row},${test_column}"/>
+		<call target="countAdjacentMines"/>
+		<property name="temp_item" value=" "/>
+		<if test="${int::parse(adjacent_mines) &gt; 0}">
+			<property name="temp_item" value="${adjacent_mines}"/>
+		</if>
+		<property name="temp_item" value="${adjacent_mines}" unless="${int::parse(adjacent_mines)==0}"/>
+		<property name="temp_len" value="${string::get-length(row_string) - int::parse(test_column) -1}"/>
+		<property name="temp_row" value="${string::substring(row_string, 0, test_column) + temp_item + string::substring(row_string, 
+			int::parse(test_column)+1, temp_len)}"/>
+		<xmlpoke file="minefield.xml" xpath="minefield/row[position()='${int::parse(test_row)+1}']" value="${temp_row}"/>
+	</target>
+		
+	<target name="testSquareAndCountMine">
+		<call target="testSquare"/>
+		<if test="${valid_square}">
+			<if test="${item_at_square=='X'}">
+				<property name="adjacent_mines" value="${int::parse(adjacent_mines)+1}"/>
+			</if>
+		</if>
+	</target>
+
+	<target name="countAdjacentMines">
+		<property name="adjacent_mines" value="0"/>
+		<property name="temp_pair" value=""/>
+		<foreach item="String" in="${iter_list}" delim=";" property="temp_pair">
+			<property name="test_row" value="${int::parse(string::substring(temp_pair,0,2)) + int::parse(test_row)}"/>	
+			<property name="test_column" value="${int::parse(string::substring(temp_pair,3,2)) + int::parse(test_column)}"/>	
+			<call target="testSquareAndCountMine"/>
+		</foreach>
+		<property name="test_row" value="${int::parse(test_row)-1}"/>
+		<property name="test_column" value="${int::parse(test_column)-1}"/>
+	</target>	
+	
+	<target name="addSquareToAdjacencyList">
+		<call target="testSquare"/>
+		<if test="${valid_square}">
+			<if test="${item_at_square=='?'}">
+				<property name="pair" value="${test_row},${test_column}"/>
+				<if test="${not string::contains(visited_squares, pair)}">
+					<property name="new_adjacency_list" value="${new_adjacency_list};${pair}" unless="${string::get-length(new_adjacency_list)==0}"/>
+					<property name="new_adjacency_list" value="${pair}" if="${string::get-length(new_adjacency_list)==0}"/>
+				</if>
+			</if>
+		</if>
+	</target>
+	
+	<target name="addNeighboursToAdjacencyList">
+		<property name="temp_pair" value=""/>
+		<foreach item="String" in="${iter_list}" delim=";" property="temp_pair">
+			<property name="test_row" value="${int::parse(string::substring(temp_pair,0,2)) + int::parse(test_row)}"/>	
+			<property name="test_column" value="${int::parse(string::substring(temp_pair,3,2)) + int::parse(test_column)}"/>	
+			<call target="addSquareToAdjacencyList"/>
+		</foreach>
+		<property name="test_row" value="${int::parse(test_row)-1}"/>
+		<property name="test_column" value="${int::parse(test_column)-1}"/>
+	</target>	
+</project>

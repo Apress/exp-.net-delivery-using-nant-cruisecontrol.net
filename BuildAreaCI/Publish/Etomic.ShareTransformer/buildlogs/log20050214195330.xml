@@ -1,0 +1,14 @@
+<cruisecontrol project="Etomic.ShareTransformer">
+  <modifications />
+  <build date="14/02/2005 19:53:30" buildtime="00:00:00" buildcondition="IfModificationExists" />
+  <exception><![CDATA[System.ComponentModel.Win32Exception: The directory name is invalid
+   at System.Diagnostics.Process.StartWithCreateProcess(ProcessStartInfo startInfo)
+   at System.Diagnostics.Process.Start()
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Start(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 47
+   at ThoughtWorks.CruiseControl.Core.Util.ProcessExecutor.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\util\ProcessExecutor.cs:line 21
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.Execute(ProcessInfo processInfo) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 45
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.ProcessSourceControl.GetModifications(ProcessInfo info, DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\ProcessSourceControl.cs:line 38
+   at ThoughtWorks.CruiseControl.Core.Sourcecontrol.Vss.GetModifications(DateTime from, DateTime to) in d:\sourceforge\ccnet\project\core\sourcecontrol\Vss.cs:line 93
+   at ThoughtWorks.CruiseControl.Core.Project.GetSourceModifications(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 185
+   at ThoughtWorks.CruiseControl.Core.Project.AttemptToRunIntegration(IIntegrationResult result) in d:\sourceforge\ccnet\project\core\Project.cs:line 163]]></exception>
+</cruisecontrol>

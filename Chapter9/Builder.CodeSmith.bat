@@ -1,0 +1,1 @@
+"D:\Program Files\CodeSmith\v2.6\CodeSmithConsole" /template:"D:\dotNetDelivery\Chapter9\CodeSmith\CI2\master.cst"  /properties:"D:\dotNetDelivery\Chapter9\Data\ProjectSet.CodeSmith.xml"

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<project name="IfUnlessProperty" default="go">
+	<target name="go">
+
+		<property name="usehat" value="false"/>
+		<property name="useumbrella" value="false"/>
+
+		<property name="raining" value="true"/>
+		<property name="windy" value="true"/>
+
+		<property name="usehat" value="true" if="${raining}"/>
+		<property name="useumbrella" value="true" if="${raining}" unless="${windy}"/> 
+
+		<echo message="usehat = ${usehat}"/>
+		<echo message="useumbrella = ${useumbrella}"/>
+
+	</target>
+</project>

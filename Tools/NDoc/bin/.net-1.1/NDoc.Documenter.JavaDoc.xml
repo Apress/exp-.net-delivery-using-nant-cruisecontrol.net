@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NDoc.Documenter.JavaDoc</name>
+    </assembly>
+    <members>
+        <member name="T:NDoc.Documenter.JavaDoc.JavaDocDocumenter">
+            <summary>The JavaDoc documenter.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.JavaDoc.JavaDocDocumenter.#ctor">
+            <summary>Initializes a new instance of the JavaDocDocumenter class.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.JavaDoc.JavaDocDocumenter.Build(NDoc.Core.Project)">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.JavaDoc.JavaDocDocumenter.Clear">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.JavaDoc.JavaDocDocumenter.MainOutputFile">
+            <summary>See <see cref="T:NDoc.Core.IDocumenter"/>.</summary>
+        </member>
+        <member name="T:NDoc.Documenter.JavaDoc.JavaDocDocumenterConfig">
+            <summary>The JavaDoc documenter config class.</summary>
+        </member>
+        <member name="M:NDoc.Documenter.JavaDoc.JavaDocDocumenterConfig.#ctor">
+            <summary>Initializes a new instance of the JavaDocDocumenterConfig class.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.JavaDoc.JavaDocDocumenterConfig.Title">
+            <summary>Gets or sets the Title property.</summary>
+        </member>
+        <member name="P:NDoc.Documenter.JavaDoc.JavaDocDocumenterConfig.OutputDirectory">
+            <summary>Gets or sets the OutputDirectory property.</summary>
+        </member>
+    </members>
+</doc>

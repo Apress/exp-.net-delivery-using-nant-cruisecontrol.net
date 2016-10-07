@@ -1,0 +1,272 @@
+<cruisecontrol project="Etomic.Library.Transformer">
+  <modifications />
+  <build date="19/02/2005 13:37:52" buildtime="00:00:04" error="true" buildcondition="ForceBuild"><buildresults project="Etomic.Library.Transformer">
+  <message level="Info"><![CDATA[Buildfile: file:///D:/dotNetDelivery/Chapter9/Etomic.Library.Transformer.Build.xml]]></message>
+  <message level="Info"><![CDATA[Target framework: Microsoft .NET Framework 1.1]]></message>
+  <message level="Info"><![CDATA[Target(s) specified: ci]]></message>
+  <task name="description" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="property" />
+  <task name="sysinfo">
+    <message level="Info"><![CDATA[Setting system information properties under sys.*]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.Contrib.Tasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "NAnt.NUnit2ReportTasks" for extensions.]]></message>
+  </task>
+  <task name="loadtasks">
+    <message level="Info"><![CDATA[Scanning assembly "Etomic.NAntExtensions.GeneralTasks" for extensions.]]></message>
+  </task>
+  <target name="clean">
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(23,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Output\Etomic.Library.Transformer\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(25,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Docs\Etomic.Library.Transformer\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(27,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Reports\Etomic.Library.Transformer\'. The directory does not exist.]]></message>
+    </task>
+    <task name="delete">
+      <message level="Error"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(29,6):
+Cannot delete directory 'D:\dotNetDelivery\Chapter9\Distribution\Etomic.Library.Transformer\'. The directory does not exist.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Source\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Output\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Docs\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Reports\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Distribution\Etomic.Library.Transformer\'.]]></message>
+    </task>
+    <task name="mkdir">
+      <message level="Info"><![CDATA[Creating directory 'D:\dotNetDelivery\Chapter9\Publish\Etomic.Library.Transformer\'.]]></message>
+    </task>
+  </target>
+  <target name="version1">
+    <task name="property" />
+    <task name="ifnot">
+      <task name="property" />
+    </task>
+    <task name="attrib" />
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(58,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(59,10): Attribute 'name' for <import ... /> is deprecated.  Use "namespace" attribute instead.]]></message>
+    <task name="asminfo">
+      <message level="Info"><![CDATA[Generated file 'D:\dotNetDelivery\Chapter9\Source\Etomic.Library.Transformer\CommonAssemblyInfo.cs'.]]></message>
+    </task>
+    <task name="attrib">
+      <message level="Info"><![CDATA[Setting file attributes for 1 files to ReadOnly.]]></message>
+    </task>
+  </target>
+  <target name="version2">
+    <task name="ifnot">
+      <message level="Warning"><![CDATA[D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml(74,8): Attribute 'user' for <vsslabel ... /> is deprecated.  Use "username" attribute instead.]]></message>
+      <task name="vsslabel" />
+    </task>
+  </target>
+  <task name="call">
+    <target name="fail">
+      <task name="echo">
+        <message level="Info"><![CDATA[Notifying you of a failure in the build process.]]></message>
+      </task>
+    </target>
+  </task>
+  <failure>
+    <builderror>
+      <type>NAnt.Core.BuildException</type>
+      <message><![CDATA[Failed to apply label 'NAnt - 1.0.1.0' to '$/Solutions/Etomic.Library.Transformer/'.]]></message>
+      <location>
+        <filename>D:\dotNetDelivery\Chapter9\Etomic.Library.Transformer.Build.xml</filename>
+        <linenumber>74</linenumber>
+        <columnnumber>8</columnnumber>
+      </location>
+      <stacktrace><![CDATA[   at NAnt.Contrib.Tasks.SourceSafe.LabelTask.ExecuteTask()
+   at NAnt.Core.Task.Execute()
+   at NAnt.Core.TaskContainer.ExecuteChildTasks()
+   at NAnt.Core.Tasks.IfTask.ExecuteTask()
+   at NAnt.Core.Task.Execute()
+   at NAnt.Core.Target.Execute()
+   at NAnt.Core.Project.Execute(String targetName, Boolean forceDependencies)
+   at NAnt.Core.Project.Execute()
+   at NAnt.Core.Project.Run()]]></stacktrace>
+      <internalerror>
+        <type>System.Runtime.InteropServices.COMException</type>
+        <message><![CDATA[The labels.ini file could not be properly updated.  Have your SS admin analyze to recreate it.]]></message>
+        <stacktrace><![CDATA[   at SourceSafeTypeLib.VSSItemClass.Label(String Label, String Comment)
+   at NAnt.Contrib.Tasks.SourceSafe.LabelTask.ExecuteTask()]]></stacktrace>
+      </internalerror>
+    </builderror>
+  </failure>
+</buildresults>
+</build><test-results name="D:\BookCode\BuildAreaCI\Output\Etomic.Library.Transformer\Etomic.Library.Transformer.Tests.dll" total="3" failures="0" not-run="0" date="26/01/2005" time="17:53">
+  <test-suite name="D:\BookCode\BuildAreaCI\Output\Etomic.Library.Transformer\Etomic.Library.Transformer.Tests.dll" success="True" time="0.296875" asserts="0">
+    <results>
+      <test-suite name="Etomic" success="True" time="0.296875" asserts="0">
+        <results>
+          <test-suite name="Library" success="True" time="0.296875" asserts="0">
+            <results>
+              <test-suite name="Transformer" success="True" time="0.296875" asserts="0">
+                <results>
+                  <test-suite name="Tests" success="True" time="0.296875" asserts="0">
+                    <results>
+                      <test-suite name="EngineTests" success="True" time="0.296875" asserts="0">
+                        <results>
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestReadWriteContents" executed="True" success="True" time="0.016" asserts="2" />
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestTransformXml" executed="True" success="True" time="0.250" asserts="1" />
+                          <test-case name="Etomic.Library.Transformer.Tests.EngineTests.TestEmptySaveContent" executed="True" success="True" time="0.016" asserts="0" />
+                        </results>
+                      </test-suite>
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results><FxCopReport Version="1.3" LastAnalysis="2005-01-26 17:53:45Z">
+  <Namespaces>
+    <Namespace Name="Etomic.Library.Transformer.Engine">
+      <Messages>
+        <Message Status="Active" Created="2005-01-26 17:53:45Z">
+          <Rule TypeName="AvoidNamespacesWithFewMembers" />
+          <Issues>
+            <Issue Certainty="50" Level="Warning">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.Library.Transformer.Engine</Item>
+                  </Items>
+                </Data>
+                <Text>Consider merging the types defined in  'Etomic.Library.Transformer.Engine' with another namespace.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message ID="Etomic" Status="Active" Created="2005-01-26 17:53:45Z">
+          <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly" />
+          <Issues>
+            <Issue Certainty="50" Level="CriticalWarning">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.Library.Transformer.Engine</Item>
+                    <Item>Etomic</Item>
+                  </Items>
+                </Data>
+                <Text>Correct the spelling of the unrecognized word 'Etomic' in the namespace name 'Etomic.Library.Transformer.Engine'.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+      </Messages>
+    </Namespace>
+  </Namespaces>
+  <Targets>
+    <Target Name="D:\BookCode\BuildAreaCI\Output\Etomic.Library.Transformer\Etomic.Library.Transformer.Engine.dll">
+      <Messages>
+        <Message Status="Active" Created="2005-01-26 17:53:45Z">
+          <Rule TypeName="AssembliesHavePermissionRequests" />
+          <Issues>
+            <Issue Certainty="99" Level="CriticalError">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.Library.Transformer.Engine</Item>
+                  </Items>
+                </Data>
+                <Text>No valid permission requests were found for assembly 'Etomic.Library.Transformer.Engine'. You should always specify the minimum security permissions using SecurityAction.RequestMinimum. If assembly permission requests have been specified, they are not enforceable; use the PermView.exe tool to view the assembly's permissions. </Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+        <Message Status="Active" Created="2005-01-26 17:53:45Z">
+          <Rule TypeName="AssembliesHaveStrongNames" />
+          <Issues>
+            <Issue Certainty="95" Level="Error">
+              <Resolution>
+                <Data>
+                  <Items>
+                    <Item>Etomic.Library.Transformer.Engine</Item>
+                  </Items>
+                </Data>
+                <Text>Sign 'Etomic.Library.Transformer.Engine' with a strong name key.</Text>
+              </Resolution>
+            </Issue>
+          </Issues>
+        </Message>
+      </Messages>
+    </Target>
+  </Targets>
+  <Rules>
+    <Rule TypeName="AssembliesHavePermissionRequests">
+      <Name>Assemblies specify permission requests</Name>
+      <Description>Permission requests prevent security exceptions from being thrown after code in an assembly has already begun executing. With permission requests, the assembly does not load if it has insufficient permissions. This rule will fire if you have specified a permission request incorrectly, or incompletely. If you have specified requests but FxCop reports a violation for this rule, use the PermView.exe tool to view the security permissions in the assembly. An unenforceable permission appears as an empty permission set.</Description>
+      <LongDescription>You should add attributes specifying what permissions your assembly will demand, might demand, and what permissions it does not want granted.  For example, the following attribute indicates that an assembly will, at minimum, require read access to the USERNAME environment variable: [assembly:EnvironmentPermissionAttribute(SecurityAction.RequestMinimum,
+Read="USERNAME")]. To specify permissions that the assembly might demand, use SecurityAction.RequestOptional. To specify permissions that the assembly must not be granted, use SecurityAction.RequestRefuse.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/AssembliesPermissionRequests.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="99">CriticalError</MessageLevel>
+      <File Name="UsageRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AssembliesHaveStrongNames">
+      <Name>Assemblies have strong names</Name>
+      <Description>Assemblies with strong names can be placed in the global assembly cache and can be checked for tampering at run time.</Description>
+      <LongDescription>The common language runtime compares the key in the assembly's manifest to the key used to generate the strong name, to ensure that the assembly's bits have not been tampered with.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AssembliesHaveStrongNames.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="95">Error</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="AvoidNamespacesWithFewMembers">
+      <Name>Avoid having a namespace with a small number of types</Name>
+      <Description>A namespace should generally have more than five types.</Description>
+      <LongDescription />
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/DesignRules/AvoidSmallNamespaces.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="50">Warning</MessageLevel>
+      <File Name="DesignRules.dll" Version="1.30.0.0" />
+    </Rule>
+    <Rule TypeName="NamespaceNamesShouldBeSpelledCorrectly">
+      <Name>Namespace names should consist of correctly spelled words</Name>
+      <Description>The individual words that make up a namespace should not be abbreviated and should be spelled correctly.</Description>
+      <LongDescription>If this rule generates a false positive on a term that should be recognized, add the word to the FxCop custom dictionary.</LongDescription>
+      <GroupOwner>MS FxCopDev</GroupOwner>
+      <DevOwner />
+      <Url>http://www.gotdotnet.com/team/fxcop/docs/rules/UsageRules/NamespaceSpelling.html</Url>
+      <Email>askfxcop@microsoft.com</Email>
+      <MessageLevel Certainty="50">CriticalWarning</MessageLevel>
+      <File Name="UsageRules.dll" Version="1.30.0.0" />
+    </Rule>
+  </Rules>
+</FxCopReport></cruisecontrol>
